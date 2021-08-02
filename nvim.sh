@@ -1,27 +1,29 @@
 #!/bin/bash
 
-ROOT_PATH=$(pwd)
-IDE_PATH=${ROOT_PATH}/ide
-VIM_CONFIG_PATH=${IDE_PATH}/.vim
-VIRTUAL_ENV_PATH=${IDE_PATH}/venv
+source paths.sh
 
 function print_usage() {
-    echo "<PROG_PATH> <PROJECT_NAME>"
+    echo "<PROG_PATH> <VENV_NAME> <PROJECT_PATH>"
 }
 
 if [[ $1 == "" ]]; then
     print_usage
     exit 1
 fi
-PROJECT_NAME=$1
+VENV_NAME=$1
 
-PROJECT_PATH="${ROOT_PATH}/${PROJECT_NAME}"
-PROJECT_VIRTAUL_ENV_PATH="${VIRTUAL_ENV_PATH}/${PROJECT_NAME}"
+if [[ $2 == "" ]]; then
+    print_usage
+    exit 1
+fi
+PROJECT_PATH=$2
+
+PROJECT_VIRTAUL_ENV_PATH="${VIRTUAL_ENV_DIR_PATH}/${VENV_NAME}"
 
 ACTIVATE_VENV_FILE_PATH=${PROJECT_VIRTAUL_ENV_PATH}/bin/activate
 
 if [[ ! -f ${ACTIVATE_VENV_FILE_PATH} ]]; then
-    echo "venv isn't installed. please run './prepare_venv.sh ${PROJECT_NAME}'"
+    echo "venv isn't installed. please run './prepare_venv.sh ${PROJECT_PATH}'"
     echo "${ACTIVATE_VENV_FILE_PATH} doesn't exist..."
     exit 1
 fi
@@ -29,10 +31,4 @@ fi
 echo Using ${ACTIVATE_VENV_FILE_PATH}
 source ${ACTIVATE_VENV_FILE_PATH}
 
-which python
-which pip
-
-which python3
-which pip3
-
-VIM_CONFIG_PATH=${VIM_CONFIG_PATH} nvim -u ${VIM_CONFIG_PATH}/.vimrc ${@:2}
+VIM_CONFIG_PATH=${VIM_CONFIG_DIR_PATH} nvim -u ${VIM_CONFIG_DIR_PATH}/.vimrc ${PROJECT_PATH} ${@:3}

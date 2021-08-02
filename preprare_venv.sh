@@ -1,24 +1,19 @@
 #!/bin/bash
 
-ROOT_PATH=$(pwd)
-IDE_PATH=${ROOT_PATH}/ide
-VIM_CONFIG_PATH=${IDE_PATH}/.vim
-VIRTUAL_ENV_PATH=${IDE_PATH}/venv
-
 function print_usage() {
-    echo "<PROG_PATH> <PROJECT_NAME>"
+    echo "<PROG_PATH> <VENV_NAME_PATH>"
 }
 
 if [[ $1 == "" ]]; then
     print_usage
     exit -1
 fi
-PROJECT_NAME=$1
+PROJECT_PATH=$1
 
-PROJECT_PATH="${ROOT_PATH}/${PROJECT_NAME}"
-PROJECT_VIRTAUL_ENV_PATH="${VIRTUAL_ENV_PATH}/${PROJECT_NAME}"
+PROJECT_PATH="${ROOT_PATH}/${PROJECT_PATH}"
+PROJECT_VIRTAUL_ENV_PATH="${VIRTUAL_ENV_PATH}/${PROJECT_PATH}"
 
-case $PROJECT_NAME in
+case $PROJECT_PATH in
     ranger)
     REQUIREMENTS_FILE_NAME="requirements.txt"
 ;;
@@ -40,7 +35,7 @@ else
 fi
 
 if [[ ! -f ${ACTIVATE_VENV_FILE_PATH} ]]; then
-    echo "venv created. please fix './prepare_venv.sh ${PROJECT_NAME}'"
+    echo "venv created. please fix './prepare_venv.sh ${PROJECT_PATH}'"
     echo "${ACTIVATE_VENV_FILE_PATH} doesn't exist..."
     exit 1
 fi
