@@ -1,0 +1,75 @@
+{
+  "configurations": {
+    "Local Prog": {
+      "adapter": "debugpy",
+      "breakpoints": {
+        "exception": {
+          "caught": "Y",
+          "uncaught": "Y"
+        }
+      },
+      "configuration": {
+        "type": "python3",
+        "request": "launch",
+        "program": "${fileBasename}",
+        "args": [],
+        "cwd": "${fileDirname}",
+        "externalConsole": true,
+        "stopAtEntry": true,
+        "logging": {
+          "engineLogging": false
+        }
+      }
+    },
+    "Local Module": {
+      "adapter": "debugpy",
+      "variables": {
+        "moduleName": "asset_database_worker",
+        "moduleRootPath": "${fileDirname}/.."
+      },
+      "breakpoints": {
+        "exception": {
+          "caught": "Y",
+          "uncaught": "Y"
+        }
+      },
+      "configuration": {
+        "type": "python3",
+        "request": "launch",
+        "module": "${moduleName}.${fileBasenameNoExtension}",
+        "args": [],
+        "cwd": "${moduleRootPath}",
+        "externalConsole": true,
+        "stopAtEntry": true,
+        "logging": {
+          "engineLogging": false
+        }
+      }
+    },
+    "Python Remote Attach": {
+      "adapter": "multi-session",
+      "variables": {
+        "host": "localhost",
+        "port": "5678",
+        "account": "saharh-mac",
+        "RemoteRoot": "/opt"
+      },
+      "breakpoints": {
+        "exception": {
+          "caught": "Y",
+          "uncaught": "Y"
+        }
+      },
+      "configuration": {
+        "request": "attach",
+        "stopAtEntry": true,
+        "pathMappings": [
+          {
+            "localRoot": "/Users/saharh-mac/work",
+            "remoteRoot": "/opt/"
+          }
+        ]
+      }
+    }
+  }
+}
