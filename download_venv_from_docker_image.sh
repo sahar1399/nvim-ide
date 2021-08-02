@@ -1,6 +1,7 @@
 #!/bin/bash
 
-source paths.sh
+SCRIPT_DIR_PATH="$(dirname "$0")"
+source "${SCRIPT_DIR_PATH}/paths.sh"
 
 function print_usage() {
     echo "<PROG_PATH> <DOKCER_IMAGE_NAME> <VENV_PATH_INSIDE_CONTAINER>"
