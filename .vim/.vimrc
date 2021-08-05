@@ -37,6 +37,7 @@ call plug#begin('$VIM_CONFIG_PATH/plugged')
 
   " Tests. config file: .tests.vimrc
   Plug 'vim-test/vim-test'
+  Plug 'kalekseev/vim-coverage.py', { 'do': ':UpdateRemotePlugins' }
 
   " Themes. config file: .themes.vimrc
   Plug 'jnurmine/Zenburn'
