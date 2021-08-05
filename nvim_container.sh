@@ -26,4 +26,9 @@ fi
 echo Using ${ACTIVATE_VENV_FILE_PATH}
 source ${ACTIVATE_VENV_FILE_PATH}
 
-VIM_CONFIG_PATH=${VIM_CONFIG_DIR_PATH} nvim -u ${VIM_CONFIG_DIR_PATH}/.vimrc ${@:3}
+which python
+which python3
+which pip
+which pip3
+
+VIM_CONFIG_PATH=${VIM_CONFIG_DIR_PATH} nvim -u ${VIM_CONFIG_DIR_PATH}/.vimrc ${@:2}
