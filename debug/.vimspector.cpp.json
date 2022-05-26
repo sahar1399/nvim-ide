@@ -1,0 +1,54 @@
+{
+  "configurations": {
+    "remote launch": {
+      "adapter": "vscode-cpptools",
+      "configuration": {
+        "request": "launch",
+
+        "name": "(gdb) Docker",
+        "type": "cppdbg",
+
+        "program": "${workspaceRoot}/build-9/dissector_main/dissector",
+        "args": [
+          "run",
+          "--input",
+          "${workspaceRoot}/caps/UOCP_different_actions_.pcap",
+          "--dissect-only",
+          "--dissector-ng-output",
+          "console"
+        ],
+        "stopAtEntry": true,
+        "cwd": "${workspaceRoot}",
+        "environment": [],
+        "externalConsole": false,
+        "preLaunchTask": "",
+        "targetArchitecture": "x64",
+
+        "pipeTransport": {
+          "debuggerPath": "/opt/rh/devtoolset-9/root/usr/bin/gdb",
+          "pipeProgram": "docker",
+          "pipeArgs": ["exec", "-i", "build-cpp", "bash", "-c"],
+          "pipeCwd": "${workspaceRoot}"
+        },
+        "linux": {
+          "MIMode": "gdb",
+          "setupCommands": [
+            {
+              "description": "Enable pretty-printing for gdb",
+              "text": "-enable-pretty-printing",
+              "ignoreFailures": true
+            }
+          ]
+        },
+        "osx": {
+          "MIMode": "lldb"
+        },
+        "logging": {
+          "trace": true,
+          "traceResponse": true,
+          "engineLogging": true
+        }
+      }
+    }
+  }
+}

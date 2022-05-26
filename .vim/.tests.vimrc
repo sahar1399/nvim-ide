@@ -1,9 +1,6 @@
 " vim-test
-if has('nvim')
-  let test#strategy='neovim'
-else
-  let test#strategy='vimterminal'
-endif
+
+let test#strategy='neovim'
 
 nmap <silent> t<C-n> :TestNearest<CR>
 nmap <silent> t<C-f> :TestFile<CR>
