@@ -41,12 +41,16 @@ call plug#begin('$VIM_CONFIG_PATH/plugged')
   " Snippets
   Plug 'honza/vim-snippets'
   Plug 'rafamadriz/friendly-snippets'
+  Plug 'windwp/nvim-autopairs'
   " LSP Installer
   Plug 'williamboman/nvim-lsp-installer'
   " Refactoring
   Plug 'ThePrimeagen/refactoring.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-treesitter/nvim-treesitter'
+  Plug 'smjonas/inc-rename.nvim'
+  " Formatting
+  Plug 'lukas-reineke/lsp-format.nvim'
 
   " Debugging. config file .debug.vimrc
   Plug 'puremourning/vimspector'

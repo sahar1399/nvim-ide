@@ -3,8 +3,14 @@ set completeopt=menu,menuone,noselect
 lua << EOF
 local util = require "lspconfig".util
 
+require("lsp-format").setup {}
 require("nvim-lsp-installer").setup {}
 local lsp_config = require('lspconfig')
+-- enable when nvim 0.8.0 is out
+-- require("inc_rename").setup {
+--   cmd_name = "IncRename", -- the name of the command
+--   hl_group = "Substitute", -- the highlight group used for highlighting the identifier's new name
+--}
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -17,6 +23,7 @@ vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+  require("lsp-format").on_attach(client)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -31,10 +38,15 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  -- disable when nvim 0.8.0 is out
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ra', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rf', '<cmd>lua vim.lsp.buf.format { async = true }<CR>', opts)
+  vim.cmd [[cabbrev w execute "Format sync" <bar> w]]
+  -- enable when nvim 0.8.0 is out
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', function() return ":IncRename " .. vim.fn.expand("<cword>") end, { expr = true })
+
 end
 
 -- Completion and Snippets
@@ -70,6 +82,15 @@ require('luasnip/loaders/from_vscode').load()
 
 local luasnip = require('luasnip')
 local cmp = require'cmp'
+
+local function check_backspace()
+  local col = vim.fn.col(".") - 1
+  if col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
+    return true
+  else
+    return false
+  end
+end
 
 cmp.setup({
   snippet = {
@@ -166,6 +187,11 @@ cmp.setup.cmdline(':', {
   })
 })
 
+require('nvim-autopairs').setup{}
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
+
+
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.resolveSupport = {
@@ -217,16 +243,20 @@ vim.api.nvim_set_keymap("n", "<leader>rc", ":lua require('refactoring').debug.cl
 
 require'lspconfig'.jsonls.setup {
   capabilities = capabilities,
+  on_attach = on_attach,
   cmd = { "vscode-json-language-server", "--stdio" },
   filetypes = { "json", "jsonc" },
   init_options = {
-    provideFormatter = true
+    provideFormatter = true,
+    documentFormatting = true
   },
   single_file_support = true
 }
 
 require'lspconfig'.dockerls.setup{
   capabilities = capabilities,
+  on_attach = on_attach,
+  init_options = { documentFormatting = true },
   cmd = { "docker-langserver", "--stdio" },
   root_dir = util.root_pattern("Dockerfile"),
   single_file_support = true
@@ -234,9 +264,11 @@ require'lspconfig'.dockerls.setup{
 
 require'lspconfig'.cmake.setup{
   capabilities = capabilities,
+  on_attach = on_attach,
   cmd = { "cmake-language-server" },
   init_options = {
-    buildDirectory = "build"
+    buildDirectory = "build",
+    init_options = { documentFormatting = true },
   },
   root_dir = util.root_pattern(".git", "compile_commands.json", "build"),
   single_file_support = true
@@ -244,6 +276,8 @@ require'lspconfig'.cmake.setup{
 
 require'lspconfig'.bashls.setup{
   capabilities = capabilities,
+  on_attach = on_attach,
+  init_options = { documentFormatting = true },
   cmd = { "bash-language-server", "start" },
   cmd_env = {
     GLOB_PATTERN = "*@(.sh|.inc|.bash|.command)"
@@ -254,8 +288,9 @@ require'lspconfig'.bashls.setup{
 }
 
 require'lspconfig'.pylsp.setup{
-    filetypes = {""},
+    filetypes = {"python"},
     on_attach = on_attach,
+    init_options = { documentFormatting = true },
     settings = {
 	    configurationSources = {"flake8"},
 	    formatCommand = {"black"},
@@ -286,8 +321,9 @@ require'lspconfig'.pylsp.setup{
 lsp_config.pyright.setup{
     cmd = { "pyright-langserver", "--stdio" },
     capabilities = capabilities,
-    filetypes = {"python"},
+    filetypes = {""},
     on_attach = on_attach,
+    init_options = { documentFormatting = true },
     flags = {
       debounce_text_changes = 150,
     },
@@ -318,6 +354,7 @@ lsp_config.clangd.setup{
 	},
         filetypes = {"h", "hpp", "c", "cpp", "objc", "objcpp"},
         on_attach = on_attach,
+    	init_options = { documentFormatting = true },
         flags = {
           debounce_text_changes = 150
         },
@@ -329,9 +366,11 @@ lsp_config.prosemd_lsp.setup{
 	cmd = { "prosemd-lsp", "--stdio" },
         filetypes = {"markdown"},
         on_attach = on_attach,
+    	init_options = { documentFormatting = true },
         flags = {
           debounce_text_changes = 150
         },
 	single_file_support = true
 }
+
 EOF

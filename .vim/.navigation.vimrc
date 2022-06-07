@@ -7,10 +7,10 @@ map <leader>f :NERDTreeFind<cr>
 map <leader>o :NERDTree<cr>
 map <leader>c :NERDTreeClose<cr>
 
-map <C-l> <C-W>l
-map <C-k> <C-W>k
-map <C-j> <C-W>j
-map <C-h> <C-W>h
+nmap <C-l> <C-W>l
+nmap <C-k> <C-W>k
+nmap <C-j> <C-W>j
+nmap <C-h> <C-W>h
 
 " Zoom / Restore window.
 function! s:ZoomToggle() abort
