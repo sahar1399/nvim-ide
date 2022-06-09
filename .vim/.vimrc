@@ -52,6 +52,7 @@ call plug#begin('$VIM_CONFIG_PATH/plugged')
   " Formatting
   Plug 'lukas-reineke/lsp-format.nvim'
 
+  Plug 'b0o/schemastore.nvim'
   " Debugging. config file .debug.vimrc
   Plug 'puremourning/vimspector'
 
