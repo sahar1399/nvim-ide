@@ -79,13 +79,20 @@ call plug#begin('$VIM_CONFIG_PATH/plugged')
   " Status line
   Plug 'feline-nvim/feline.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
-  Plug 'nvim-treesitter/nvim-treesitter'
   Plug 'SmiteshP/nvim-gps'
   "Plug 'vim-airline/vim-airline'
   "Plug 'vim-airline/vim-airline-themes'
   
   " Help
   Plug 'folke/which-key.nvim'
+
+  " NOrg
+  Plug 'nvim-neorg/neorg'
+  Plug 'nvim-neorg/neorg-telescope'
+  Plug 'max397574/neorg-kanban'
+  Plug 'max397574/neorg-contexts'
+  Plug 'esquires/neorg-gtd-project-tags'
+
 call plug#end()
 
 " General Configuration
@@ -94,6 +101,7 @@ set encoding=utf-8
 set foldmethod=indent
 set foldlevel=99
 set relativenumber
+set number
 set wrap!
 set ruler               " Show the line and column numbers of the cursor.
 set formatoptions+=o    " Continue comment marker in new lines.
@@ -153,5 +161,7 @@ source ${VIM_CONFIG_PATH}/.lsp.vimrc
 source ${VIM_CONFIG_PATH}/.cpp.vimrc
 source ${VIM_CONFIG_PATH}/.python.vimrc
 source ${VIM_CONFIG_PATH}/.markdown.vimrc
+
+luafile ${VIM_CONFIG_PATH}/.neorg.lua
 
 source .vimrc
