@@ -58,6 +58,11 @@ call plug#begin('$VIM_CONFIG_PATH/plugged')
 
   " Tests. config file: .tests.vimrc
   Plug 'vim-test/vim-test'
+  Plug 'antoinemadec/FixCursorHold.nvim'
+  Plug 'nvim-neotest/neotest'
+  Plug 'nvim-neotest/neotest-python'
+  Plug 'nvim-neotest/neotest-plenary'
+  Plug 'nvim-neotest/neotest-vim-test'
 
   " Themes. config file: .themes.vimrc
   Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
@@ -162,6 +167,16 @@ source ${VIM_CONFIG_PATH}/.cpp.vimrc
 source ${VIM_CONFIG_PATH}/.python.vimrc
 source ${VIM_CONFIG_PATH}/.markdown.vimrc
 
-luafile ${VIM_CONFIG_PATH}/.neorg.lua
+source ${VIM_CONFIG_PATH}/.neorg.vimrc
+
+function! ToggleVerbose()
+    if !&verbose
+        set verbosefile=~/.log/vim/verbose.log
+        set verbose=15
+    else
+        set verbose=0
+        set verbosefile=
+    endif
+endfunction
 
 source .vimrc

@@ -25,9 +25,9 @@ function! s:ZoomToggle() abort
     endif
 endfunction
 command! ZoomToggle call s:ZoomToggle()
-nnoremap <silent> <C-Enter> :ZoomToggle<CR>
+nnoremap <silent> <C-M> :ZoomToggle<CR>
 " CR is CR in quickfix window
-autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+" autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
 lua << EOF
 require('marks').setup {

@@ -9,10 +9,10 @@ nnoremap <C-F>o :CtrlSFOpen<CR>
 nnoremap <C-F>t :CtrlSFToggle<CR>
 inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 
-nmap <C-F>p <Plug>CtrlSFPrompt -G "**/*.py" -R -W 
-nmap <C-F>s <Plug>CtrlSFPrompt -G "**/*.sh" -R -W 
-nmap <C-F>c <Plug>CtrlSFPrompt -G "{**/*.cpp,**/*.hpp,**/*.c,**/*.h}" -R -W 
-nmap <C-F>b <Plug>CtrlSFPrompt -G "{*build*.sh,*[Cc][Oo][Nn][Aa][Nn]*,*[Cc][Mm][Aa][Kk][Ee]*,*[Mm][Aa][Kk][Ee][Ff][Ii][Ll][Ee]*}" -R -W 
+nmap <C-F>p <Plug>CtrlSFPrompt -hidden -G "**/*.py" -R -W 
+nmap <C-F>s <Plug>CtrlSFPrompt -hidden -G "**/*.sh" -R -W 
+nmap <C-F>c <Plug>CtrlSFPrompt -hidden -G "{**/*.cpp,**/*.hpp,**/*.c,**/*.h}" -R -W 
+nmap <C-F>b <Plug>CtrlSFPrompt -hidden -G "{*build*.sh,*[Cc][Oo][Nn][Aa][Nn]*,*[Cc][Mm][Aa][Kk][Ee]*,*[Mm][Aa][Kk][Ee][Ff][Ii][Ll][Ee]*}" -R -W 
 
 let g:ctrlsf_auto_close = {
     \ "normal" : 0,
@@ -37,8 +37,8 @@ let g:ctrlsf_position = 'right'
 let g:ctrlsf_confirm_save = 0
 
 " telescope
-nnoremap <C-P>f <cmd>Telescope find_files<cr>
-nnoremap <C-P>g <cmd>Telescope live_grep<cr>
-nnoremap <C-P>b <cmd>Telescope buffers<cr>
-nnoremap <C-P>h <cmd>Telescope help_tags<cr>
+nnoremap <C-P>f <cmd>Telescope find_files hidden=true<cr>
+nnoremap <C-P>g <cmd>Telescope live_grep hidden=true<cr>
+nnoremap <C-P>b <cmd>Telescope buffers hidden=true<cr>
+nnoremap <C-P>h <cmd>Telescope help_tags hidden=true<cr>
 
