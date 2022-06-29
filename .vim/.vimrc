@@ -17,6 +17,7 @@ call plug#begin('$VIM_CONFIG_PATH/plugged')
   " Edit
   " h visual-multi
   " h vm-mappings
+  " Plug 'terryma/vim-multiple-cursors'
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'junegunn/vim-easy-align'
   Plug 'dhruvasagar/vim-table-mode'
@@ -148,7 +149,7 @@ set magic               " Use 'magic' patterns (extended regular expressions).
 
 " General Key Mappings
 nnoremap <space> za
-
+ 
 source ${VIM_CONFIG_PATH}/.navigation.vimrc
 source ${VIM_CONFIG_PATH}/.git.vimrc
 source ${VIM_CONFIG_PATH}/.syntax.vimrc

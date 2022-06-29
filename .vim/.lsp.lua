@@ -292,8 +292,30 @@ require'lspconfig'.bashls.setup{
   single_file_support = true
 }
 
+lsp_config.pyright.setup{
+    cmd = { "pyright-langserver", "--stdio" },
+    capabilities = capabilities,
+    filetypes = {"python"},
+    on_attach = on_attach,
+    init_options = { documentFormatting = true },
+    flags = {
+      debounce_text_changes = 150,
+    },
+    settings = {
+      python = {
+        analysis = {
+          autoSearchPaths = true,
+          diagnosticMode = "workspace",
+          useLibraryCodeForTypes = true
+        },
+      },
+    },
+    single_file_support = true
+}
+
 require'lspconfig'.pylsp.setup{
     on_attach = on_attach,
+    filetypes = {"python"},
     cmd = { "/usr/local/bin/pylsp" },
     settings = {
         configurationSources = {"flake8"},
@@ -338,27 +360,6 @@ require'lspconfig'.pylsp.setup{
 	    }
 	}
 }
-}
-
-lsp_config.pyright.setup{
-    cmd = { "pyright-langserver", "--stdio" },
-    capabilities = capabilities,
-    filetypes = {"python"},
-    on_attach = on_attach,
-    init_options = { documentFormatting = true },
-    flags = {
-      debounce_text_changes = 150,
-    },
-    settings = {
-      python = {
-        analysis = {
-          autoSearchPaths = true,
-          diagnosticMode = "workspace",
-          useLibraryCodeForTypes = true
-        },
-      },
-    },
-    single_file_support = true
 }
 
 lsp_config.clangd.setup{

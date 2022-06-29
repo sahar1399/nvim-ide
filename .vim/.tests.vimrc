@@ -92,6 +92,7 @@ require("neotest").setup({
     require("neotest-python")({
       dap = { justMyCode = false },
       runner = "pytest",
+      --args = { "-n", "auto", }
     }),
     require("neotest-plenary"),
     require("neotest-vim-test")({
