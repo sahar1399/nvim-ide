@@ -7,11 +7,11 @@ return {
 
       require("material").setup({
         contrast = {
-          terminal = false, -- Enable contrast for the built-in terminal
-          sidebars = false, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
-          floating_windows = false, -- Enable contrast for floating windows
-          cursor_line = false, -- Enable darker background for the cursor line
-          non_current_windows = false, -- Enable darker background for non-current windows
+          terminal = true, -- Enable contrast for the built-in terminal
+          sidebars = true, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
+          floating_windows = true, -- Enable contrast for floating windows
+          cursor_line = true, -- Enable darker background for the cursor line
+          non_current_windows = true, -- Enable darker background for non-current windows
           filetypes = {}, -- Specify which filetypes get the contrasted (darker) background
         },
 
@@ -36,7 +36,7 @@ return {
           "gitsigns",
           -- "hop",
           "indent-blankline",
-          -- "lspsaga",
+          "lspsaga",
           -- "mini",
           "neogit",
           "nvim-cmp",
@@ -46,7 +46,7 @@ return {
           -- "sneak",
           "telescope",
           "trouble",
-          -- "which-key",
+          "which-key",
         },
 
         disable = {
@@ -58,7 +58,7 @@ return {
         },
 
         high_visibility = {
-          lighter = false, -- Enable higher contrast text for lighter style
+          lighter = true, -- Enable higher contrast text for lighter style
           darker = true, -- Enable higher contrast text for darker style
         },
 
@@ -201,7 +201,7 @@ return {
           persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
           -- can also be a table containing 2 custom separators
           -- [focused and unfocused]. eg: { '|', '|' }
-          separator_style = "slant", -- "slant" | "thick" | "thin" | { "any", "any" },
+          separator_style = "thin", -- "slant" | "thick" | "thin" | { "any", "any" },
           enforce_regular_tabs = false,
           always_show_bufferline = true,
           hover = {
@@ -252,6 +252,7 @@ return {
           lualine_a = { "mode" },
           lualine_b = { "branch", "diff", "diagnostics" },
           lualine_c = { "filename" },
+          lualine_d = {},
           lualine_x = { "encoding", "fileformat", "filetype" },
           lualine_y = { "progress" },
           lualine_z = { "location" },

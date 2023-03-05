@@ -1,47 +1,6 @@
-local opts = { silent = true }
-
 return {
 	{
 		"nvim-neotest/neotest",
-		lazy = true,
-		keys = {
-			{
-				"<leader>ta",
-				function()
-					local neotest = require("neotest")
-					neotest.run.run()
-				end,
-				"n",
-				opts,
-			},
-			{
-				"<leader>tr",
-				function()
-					local neotest = require("neotest")
-					neotest.run.run(vim.fn.expand("%"))
-				end,
-				"n",
-				opts,
-			},
-			{
-				"<leader>td",
-				function()
-					local neotest = require("neotest")
-					neotest.run.run({ strategy = "dap" })
-				end,
-				"n",
-				opts,
-			},
-			{
-				"<leader>tt",
-				function()
-					local neotest = require("neotest")
-					neotest.summary.open()
-				end,
-				"n",
-				opts,
-			},
-		},
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
@@ -54,12 +13,43 @@ return {
 
 			neotest.setup({
 				adapters = {
-					require("neotest-plenary"),
 					require("neotest-python")({
 						dap = { justMyCode = false },
+						args = { "--cov=." },
 					}),
+					require("neotest-plenary"),
+				},
+				icons = {
+					child_indent = "│",
+					child_prefix = "├",
+					collapsed = "─",
+					expanded = "╮",
+					failed = "𝚇",
+					final_child_indent = " ",
+					final_child_prefix = "╰",
+					non_collapsible = "─",
+					passed = "𝚅",
+					running = "",
+					running_animated = { "/", "|", "\\", "-", "/", "|", "\\", "-" },
+					skipped = "嶺",
+					unknown = "",
 				},
 			})
+
+			local opts = { silent = true }
+
+			vim.keymap.set("n", "<leader>trr", function()
+				neotest.run.run()
+			end, opts)
+			vim.keymap.set("n", "<leader>tra", function()
+				neotest.run.run(vim.fn.expand("%"))
+			end, opts)
+			vim.keymap.set("n", "<leader>trd", function()
+				neotest.run.run({ strategy = "dap" })
+			end, opts)
+			vim.keymap.set("n", "<leader>to", function()
+				neotest.summary.open({ enter = true })
+			end, opts)
 		end,
 	},
 	{
@@ -68,6 +58,7 @@ return {
 		config = function()
 			require("coverage").setup({
 				commands = true, -- create commands
+				auto_reload = true,
 				highlights = {
 					-- customize highlight groups created by the plugin
 					covered = { fg = "#C3E88D" }, -- supports style, fg, bg, sp (see :h highlight-gui)
@@ -85,7 +76,14 @@ return {
 				lang = {
 					-- customize language specific settings
 				},
+				load_coverage_cb = function(ftype)
+					vim.notify("Loaded " .. ftype .. " coverage")
+				end,
 			})
+
+			vim.keymap.set("n", "<leader>tcc", "<cmd>CoverageToggle<CR>", {})
+			vim.keymap.set("n", "<leader>tcl", "<cmd>CoverageLoad<CR>", {})
+			vim.keymap.set("n", "<leader>tcs", "<cmd>CoverageSummary<CR>", {})
 		end,
 	},
 }

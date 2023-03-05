@@ -1,7 +1,14 @@
 local languages = {}
 
 languages["lua"] = require("ide.languages.lua")
+languages["bash"] = require("ide.languages.bash")
 languages["python"] = require("ide.languages.python")
 languages["git"] = require("ide.languages.git")
+languages["cpp"] = require("ide.languages.cpp")
+languages["docker"] = require("ide.languages.docker")
+languages["json"] = require("ide.languages.json")
+languages["markdown"] = require("ide.languages.markdown")
+languages["sql"] = require("ide.languages.sql")
+languages["yaml"] = require("ide.languages.yaml")
 
 return languages

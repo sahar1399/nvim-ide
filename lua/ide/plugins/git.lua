@@ -198,4 +198,5 @@ return {
 			end, opts)
 		end,
 	},
+	{ "ttibsi/pre-commit.nvim" },
 }

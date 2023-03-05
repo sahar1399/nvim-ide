@@ -4,7 +4,7 @@ return {
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				-- A list of parser names, or "all" (the four listed parsers should always be installed)
-				ensure_installed = { "c", "cpp", "python", "lua", "vim", "help" },
+				ensure_installed = { "c", "cpp", "python", "lua", "vim", "help", "markdown", "markdown_inline" },
 
 				-- Install parsers synchronously (only applied to `ensure_installed`)
 				sync_install = false,
@@ -41,7 +41,7 @@ return {
 					-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
 					-- Using this option may slow down your editor, and you may see some duplicate highlights.
 					-- Instead of true it can also be a list of languages
-					additional_vim_regex_highlighting = false,
+					additional_vim_regex_highlighting = { "markdown" },
 				},
 			})
 		end,
@@ -51,7 +51,12 @@ return {
 		dependencies = { "nvim-treesitter" },
 		config = function()
 			require("ts-node-action").setup({})
-      vim.keymap.set({ "n" }, "<leader>k", require("ts-node-action").node_action, { desc = "Trigger Node Action" })
+			vim.keymap.set(
+				{ "n" },
+				"<leader>k",
+				require("ts-node-action").node_action,
+				{ desc = "Trigger Node Action" }
+			)
 		end,
 	},
 }
