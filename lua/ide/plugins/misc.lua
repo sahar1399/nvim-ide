@@ -1,19 +1,26 @@
+local opts = { noremap = true, silent = true }
+
 return {
 	{
 		"ziontee113/icon-picker.nvim",
 		dependencies = { "stevearc/dressing.nvim" },
+		lazy = true,
+		keys = {
+			{ "<leader>i", "<cmd>IconPickerNormal<cr>", "n", opts, desc = "Pick Icon" },
+		},
 		config = function()
 			require("icon-picker").setup({
 				disable_legacy_commands = true,
 			})
-
-			local opts = { noremap = true, silent = true }
-
-			vim.keymap.set("n", "<leader>i", "<cmd>IconPickerNormal<cr>", opts)
 		end,
 	},
 	{
 		"Pocco81/HighStr.nvim",
+		lazy = true,
+		keys = {
+			{ "<leader>h", ":<c-u>HSHighlight 1<CR>", "v", opts, desc = "Higlight"},
+			{ "<leader>H", ":<c-u>HSRmHighlight<CR>", "v", opts, desc = "Remove Higlight"},
+		},
 		config = function()
 			local high_str = require("high-str")
 
@@ -34,19 +41,12 @@ return {
 					color_9 = { "#7d5c34", "smart" }, -- Fallow brown
 				},
 			})
-			vim.api.nvim_set_keymap("v", "<leader>h", ":<c-u>HSHighlight 1<CR>", {
-				noremap = true,
-				silent = true,
-			})
-
-			vim.api.nvim_set_keymap("v", "<leader>H", ":<c-u>HSRmHighlight<CR>", {
-				noremap = true,
-				silent = true,
-			})
 		end,
 	},
 	{
 		"weirongxu/plantuml-previewer.vim",
+		lazy = true,
+		event = { "BufRead **.puml", "BufRead **.uml", "BufRead **.plantuml", "BufRead **.plant" },
 		dependencies = {
 			"tyru/open-browser.vim",
 			"aklt/plantuml-syntax",
@@ -54,5 +54,7 @@ return {
 	},
 	{
 		"davidgranstrom/nvim-markdown-preview",
+		lazy = true,
+		event = { "BufRead **.markdown", "BufRead **.mkd", "BufRead **.mk", "BufRead **.md" },
 	},
 }

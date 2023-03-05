@@ -1,6 +1,8 @@
 return {
+	-- TODO: fix this mess...
 	{
 		"L3MON4D3/LuaSnip",
+		lazy = false,
 		dependencies = {
 			"rafamadriz/friendly-snippets",
 		},
@@ -8,16 +10,12 @@ return {
 			require("luasnip/loaders/from_vscode").load({
 				paths = { vim.fn.stdpath("data") .. "/lazy" .. "/friendly-snippets" },
 			})
-			local opts = { noremap = true, silent = true }
-
-			vim.keymap.set("i", "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
-			vim.keymap.set("s", "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
-			vim.keymap.set("i", "<c-k>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
-			vim.keymap.set("s", "<c-k>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
 		end,
 	},
+	-- TODO: fix this mess...
 	{
 		"hrsh7th/nvim-cmp",
+		lazy = false,
 		dependencies = {
 			"neovim/nvim-lspconfig",
 			"hrsh7th/cmp-nvim-lsp",
@@ -74,7 +72,6 @@ return {
 						mode = "symbol", -- show only symbol annotations
 						maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
 						ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-
 						-- The function below will be called before any actual modifications from lspkind
 						-- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
 						before = function(entry, vim_item)
@@ -113,8 +110,10 @@ return {
 			})
 		end,
 	},
+	-- TODO: fix this mess...
 	{
 		"williamboman/mason.nvim",
+		lazy = false,
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
 			"neovim/nvim-lspconfig",
@@ -125,6 +124,7 @@ return {
 			"RRethy/vim-illuminate",
 		},
 		config = function()
+			local wk = require("which-key")
 			local null_ls = require("null-ls")
 			local lspconfig = require("lspconfig")
 			local dap = require("dap")
@@ -135,26 +135,67 @@ return {
 				vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 				illuminate.on_attach(client)
 
-				-- Mappings.
-				-- See `:help vim.lsp.*` for documentation on any of the below functions
-				local bufopts = { noremap = true, silent = true, buffer = bufnr }
-				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-				vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-				vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-				vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-				vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-				-- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-				-- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-				-- vim.keymap.set('n', '<space>wl', function()
-				--   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-				-- end, bufopts)
-				vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
-				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
-				vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, bufopts)
-				vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-				vim.keymap.set("n", "<leader>f", function()
-					vim.lsp.buf.format({ async = true })
-				end, bufopts)
+				wk.register({
+					["gD"] = {
+						vim.lsp.buf.declaration,
+						"Go To Definition",
+						mode = "n",
+						noremap = true,
+						silent = true,
+						buffer = bufnr,
+					},
+					["gd"] = {
+						vim.lsp.buf.definition,
+						"Go To Declaration",
+						mode = "n",
+						noremap = true,
+						silent = true,
+						buffer = bufnr,
+					},
+					["K"] = { vim.lsp.buf.hover, "Hover", mode = "n", noremap = true, silent = true, buffer = bufnr },
+					["gi"] = {
+						vim.lsp.buf.implementation,
+						"Go To Implementation",
+						mode = "n",
+						noremap = true,
+						silent = true,
+						buffer = bufnr,
+					},
+					["<C-k>"] = {
+						vim.lsp.buf.signature_help,
+						"Signature Help",
+						mode = "n",
+						noremap = true,
+						silent = true,
+						buffer = bufnr,
+					},
+					["<leader>D"] = {
+						vim.lsp.buf.type_definition,
+						"Type Definition",
+						mode = "n",
+						noremap = true,
+						silent = true,
+						buffer = bufnr,
+					},
+					["<leader>a"] = {
+						vim.lsp.buf.code_action,
+						"Code Actions",
+						mode = "n",
+						noremap = true,
+						silent = true,
+						buffer = bufnr,
+					},
+					["<leader>rf"] = {
+						function()
+							vim.lsp.buf.format({ async = true })
+						end,
+						"Format File",
+						mode = "n",
+						noremap = true,
+						silent = true,
+						buffer = bufnr,
+					},
+				})
 			end
 
 			local lsp_flags = {
@@ -194,12 +235,14 @@ return {
 	},
 	{
 		"folke/lsp-colors.nvim",
+		event = "LspAttach",
 		config = function()
 			require("lsp-colors").setup()
 		end,
 	},
 	{
 		"m-demare/hlargs.nvim",
+		event = "LspAttach",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
 			require("hlargs").setup()
@@ -207,6 +250,7 @@ return {
 	},
 	{
 		"RRethy/vim-illuminate",
+		lazy = false,
 		config = function()
 			require("illuminate").configure({})
 		end,
@@ -232,41 +276,24 @@ return {
 	},
 	{
 		"ThePrimeagen/refactoring.nvim",
+		lazy = true,
+    event = "LspAttach",
+		keys = {
+			{
+				"<leader>rr",
+				":lua require('refactoring').select_refactor()<CR>",
+				"v",
+				{ noremap = true, silent = true, expr = false },
+				desc = "Refactor",
+			},
+		},
 		dependencies = {
 			{ "nvim-lua/plenary.nvim" },
 			{ "nvim-treesitter/nvim-treesitter" },
 		},
 		config = function()
-			require("refactoring").setup({})
-
+			require("refactoring").setup()
 			require("telescope").load_extension("refactoring")
-
-			vim.api.nvim_set_keymap(
-				"v",
-				"<leader>rr",
-				":lua require('refactoring').select_refactor()<CR>",
-				{ noremap = true, silent = true, expr = false }
-			)
 		end,
 	},
-
-	-- {
-	-- 	"gfanto/fzf-lsp.nvim",
-	-- 	dependencies = {
-	-- 		"nvim-lua/plenary.nvim",
-	-- 	},
-	-- 	config = function()
-	-- 		require("fzf_lsp").setup()
-	-- 	end,
-	-- },
-	-- {
-	-- 	"ojroques/nvim-lspfuzzy",
-	-- 	dependencies = {
-	-- 		{ "junegunn/fzf" },
-	-- 		{ "junegunn/fzf.vim" }, -- to enable preview (optional)
-	-- 	},
-	-- 	config = function()
-	-- 		require("lspfuzzy").setup({})
-	-- 	end,
-	-- },
 }

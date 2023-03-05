@@ -8,13 +8,60 @@ return {
 				build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 			},
 		},
-		version = "0.1.0",
+		lazy = true,
+		keys = {
+			{
+				"<leader>ff",
+				function()
+					require("telescope.builtin").find_files()
+				end,
+				{},
+				"n",
+				desc = "Find Files",
+			},
+			{
+				"<leader>fg",
+				function()
+					require("telescope.builtin").live_grep()
+				end,
+				{},
+				"n",
+				desc = "Grep In Files",
+			},
+			{
+				"<leader>fb",
+				function()
+					require("telescope.builtin").buffers()
+				end,
+				{},
+				"n",
+				desc = "Find Buffers",
+			},
+			{
+				"<leader>fh",
+				function()
+					require("telescope.builtin").help_tags()
+				end,
+				{},
+				"n",
+				desc = "Search in Neovim Help",
+			},
+			{
+				"<leader>fm",
+				function()
+					require("telescope.builtin").man_pages()
+				end,
+				{},
+				"n",
+				desc = "Search in Man Pages",
+			},
+		},
 		config = function()
 			local telescope = require("telescope")
 
 			local actions = require("telescope.actions")
 
-			local defaults = {
+			telescope.setup({
 				defaults = {
 					prompt_prefix = " ",
 					selection_caret = " ",
@@ -71,36 +118,30 @@ return {
 						},
 					},
 				},
-				pickers = {
-					-- Default configuration for builtin pickers goes here:
-					-- picker_name = {
-					--   picker_config_key = value,
-					--   ...
-					-- }
-					-- Now the picker_config_key will be applied every time you call this
-					-- builtin picker
-				},
-				extensions = {
-					-- Your extension configuration goes here:
-					-- extension_name = {
-					--   extension_config_key = value,
-					-- }
-					-- please take a look at the readme of the extension you want to configure
-				},
-			}
-
-			telescope.setup(defaults)
-
-			local builtin = require("telescope.builtin")
-			vim.keymap.set("n", "<leader>tf", builtin.find_files, {})
-			vim.keymap.set("n", "<leader>tg", builtin.live_grep, {})
-			vim.keymap.set("n", "<leader>tb", builtin.buffers, {})
-			vim.keymap.set("n", "<leader>th", builtin.help_tags, {})
-			vim.keymap.set("n", "<leader>tm", builtin.man_pages, {})
+				pickers = {},
+				extensions = {},
+			})
 		end,
 	},
 	{
 		"AckslD/nvim-neoclip.lua",
+		lazy = true,
+		keys = {
+			{
+				"<leader>fy",
+				"<cmd>Telescope neoclip extra=star,plus,b<CR>",
+				"n",
+				{},
+				desc = "Search In System Clipboard",
+			},
+			{
+				"<leader>fM",
+				"<cmd>Telescope macroscope<CR>",
+				"n",
+				{},
+				desc = "Search In Macros",
+			},
+		},
 		dependencies = {
 			"nvim-telescope/telescope.nvim",
 		},
@@ -166,9 +207,6 @@ return {
 			require("telescope").load_extension("fzf")
 			require("telescope").load_extension("neoclip")
 			require("telescope").load_extension("macroscope")
-
-			vim.keymap.set("n", "<leader>ty", "<cmd>Telescope neoclip extra=star,plus,b<CR>", {})
-			vim.keymap.set("n", "<leader>tM", "<cmd>Telescope macroscope<CR>", {})
 		end,
 	},
 }

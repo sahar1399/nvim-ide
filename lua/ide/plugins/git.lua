@@ -1,6 +1,9 @@
+local agitator_opts = { silent = true }
+
 return {
 	{
 		"lewis6991/gitsigns.nvim",
+		lazy = false,
 		config = function()
 			require("gitsigns").setup({
 				signs = {
@@ -45,62 +48,91 @@ return {
 				},
 				on_attach = function(bufnr)
 					local gs = package.loaded.gitsigns
+					local wk = require("which-key")
 
-					local function map(mode, l, r, opts)
-						opts = opts or {}
-						opts.buffer = bufnr
-						vim.keymap.set(mode, l, r, opts)
-					end
-
-					-- Navigation
-					map("n", "]c", function()
-						if vim.wo.diff then
-							return "]c"
-						end
-						vim.schedule(function()
-							gs.next_hunk()
-						end)
-						return "<Ignore>"
-					end, { expr = true })
-
-					map("n", "[c", function()
-						if vim.wo.diff then
-							return "[c"
-						end
-						vim.schedule(function()
-							gs.prev_hunk()
-						end)
-						return "<Ignore>"
-					end, { expr = true })
-
-					-- Actions
-					map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
-					map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
-					map("n", "<leader>hS", gs.stage_buffer)
-					map("n", "<leader>hu", gs.undo_stage_hunk)
-					map("n", "<leader>hR", gs.reset_buffer)
-					map("n", "<leader>hp", gs.preview_hunk)
-					map("n", "<leader>hl", function()
-						gs.blame_line({ full = true })
-					end)
-					map("n", "<leader>tb", gs.toggle_current_line_blame)
-					map("n", "<leader>hd", gs.diffthis)
-					map("n", "<leader>hD", function()
-						gs.diffthis("~")
-					end)
-					map("n", "<leader>td", gs.toggle_deleted)
-
-					-- Text object
-					map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
+					wk.register({
+						["]c"] = {
+							function()
+								if vim.wo.diff then
+									return "]c"
+								end
+								vim.schedule(function()
+									gs.next_hunk()
+								end)
+								return "<Ignore>"
+							end,
+							"Next Hunk",
+							mode = "n",
+							expr = true,
+							buffer = bufnr,
+						},
+						["[c"] = {
+							function()
+								if vim.wo.diff then
+									return "[c"
+								end
+								vim.schedule(function()
+									gs.prev_hunk()
+								end)
+								return "<Ignore>"
+							end,
+							"Prev Hunk",
+							mode = "n",
+							expr = true,
+							buffer = bufnr,
+						},
+						["<leader>"] = {
+							h = {
+								s = {
+									gs.stage_hunk,
+									"Stage Hunk",
+									mode = { "n", "v" },
+									buffer = bufnr,
+								},
+								r = {
+									gs.reset_hunk,
+									"Reset Hunk",
+									mode = { "n", "v" },
+									buffer = bufnr,
+								},
+								S = { gs.stage_buffer, "Stage Buffer", mode = "n", buffer = bufnr },
+								u = { gs.undo_stage_hunk, "Stage Buffer", mode = "n", buffer = bufnr },
+								R = { gs.reset_buffer, "Reset Buffer", mode = "n", buffer = bufnr },
+								p = { gs.preview_hunk, "Preview Hunk", mode = "n", buffer = bufnr },
+								d = { gs.diffthis, "Diff This", mode = "n", buffer = bufnr },
+								D = {
+									function()
+										gs.diffthis("~")
+									end,
+									"Diff This Buffer",
+									mode = "n",
+									buffer = bufnr,
+								},
+							},
+						},
+					})
 				end,
 			})
 		end,
 	},
 	{
+		"sindrets/diffview.nvim",
+		lazy = true,
+		cmd = {
+			"DiffviewOpen",
+			"DiffviewFocusFiles",
+			"DiffviewFileHistory",
+			"DiffviewToggleFiles",
+		},
+	},
+	{
 		"TimUntersberger/neogit",
+		lazy = true,
+		cmd = { "G" },
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"sindrets/diffview.nvim",
+			"ttibsi/pre-commit.nvim",
 		},
 		config = function()
 			local neogit = require("neogit")
@@ -179,24 +211,32 @@ return {
 	},
 	{
 		"emmanueltouzery/agitator.nvim",
+		lazy = true,
+		keys = {
+			{
+				"<leader>hc",
+				function()
+					local commit_sha = require("agitator").git_blame_commit_for_line()
+					vim.cmd("DiffviewOpen " .. commit_sha .. "^.." .. commit_sha)
+				end,
+				"n",
+				agitator_opts,
+				desc = "Blame Commit For Line",
+			},
 
-		config = function()
-			local opts = { silent = true }
-			local agitator = require("agitator")
-
-			vim.keymap.set("n", "<leader>hc", function()
-				local commit_sha = agitator.git_blame_commit_for_line()
-				vim.cmd("DiffviewOpen " .. commit_sha .. "^.." .. commit_sha)
-			end, opts)
-
-			vim.keymap.set("n", "<leader>hb", function()
-				agitator.git_blame({
-					formatter = function(r)
-						return r.author .. " => " .. r.summary
-					end,
-				})
-			end, opts)
-		end,
+			{
+				"<leader>hb",
+				function()
+					require("agitator").git_blame({
+						formatter = function(r)
+							return r.author .. " => " .. r.summary
+						end,
+					})
+				end,
+				"n",
+				agitator_opts,
+				desc = "Git Blame",
+			},
+		},
 	},
-	{ "ttibsi/pre-commit.nvim" },
 }

@@ -1,6 +1,45 @@
 return {
 	{
 		"nvim-neotest/neotest",
+		lazy = true,
+		keys = {
+			{
+				"<leader>tr",
+				function()
+					require("neotest").run.run()
+				end,
+				"n",
+				{ silent = true },
+				desc = "Run Nearst Test",
+			},
+			{
+				"<leader>ta",
+				function()
+					require("neotest").run.run(vim.fn.expand("%"))
+				end,
+				"n",
+				{ silent = true },
+				desc = "Run All Test In File",
+			},
+			{
+				"<leader>td",
+				function()
+					require("neotest").run.run({ strategy = "dap" })
+				end,
+				"n",
+				{ silent = true },
+				desc = "Debug Nearst Test",
+			},
+			{
+				"<leader>to",
+				function()
+					require("neotest").summary.open({ enter = true })
+				end,
+				"n",
+				{ silent = true },
+				desc = "Toggle Test Summary Window",
+			},
+		},
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
@@ -35,26 +74,35 @@ return {
 					unknown = "",
 				},
 			})
-
-			local opts = { silent = true }
-
-			vim.keymap.set("n", "<leader>trr", function()
-				neotest.run.run()
-			end, opts)
-			vim.keymap.set("n", "<leader>tra", function()
-				neotest.run.run(vim.fn.expand("%"))
-			end, opts)
-			vim.keymap.set("n", "<leader>trd", function()
-				neotest.run.run({ strategy = "dap" })
-			end, opts)
-			vim.keymap.set("n", "<leader>to", function()
-				neotest.summary.open({ enter = true })
-			end, opts)
 		end,
 	},
 	{
 		"andythigpen/nvim-coverage",
-		requires = "nvim-lua/plenary.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		lazy = true,
+		keys = {
+			{
+				"<leader>tcc",
+				"<cmd>CoverageToggle<CR>",
+				"n",
+				{},
+				desc = "Toggle Test Coverage",
+			},
+			{
+				"<leader>tcl",
+				"<cmd>CoverageLoad<CR>",
+				"n",
+				{},
+				desc = "Load Test Coverage",
+			},
+			{
+				"<leader>tcs",
+				"<cmd>CoverageSummary<CR>",
+				"n",
+				{},
+				desc = "Test Coverage Summary",
+			},
+		},
 		config = function()
 			require("coverage").setup({
 				commands = true, -- create commands
@@ -80,10 +128,6 @@ return {
 					vim.notify("Loaded " .. ftype .. " coverage")
 				end,
 			})
-
-			vim.keymap.set("n", "<leader>tcc", "<cmd>CoverageToggle<CR>", {})
-			vim.keymap.set("n", "<leader>tcl", "<cmd>CoverageLoad<CR>", {})
-			vim.keymap.set("n", "<leader>tcs", "<cmd>CoverageSummary<CR>", {})
 		end,
 	},
 }
