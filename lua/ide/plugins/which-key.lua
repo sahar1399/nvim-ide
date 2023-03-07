@@ -100,8 +100,8 @@ return {
 			["<leader>c"] = {
 				name = "+ Call Tree",
 			},
-			["<leader>h"] = {
-				name = "+ Git Signs",
+			["<leader>g"] = {
+				name = "+ Git",
 			},
 			["<leader>r"] = {
 				name = "+ Refactor",
