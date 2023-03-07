@@ -30,9 +30,9 @@ return {
 		"terrortylor/nvim-comment",
 		lazy = true,
 		keys = {
-			{ "gcc", mode = "n", desc = "Comment" },
-			{ "gc", mode = "v", desc = "Comment" },
-			{ "ic", mode = { "o", "x" }, desc = "Comment" },
+			{ "gcc", mode = "n", noremap = true, desc = "Comment" },
+			{ "gc", mode = "v", noremap = true, desc = "Comment" },
+			{ "ic", mode = { "o", "x" }, noremap = true, desc = "Comment" },
 		},
 		config = function()
 			require("nvim_comment").setup({

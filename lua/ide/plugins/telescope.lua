@@ -12,6 +12,24 @@ return {
 		lazy = true,
 		keys = {
 			{
+				"<leader>fS",
+				function()
+					require("telescope.builtin").lsp_workspace_symbols()
+				end,
+				{},
+				"n",
+				desc = "Find Symbols",
+			},
+			{
+				"<leader>fs",
+				function()
+					require("telescope.builtin").lsp_document_symbols()
+				end,
+				{},
+				"n",
+				desc = "Find Symbols",
+			},
+			{
 				"<leader>ff",
 				function()
 					require("telescope.builtin").find_files()
