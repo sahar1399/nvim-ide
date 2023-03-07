@@ -66,15 +66,15 @@ return {
 			{
 				"<leader>kf",
 				":lua require('neogen').generate({type='func'})<CR>",
-				"n",
 				opts,
+				mode = "n",
 				desc = "Generate function annotation",
 			},
 			{
 				"<leader>kc",
 				":lua require('neogen').generate({type='class'})<CR>",
-				"n",
 				opts,
+				mode = "n",
 				desc = "Generate class annotation",
 			},
 		},

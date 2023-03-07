@@ -6,7 +6,7 @@ return {
 		dependencies = { "stevearc/dressing.nvim" },
 		lazy = true,
 		keys = {
-			{ "<leader>i", "<cmd>IconPickerNormal<cr>", "n", opts, desc = "Pick Icon" },
+			{ "<leader>i", "<cmd>IconPickerNormal<cr>", opts, mode = "n", desc = "Pick Icon" },
 		},
 		config = function()
 			require("icon-picker").setup({
@@ -18,8 +18,8 @@ return {
 		"Pocco81/HighStr.nvim",
 		lazy = true,
 		keys = {
-			{ "<leader>h", ":<c-u>HSHighlight 1<CR>", "v", opts, desc = "Higlight"},
-			{ "<leader>H", ":<c-u>HSRmHighlight<CR>", "v", opts, desc = "Remove Higlight"},
+			{ "<leader>h", ":<c-u>HSHighlight 1<CR>", opts, mode = "v", desc = "Higlight" },
+			{ "<leader>H", ":<c-u>HSRmHighlight<CR>", opts, mode = "v", desc = "Remove Higlight" },
 		},
 		config = function()
 			local high_str = require("high-str")

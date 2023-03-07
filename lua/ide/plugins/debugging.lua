@@ -140,8 +140,8 @@ return {
 				function()
 					require("dap").continue()
 				end,
-				"n",
 				opts,
+				mode = "n",
 				desc = "Continue (Debug)",
 			},
 			{
@@ -149,8 +149,8 @@ return {
 				function()
 					require("dap").step_over()
 				end,
-				"n",
 				opts,
+				mode = "n",
 				desc = "Step Over (Debug)",
 			},
 			{
@@ -158,8 +158,8 @@ return {
 				function()
 					require("dap").step_into()
 				end,
-				"n",
 				opts,
+				mode = "n",
 				desc = "Step Into (Debug)",
 			},
 			{
@@ -167,8 +167,8 @@ return {
 				function()
 					require("dap").step_out()
 				end,
-				"n",
 				opts,
+				mode = "n",
 				desc = "Step Out (Debug)",
 			},
 			{
@@ -176,8 +176,8 @@ return {
 				function()
 					require("dap").repl.open()
 				end,
-				"n",
 				opts,
+				mode = "n",
 				desc = "Open REPL (Debug)",
 			},
 			{
@@ -185,8 +185,8 @@ return {
 				function()
 					require("dap").run_last()
 				end,
-				"n",
 				opts,
+				mode = "n",
 				desc = "Run Last (Debug)",
 			},
 		},
@@ -199,8 +199,8 @@ return {
 			{
 				"<leader>db",
 				"<cmd>lua require('persistent-breakpoints.api').toggle_breakpoint()<cr>",
-				"n",
 				opts,
+				mode = "n",
 				desc = "Toggle Breakpoint",
 			},
 		},

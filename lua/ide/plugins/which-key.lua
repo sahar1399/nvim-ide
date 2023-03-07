@@ -89,7 +89,7 @@ return {
 			},
 		})
 
-    -- TODO: Move Out 
+		-- TODO: Move Out
 		wk.register({
 			["<leader>t"] = {
 				name = "+ Test",
@@ -115,6 +115,22 @@ return {
 			["<leader>n"] = {
 				name = "+ Noice",
 			},
+			["<leader>s"] = {
+				name = "+ Searcn & Replace",
+			},
+			mode = { "n" },
+		})
+		wk.register({
+			["<leader>t"] = {
+				name = "+ Terminal",
+			},
+			["<leader>g"] = {
+				name = "+ Git",
+			},
+			["<leader>r"] = {
+				name = "+ Refactor",
+			},
+			mode = { "v" },
 		})
 	end,
 }

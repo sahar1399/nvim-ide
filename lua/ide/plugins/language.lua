@@ -306,8 +306,8 @@ return {
 			{
 				"<leader>rr",
 				":lua require('refactoring').select_refactor()<CR>",
-				"v",
 				{ noremap = true, silent = true, expr = false },
+				mode = "v",
 				desc = "Refactor",
 			},
 		},

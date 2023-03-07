@@ -49,7 +49,7 @@ return {
 			{
 				"<leader>k",
 				"<cmd>lua require('ts-node-action').node_action()<cr>",
-				"n",
+				mode = "n",
 				desc = "Trigger Node Action",
 			},
 		},

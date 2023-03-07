@@ -11,7 +11,7 @@ return {
 			function()
 				require("noice").cmd("last")
 			end,
-			"n",
+			mode = "n",
 			desc = "Show Last Command",
 		},
 
@@ -20,7 +20,7 @@ return {
 			function()
 				require("noice").cmd("history")
 			end,
-			"n",
+			mode = "n",
 			desc = "Show Command History",
 		},
 	},

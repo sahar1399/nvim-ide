@@ -16,8 +16,7 @@ return {
 				function()
 					require("telescope.builtin").lsp_workspace_symbols()
 				end,
-				{},
-				"n",
+				mode = "n",
 				desc = "Find Symbols",
 			},
 			{
@@ -25,8 +24,7 @@ return {
 				function()
 					require("telescope.builtin").lsp_document_symbols()
 				end,
-				{},
-				"n",
+				mode = "n",
 				desc = "Find Symbols",
 			},
 			{
@@ -34,8 +32,7 @@ return {
 				function()
 					require("telescope.builtin").find_files()
 				end,
-				{},
-				"n",
+				mode = "n",
 				desc = "Find Files",
 			},
 			{
@@ -43,8 +40,7 @@ return {
 				function()
 					require("telescope.builtin").live_grep()
 				end,
-				{},
-				"n",
+				mode = "n",
 				desc = "Grep In Files",
 			},
 			{
@@ -52,8 +48,7 @@ return {
 				function()
 					require("telescope.builtin").buffers()
 				end,
-				{},
-				"n",
+				mode = "n",
 				desc = "Find Buffers",
 			},
 			{
@@ -61,8 +56,7 @@ return {
 				function()
 					require("telescope.builtin").help_tags()
 				end,
-				{},
-				"n",
+				mode = "n",
 				desc = "Search in Neovim Help",
 			},
 			{
@@ -70,15 +64,13 @@ return {
 				function()
 					require("telescope.builtin").man_pages()
 				end,
-				{},
-				"n",
+				mode = "n",
 				desc = "Search in Man Pages",
 			},
 			{
 				"<leader>fn",
 				"<cmd>Telescope noice<CR>",
-				"n",
-				{},
+				mode = "n",
 				desc = "Search in Noice",
 			},
 		},
@@ -158,15 +150,13 @@ return {
 			{
 				"<leader>fy",
 				"<cmd>Telescope neoclip extra=star,plus,b<CR>",
-				"n",
-				{},
+				mode = "n",
 				desc = "Search In System Clipboard",
 			},
 			{
 				"<leader>fM",
 				"<cmd>Telescope macroscope<CR>",
-				"n",
-				{},
+				mode = "n",
 				desc = "Search In Macros",
 			},
 		},

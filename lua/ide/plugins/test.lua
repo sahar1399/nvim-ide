@@ -8,8 +8,8 @@ return {
 				function()
 					require("neotest").run.run()
 				end,
-				"n",
 				{ silent = true },
+				mode = "n",
 				desc = "Run Nearst Test",
 			},
 			{
@@ -17,8 +17,8 @@ return {
 				function()
 					require("neotest").run.run(vim.fn.expand("%"))
 				end,
-				"n",
 				{ silent = true },
+				mode = "n",
 				desc = "Run All Test In File",
 			},
 			{
@@ -26,8 +26,8 @@ return {
 				function()
 					require("neotest").run.run({ strategy = "dap" })
 				end,
-				"n",
 				{ silent = true },
+				mode = "n",
 				desc = "Debug Nearst Test",
 			},
 			{
@@ -35,8 +35,8 @@ return {
 				function()
 					require("neotest").summary.open({ enter = true })
 				end,
-				"n",
 				{ silent = true },
+				mode = "n",
 				desc = "Toggle Test Summary Window",
 			},
 		},
@@ -84,22 +84,19 @@ return {
 			{
 				"<leader>tcc",
 				"<cmd>CoverageToggle<CR>",
-				"n",
-				{},
+				mode = "n",
 				desc = "Toggle Test Coverage",
 			},
 			{
 				"<leader>tcl",
 				"<cmd>CoverageLoad<CR>",
-				"n",
-				{},
+				mode = "n",
 				desc = "Load Test Coverage",
 			},
 			{
 				"<leader>tcs",
 				"<cmd>CoverageSummary<CR>",
-				"n",
-				{},
+				mode = "n",
 				desc = "Test Coverage Summary",
 			},
 		},

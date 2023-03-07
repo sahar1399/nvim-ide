@@ -14,8 +14,8 @@ return {
 						},
 					})
 				end,
-				"n",
 				opts,
+				mode = "n",
 				desc = "Toggle Zen Mode",
 			},
 		},

@@ -11,15 +11,15 @@ return {
 			{
 				"<leader>xx",
 				"<cmd>TroubleToggle<cr>",
-				"n",
 				opts,
+				mode = "n",
 				desc = "Open Project Error Panel",
 			},
 			{
 				"<leader>xd",
 				"<cmd>TroubleToggle document_diagnostics<cr>",
-				"n",
 				opts,
+				mode = "n",
 				desc = "Open File Error Panel",
 			},
 		},
@@ -79,8 +79,7 @@ return {
 		lazy = true,
 		event = "LspAttach",
 		keys = {
-
-			{ "<Leader>o", "<cmd>lua require('lsp_lines').toggle()<cr>", "n", desc = "Toggle lsp_lines" },
+			{ "<Leader>o", "<cmd>lua require('lsp_lines').toggle()<cr>", mode = "n", desc = "Toggle lsp_lines" },
 		},
 		config = function()
 			vim.diagnostic.config({ virtual_lines = false })
