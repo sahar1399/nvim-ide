@@ -7,6 +7,7 @@ return {
 				"nvim-telescope/telescope-fzf-native.nvim",
 				build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 			},
+			"folke/noice.nvim",
 		},
 		lazy = true,
 		keys = {
@@ -54,6 +55,13 @@ return {
 				{},
 				"n",
 				desc = "Search in Man Pages",
+			},
+			{
+				"<leader>fn",
+				"<cmd>Telescope noice<CR>",
+				"n",
+				{},
+				desc = "Search in Noice",
 			},
 		},
 		config = function()
@@ -121,6 +129,8 @@ return {
 				pickers = {},
 				extensions = {},
 			})
+
+			require("telescope").load_extension("noice")
 		end,
 	},
 	{

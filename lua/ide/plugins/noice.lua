@@ -5,6 +5,25 @@ return {
 		"MunifTanjim/nui.nvim",
 		"rcarriga/nvim-notify",
 	},
+	keys = {
+		{
+			"<leader>nl",
+			function()
+				require("noice").cmd("last")
+			end,
+			"n",
+			desc = "Show Last Command",
+		},
+
+		{
+			"<leader>nh",
+			function()
+				require("noice").cmd("history")
+			end,
+			"n",
+			desc = "Show Command History",
+		},
+	},
 	config = function()
 		require("noice").setup({
 			cmdline = {

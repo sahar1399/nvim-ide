@@ -152,7 +152,6 @@ return {
 						silent = true,
 						buffer = bufnr,
 					},
-					["K"] = { vim.lsp.buf.hover, "Hover", mode = "n", noremap = true, silent = true, buffer = bufnr },
 					["gi"] = {
 						vim.lsp.buf.implementation,
 						"Go To Implementation",
@@ -161,7 +160,7 @@ return {
 						silent = true,
 						buffer = bufnr,
 					},
-					["<C-k>"] = {
+					["K"] = {
 						vim.lsp.buf.signature_help,
 						"Signature Help",
 						mode = "n",
@@ -277,7 +276,7 @@ return {
 	{
 		"ThePrimeagen/refactoring.nvim",
 		lazy = true,
-    event = "LspAttach",
+		event = "LspAttach",
 		keys = {
 			{
 				"<leader>rr",

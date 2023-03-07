@@ -1,6 +1,32 @@
 local opts = { silent = true }
 
+local function enable_blankline()
+			vim.opt.list = true
+
+			require("indent_blankline").setup({
+				space_char_blankline = " ",
+				char_highlight_list = {
+					"IndentBlanklineIndent1",
+					"IndentBlanklineIndent2",
+					"IndentBlanklineIndent3",
+					"IndentBlanklineIndent4",
+					"IndentBlanklineIndent5",
+					"IndentBlanklineIndent6",
+				},
+			})
+
+    require("indent_blankline.commands").enable()
+end
+
+local function disable_blankline()
+	vim.opt_local.list = false
+
+	require("indent_blankline.commands").disable()
+end
+
 return {
+  enable_blankline = enable_blankline,
+  disable_blankline = disable_blankline,
 	{
 		"marko-cerovac/material.nvim",
 		lazy = false,
@@ -277,8 +303,8 @@ return {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		lazy = true,
-		event = "BufRead **",
-		config = function()
+		event = "BufRead *",
+		config = function ()
 			vim.cmd([[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]])
 			vim.cmd([[highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine]])
 			vim.cmd([[highlight IndentBlanklineIndent3 guifg=#98C379 gui=nocombine]])
@@ -286,22 +312,11 @@ return {
 			vim.cmd([[highlight IndentBlanklineIndent5 guifg=#61AFEF gui=nocombine]])
 			vim.cmd([[highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine]])
 
-			vim.opt.list = true
 			vim.opt.listchars:append("space:⋅")
 			vim.opt.listchars:append("eol:↴")
 
-			require("indent_blankline").setup({
-				space_char_blankline = " ",
-				char_highlight_list = {
-					"IndentBlanklineIndent1",
-					"IndentBlanklineIndent2",
-					"IndentBlanklineIndent3",
-					"IndentBlanklineIndent4",
-					"IndentBlanklineIndent5",
-					"IndentBlanklineIndent6",
-				},
-			})
-		end,
+      enable_blankline()
+		end
 	},
 	{
 		"RRethy/vim-illuminate",

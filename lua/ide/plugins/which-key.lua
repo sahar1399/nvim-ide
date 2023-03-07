@@ -112,6 +112,9 @@ return {
 			["<leader>f"] = {
 				name = "+ Find",
 			},
+			["<leader>n"] = {
+				name = "+ Noice",
+			},
 		})
 	end,
 }
