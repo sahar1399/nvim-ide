@@ -11,11 +11,18 @@ function Lua:setup(language_utils)
 		settings = {
 			Lua = {
 				callSnippet = "Replace",
+				hint = {
+					enable = true,
+				},
 				workspace = {
 					checkThirdParty = false,
+					maxPreload = 100000,
+					preloadFileSize = 100000,
 				},
+				telemetry = { enable = false },
 			},
 		},
+		single_file_support = true,
 	})
 
 	return LanguageResults.new({
