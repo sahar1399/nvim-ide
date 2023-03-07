@@ -1,5 +1,13 @@
 local agitator_opts = { silent = true }
 
+local disable_blankline = function()
+	vim.opt_local.wrap = false
+	vim.opt_local.list = false
+	vim.opt_local.relativenumber = false
+
+	require("indent_blankline.commands").disable()
+end
+
 return {
 	{
 		"lewis6991/gitsigns.nvim",
@@ -134,6 +142,13 @@ return {
 		config = function()
 			local actions = require("diffview.actions")
 
+			vim.cmd([[highlight DiffAdd gui=none guifg=none guibg=#103235]])
+			vim.cmd([[highlight DiffChange gui=none guifg=none guibg=#272D43]])
+			vim.cmd([[highlight DiffText gui=none guifg=none guibg=#394b70]])
+			vim.cmd([[highlight DiffDelete gui=none guifg=none guibg=#3F2D3D]])
+			vim.cmd([[highlight DiffviewDiffAddAsDelete guibg=#3f2d3d gui=none guifg=none]])
+			vim.cmd([[highlight DiffviewDiffDelete gui=none guifg=#3B4252 guibg=none]])
+
 			require("diffview").setup({
 				diff_binaries = false, -- Show diffs for binaries
 				enhanced_diff_hl = false, -- See ':h diffview-config-enhanced_diff_hl'
@@ -145,6 +160,12 @@ return {
 				icons = { -- Only applies when use_icons is true.
 					folder_closed = "",
 					folder_open = "",
+				},
+				hooks = {
+					diff_buf_win_enter = disable_blankline,
+					diff_buf_read = disable_blankline,
+          view_enter = disable_blankline,
+					view_opened = disable_blankline
 				},
 				signs = {
 					fold_closed = "",
@@ -221,7 +242,6 @@ return {
 					DiffviewOpen = {},
 					DiffviewFileHistory = {},
 				},
-				hooks = {}, -- See ':h diffview-config-hooks'
 				keymaps = {
 					disable_defaults = false, -- Disable the default keymaps
 					view = {
