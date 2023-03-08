@@ -105,8 +105,8 @@ require("lazy").setup("ide.plugins", {
 			-- To cache all modules, set this to `{}`, but that is not recommended.
 			-- The default is to disable on:
 			--  * VimEnter: not useful to cache anything else beyond startup
-			--  * BufReadPre: this will be triggered early when opening a file from the command line directly
-			disable_events = { "UIEnter", "BufReadPre" },
+			--  * BufRead *Pre: this will be triggered early when opening a file from the command line directly
+			disable_events = { "UIEnter", "BufRead *Pre" },
 			ttl = 3600 * 24 * 5, -- keep unused modules for up to 5 days
 		},
 		reset_packpath = true, -- reset the package path to improve startup time

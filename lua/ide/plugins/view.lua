@@ -1,5 +1,15 @@
 local opts = { silent = true }
 
+local function getnavic()
+	local navic = require("nvim-navic")
+
+	if navic.is_available() then
+		return navic.get_location()
+	else
+		return
+	end
+end
+
 local function enable_blankline()
 	vim.opt.list = true
 
@@ -155,7 +165,6 @@ return {
 			{ "gt", ":BufferLineCycleNext<CR>", opts, mode = "n", desc = "Next Tab" },
 			{ "gT", ":BufferLineCyclePrev<CR>", opts, mode = "n", desc = "Prev Tab" },
 		},
-		version = "v3.*",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("bufferline").setup({
@@ -250,9 +259,11 @@ return {
 	{
 		"nvim-lualine/lualine.nvim",
 		lazy = true,
-		event = "BufRead **",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		event = "BufRead *",
+		dependencies = { "nvim-tree/nvim-web-devicons", "SmiteshP/nvim-navic" },
 		config = function()
+			local navic = require("nvim-navic")
+
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
@@ -280,7 +291,8 @@ return {
 					lualine_a = { "mode" },
 					lualine_b = { "branch", "diff", "diagnostics" },
 					lualine_c = { "filename" },
-					lualine_d = {},
+					lualine_d = { { getnavic } },
+					lualine_e = {},
 					lualine_x = { "encoding", "fileformat", "filetype" },
 					lualine_y = { "progress" },
 					lualine_z = { "location" },
@@ -321,7 +333,7 @@ return {
 	{
 		"RRethy/vim-illuminate",
 		lazy = true,
-		event = "BufRead **",
+		event = "BufRead *",
 		config = function()
 			require("illuminate").configure({})
 		end,
@@ -350,7 +362,7 @@ return {
 	{
 		"anuvyklack/pretty-fold.nvim",
 		lazy = true,
-		event = "BufRead **",
+		event = "BufRead *",
 		config = function()
 			require("pretty-fold").setup({
 				keep_indentation = false,

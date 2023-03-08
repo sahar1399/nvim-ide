@@ -46,7 +46,7 @@ return {
 	{
 		"weirongxu/plantuml-previewer.vim",
 		lazy = true,
-		event = { "BufRead **.puml", "BufRead **.uml", "BufRead **.plantuml", "BufRead **.plant" },
+		event = { "BufRead *.puml", "BufRead *.uml", "BufRead *.plantuml", "BufRead *.plant" },
 		dependencies = {
 			"tyru/open-browser.vim",
 			"aklt/plantuml-syntax",
@@ -55,6 +55,6 @@ return {
 	{
 		"davidgranstrom/nvim-markdown-preview",
 		lazy = true,
-		event = { "BufRead **.markdown", "BufRead **.mkd", "BufRead **.mk", "BufRead **.md" },
+		event = { "BufRead *.markdown", "BufRead *.mkd", "BufRead *.mk", "BufRead *.md" },
 	},
 }

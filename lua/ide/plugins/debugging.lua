@@ -194,7 +194,7 @@ return {
 	{
 		"Weissle/persistent-breakpoints.nvim",
 		lazy = true,
-    event = "BufRead **",
+    event = "BufRead *",
 		keys = {
 			{
 				"<leader>db",
@@ -206,7 +206,7 @@ return {
 		},
 		config = function()
 			require("persistent-breakpoints").setup({
-				load_breakpoints_event = { "BufReadPost" },
+				load_breakpoints_event = { "BufRead *Post" },
 			})
 		end,
 	},
