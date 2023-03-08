@@ -1,21 +1,21 @@
 local opts = { silent = true }
 
 local function enable_blankline()
-			vim.opt.list = true
+	vim.opt.list = true
 
-			require("indent_blankline").setup({
-				space_char_blankline = " ",
-				char_highlight_list = {
-					"IndentBlanklineIndent1",
-					"IndentBlanklineIndent2",
-					"IndentBlanklineIndent3",
-					"IndentBlanklineIndent4",
-					"IndentBlanklineIndent5",
-					"IndentBlanklineIndent6",
-				},
-			})
+	require("indent_blankline").setup({
+		space_char_blankline = " ",
+		char_highlight_list = {
+			"IndentBlanklineIndent1",
+			"IndentBlanklineIndent2",
+			"IndentBlanklineIndent3",
+			"IndentBlanklineIndent4",
+			"IndentBlanklineIndent5",
+			"IndentBlanklineIndent6",
+		},
+	})
 
-    require("indent_blankline.commands").enable()
+	require("indent_blankline.commands").enable()
 end
 
 local function disable_blankline()
@@ -25,8 +25,8 @@ local function disable_blankline()
 end
 
 return {
-  enable_blankline = enable_blankline,
-  disable_blankline = disable_blankline,
+	enable_blankline = enable_blankline,
+	disable_blankline = disable_blankline,
 	{
 		"marko-cerovac/material.nvim",
 		lazy = false,
@@ -304,7 +304,7 @@ return {
 		"lukas-reineke/indent-blankline.nvim",
 		lazy = true,
 		event = "BufRead *",
-		config = function ()
+		config = function()
 			vim.cmd([[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]])
 			vim.cmd([[highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine]])
 			vim.cmd([[highlight IndentBlanklineIndent3 guifg=#98C379 gui=nocombine]])
@@ -315,8 +315,8 @@ return {
 			vim.opt.listchars:append("space:⋅")
 			vim.opt.listchars:append("eol:↴")
 
-      enable_blankline()
-		end
+			enable_blankline()
+		end,
 	},
 	{
 		"RRethy/vim-illuminate",
@@ -392,6 +392,34 @@ return {
 					{ "%[", "]" }, -- % to escape lua pattern char
 				},
 				ft_ignore = { "neorg" },
+			})
+		end,
+	},
+	{
+		"mvllow/modes.nvim",
+		tag = "v0.2.0",
+		lazy = true,
+		event = "BufRead *",
+		config = function()
+			require("modes").setup({
+				colors = {
+					copy = "#f5c359",
+					delete = "#c75c6a",
+					insert = "#78ccc5",
+					visual = "#9745be",
+				},
+				-- Set opacity for cursorline and number background
+				line_opacity = 0.35,
+				-- Enable cursor highlights
+				set_cursor = true,
+				-- Enable cursorline initially, and disable cursorline for inactive windows
+				-- or ignored filetypes
+				set_cursorline = true,
+				-- Enable line number highlights to match cursorline
+				set_number = true,
+				-- Disable modes highlights in specified filetypes
+				-- Please PR commonly ignored filetypes
+				ignore_filetypes = { "NvimTree", "TelescopePrompt" },
 			})
 		end,
 	},
