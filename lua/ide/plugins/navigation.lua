@@ -633,20 +633,4 @@ return {
 			})
 		end,
 	},
-	{
-		"glepnir/lspsaga.nvim",
-		lazy = true,
-		keys = {
-			{ "gh", "<cmd>Lspsaga lsp_finder<CR>", mode = "n", desc = "Find Usage & Definitions" },
-			{ "<leader>rr", "<cmd>Lspsaga rename<CR>", mode = "n", desc = "Rename" },
-			{ "gP", "<cmd>Lspsaga peek_definition<CR>", mode = "n", desc = "Peek Definition" },
-			{ "<C-s>", "<cmd>Lspsaga outline<CR>", mode = "n", desc = "Show Symbols Outline" },
-			{ "<leader>ci", "<cmd>Lspsaga incoming_calls<CR>", mode = "n", desc = "Show References" },
-			{ "<leader>co", "<cmd>Lspsaga outgoing_calls<CR>", mode = "n", desc = "Show De-References" },
-		},
-		branch = "main",
-		config = function()
-			require("lspsaga").setup()
-		end,
-	},
 }

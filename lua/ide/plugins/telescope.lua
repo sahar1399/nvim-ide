@@ -1,3 +1,16 @@
+function vim.getVisualSelection()
+	vim.cmd('noau normal! "vy"')
+	local text = vim.fn.getreg("v")
+	vim.fn.setreg("v", {})
+
+	text = string.gsub(text, "\n", "")
+	if #text > 0 then
+		return text
+	else
+		return ""
+	end
+end
+
 return {
 	{
 		"nvim-telescope/telescope.nvim",
@@ -12,11 +25,131 @@ return {
 		lazy = true,
 		keys = {
 			{
-				"<leader>fS",
+				"<leader>fr",
 				function()
-					require("telescope.builtin").lsp_workspace_symbols()
+					local text = vim.getVisualSelection()
+					require("telescope.builtin").lsp_references({ default_text = text })
+				end,
+				mode = "v",
+				desc = "Find References",
+			},
+			{
+				"<leader>fr",
+				function()
+					require("telescope.builtin").lsp_references()
 				end,
 				mode = "n",
+				desc = "Find References",
+			},
+			{
+				"<leader>ci",
+				function()
+					text = vim.getVisualSelection()
+					require("telescope.builtin").lsp_incoming_calls({ default_text = text })
+				end,
+				mode = "v",
+				desc = "Find Incoming Calls",
+			},
+			{
+				"<leader>ci",
+				function()
+					require("telescope.builtin").lsp_incoming_calls()
+				end,
+				mode = "n",
+				desc = "Find Incoming Calls",
+			},
+			{
+				"<leader>co",
+				function()
+					text = vim.getVisualSelection()
+					require("telescope.builtin").lsp_outgoing_calls({ default_text = text })
+				end,
+				mode = "v",
+				desc = "Find Outgoing Calls",
+			},
+			{
+				"<leader>co",
+				function()
+					require("telescope.builtin").lsp_outgoing_calls()
+				end,
+				mode = "n",
+				desc = "Find Outgoing Calls",
+			},
+			{
+				"<leader>fd",
+				function()
+					text = vim.getVisualSelection()
+					require("telescope.builtin").lsp_definitions({ default_text = text })
+				end,
+				mode = "v",
+				desc = "Find Definitions",
+			},
+			{
+				"<leader>fd",
+				function()
+					require("telescope.builtin").lsp_definitions()
+				end,
+				mode = "n",
+				desc = "Find Definitions",
+			},
+			{
+				"<leader>ft",
+				function()
+					text = vim.getVisualSelection()
+					require("telescope.builtin").lsp_type_definitions({ default_text = text })
+				end,
+				mode = "v",
+				desc = "Find Type Definitions",
+			},
+			{
+				"<leader>ft",
+				function()
+					require("telescope.builtin").lsp_type_definitions()
+				end,
+				mode = "n",
+				desc = "Find Type Definitions",
+			},
+			{
+				"<leader>fi",
+				function()
+					text = vim.getVisualSelection()
+					require("telescope.builtin").lsp_implementations({ default_text = text })
+				end,
+				mode = "v",
+				desc = "Find Implementations",
+			},
+			{
+				"<leader>fi",
+				function()
+					require("telescope.builtin").lsp_implementations()
+				end,
+				mode = "n",
+				desc = "Find Implementations",
+			},
+			{
+				"<leader>fS",
+				function()
+					text = vim.getVisualSelection()
+					require("telescope.builtin").lsp_dynamic_workspace_symbols({ default_text = text })
+				end,
+				mode = "v",
+				desc = "Find Symbols",
+			},
+			{
+				"<leader>fS",
+				function()
+					require("telescope.builtin").lsp_dynamic_workspace_symbols()
+				end,
+				mode = "n",
+				desc = "Find Symbols",
+			},
+			{
+				"<leader>fs",
+				function()
+					text = vim.getVisualSelection()
+					require("telescope.builtin").lsp_document_symbols({ default_text = text })
+				end,
+				mode = "v",
 				desc = "Find Symbols",
 			},
 			{
@@ -30,10 +163,28 @@ return {
 			{
 				"<leader>ff",
 				function()
+					text = vim.getVisualSelection()
+					require("telescope.builtin").find_files({ default_text = text })
+				end,
+				mode = "v",
+				desc = "Find Files",
+			},
+			{
+				"<leader>ff",
+				function()
 					require("telescope.builtin").find_files()
 				end,
 				mode = "n",
 				desc = "Find Files",
+			},
+			{
+				"<leader>fg",
+				function()
+					text = vim.getVisualSelection()
+					require("telescope.builtin").live_grep({ default_text = text })
+				end,
+				mode = "v",
+				desc = "Grep In Files",
 			},
 			{
 				"<leader>fg",
@@ -46,6 +197,15 @@ return {
 			{
 				"<leader>fb",
 				function()
+					text = vim.getVisualSelection()
+					require("telescope.builtin").buffers({ default_text = text })
+				end,
+				mode = "v",
+				desc = "Find Buffers",
+			},
+			{
+				"<leader>fb",
+				function()
 					require("telescope.builtin").buffers()
 				end,
 				mode = "n",
@@ -54,10 +214,28 @@ return {
 			{
 				"<leader>fh",
 				function()
+					text = vim.getVisualSelection()
+					require("telescope.builtin").help_tags({ default_text = text })
+				end,
+				mode = "v",
+				desc = "Search in Neovim Help",
+			},
+			{
+				"<leader>fh",
+				function()
 					require("telescope.builtin").help_tags()
 				end,
 				mode = "n",
 				desc = "Search in Neovim Help",
+			},
+			{
+				"<leader>fm",
+				function()
+					text = vim.getVisualSelection()
+					require("telescope.builtin").man_pages({ default_text = text })
+				end,
+				mode = "v",
+				desc = "Search in Man Pages",
 			},
 			{
 				"<leader>fm",

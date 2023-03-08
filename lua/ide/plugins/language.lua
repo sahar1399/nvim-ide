@@ -140,9 +140,9 @@ return {
 				-- for your Neovim config directory, the config.library settings will be used as is
 				-- for plugin directories (root_dirs having a /lua directory), config.library.plugins will be disabled
 				-- for any other directory, config.library.enabled will be set to false
-				override = function(root_dir, library) 
-          library.plugins = true
-        end,
+				override = function(root_dir, library)
+					library.plugins = true
+				end,
 				-- With lspconfig, Neodev will automatically setup your lua-language-server
 				-- If you disable this, then you have to set {before_init=require("neodev.lsp").before_init}
 				-- in your lsp start options
@@ -207,6 +207,14 @@ return {
 					["<leader>a"] = {
 						vim.lsp.buf.code_action,
 						"Code Actions",
+						mode = "n",
+						noremap = true,
+						silent = true,
+						buffer = bufnr,
+					},
+					["<leader>rn"] = {
+						vim.lsp.buf.rename,
+            "Rename Symbol",
 						mode = "n",
 						noremap = true,
 						silent = true,
@@ -308,7 +316,9 @@ return {
 		keys = {
 			{
 				"<leader>rr",
-				":lua require('refactoring').select_refactor()<CR>",
+				function()
+					require("refactoring").select_refactor()
+				end,
 				{ noremap = true, silent = true, expr = false },
 				mode = "v",
 				desc = "Refactor",
