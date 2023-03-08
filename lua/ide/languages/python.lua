@@ -9,6 +9,15 @@ function Python:setup(language_utils)
 		on_attach = language_utils.on_attach,
 		capabilities = language_utils.capabilities,
 		flags = language_utils.lsp_flags,
+		settings = {
+			pyright = { autoImportCompletion = true },
+			python = {
+				analysis = {
+					autoSearchPaths = true,
+					diagnosticMode = "openFilesOnly",
+				},
+			},
+		},
 	})
 
 	language_utils.lspconfig.sourcery.setup({
@@ -21,10 +30,8 @@ function Python:setup(language_utils)
 			--- provided by each user. The extension must provide a
 			--- configuration option for the user to provide this value.
 			token = Consts.SOURCERY_TOKEN,
-
 			--- The extension's name and version as defined by the extension.
 			extension_version = "vim.lsp",
-
 			--- The editor's name and version as defined by the editor.
 			editor_version = "vim",
 		},
