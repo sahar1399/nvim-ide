@@ -214,7 +214,7 @@ return {
 					},
 					["<leader>rn"] = {
 						vim.lsp.buf.rename,
-            "Rename Symbol",
+						"Rename Symbol",
 						mode = "n",
 						noremap = true,
 						silent = true,
@@ -240,7 +240,7 @@ return {
 
 			require("mason").setup()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls" },
+				ensure_installed = {},
 			})
 
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
