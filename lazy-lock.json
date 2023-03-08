@@ -65,6 +65,7 @@
   "nvim-treesitter": { "branch": "master", "commit": "d086563c02a582a552086ea94bfabd5f49d6872a" },
   "nvim-web-devicons": { "branch": "master", "commit": "4af94fec29f508159ceab5413383e5dedd6c24e3" },
   "nvim-window-picker": { "branch": "main", "commit": "5902827d0e338890a22849e2f18dc80d1cc1a8db" },
+  "obsidian.nvim": { "branch": "main", "commit": "5ecf680cf8fc49c6881126f4242a496d79c6f6f7" },
   "open-browser.vim": { "branch": "master", "commit": "7d4c1d8198e889d513a030b5a83faa07606bac27" },
   "persistent-breakpoints.nvim": { "branch": "main", "commit": "a75446afb7eb9519cee5db44ecce1982d3cfcbea" },
   "plantuml-previewer.vim": { "branch": "master", "commit": "1dd4d0f2b09cd80a217f76d82f93830dbbe689b3" },

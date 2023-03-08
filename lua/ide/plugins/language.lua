@@ -324,17 +324,23 @@ return {
 
 				illuminate.on_attach(client)
 
+        -- TODO: do this to every command
+				if client.server_capabilities.definitionProvider then
+					wk.register({
+						["gd"] = {
+							vim.lsp.buf.definition,
+							"Go To Definition",
+							mode = "n",
+							noremap = true,
+							silent = true,
+							buffer = bufnr,
+						},
+					})
+				end
+
 				wk.register({
 					["gD"] = {
 						vim.lsp.buf.declaration,
-						"Go To Definition",
-						mode = "n",
-						noremap = true,
-						silent = true,
-						buffer = bufnr,
-					},
-					["gd"] = {
-						vim.lsp.buf.definition,
 						"Go To Declaration",
 						mode = "n",
 						noremap = true,
