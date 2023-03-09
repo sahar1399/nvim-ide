@@ -73,8 +73,7 @@ require("lazy").setup("ide.plugins", {
 		-- If you want to use a specific browser, you can define it here
 		browser = nil, ---@type string?
 		throttle = 20, -- how frequently should the ui process render events
-		custom_keys = {
-		},
+		custom_keys = {},
 	},
 	diff = {
 		-- diff command <d> can be one of:

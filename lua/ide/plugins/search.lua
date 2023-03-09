@@ -10,7 +10,13 @@ return {
 			{ "#", [[#<Cmd>lua require('hlslens').start()<CR>]], kopts, mode = "n", desc = "Search In File" },
 			{ "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]], kopts, mode = "n", desc = "Search In File" },
 			{ "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts, mode = "n", desc = "Search In File" },
-			{ "<Leader>l", "<Cmd>noh<CR>", kopts, mode = "n", desc = "Clear Search In File" },
+			{
+				"<Leader>l",
+				"<Cmd>noh<CR>",
+				kopts,
+				mode = "n",
+				desc = "Clear Search In File",
+			},
 		},
 		config = function()
 			require("hlslens").setup()
@@ -204,6 +210,13 @@ return {
 				is_open_target_win = true, --open file on opener window
 				is_insert_mode = false, -- start open panel on is_insert_mode
 			})
+		end,
+	},
+	{
+		"kevinhwang91/nvim-bqf",
+		ft = "qf",
+		config = function()
+			vim.cmd([[let &errorformat ..= ',%f|%l col %c| %m']])
 		end,
 	},
 }
