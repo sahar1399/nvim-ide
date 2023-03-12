@@ -146,4 +146,25 @@ return {
 			keymap.amend("n", "zM", map.close_preview_without_defer)
 		end,
 	},
+	{
+		"norcalli/nvim-colorizer.lua",
+		event = {
+			"BufRead *puml",
+		},
+		config = function()
+			require("colorizer").setup()
+		end,
+	},
+  {
+    "dhruvasagar/vim-table-mode",
+		event = {
+			"BufRead *md",
+		},
+		config = function()
+      vim.cmd[[
+        let g:table_mode_corner_corner='+`
+        let g:table_mode_header_fillchar='='
+      ]]
+		end,
+  }
 }

@@ -118,6 +118,9 @@ return {
 			["<leader>s"] = {
 				name = "+ Searcn & Replace",
 			},
+			["<leader>k"] = {
+				name = "+ Documentation",
+			},
 			mode = { "n" },
 		})
 		wk.register({
