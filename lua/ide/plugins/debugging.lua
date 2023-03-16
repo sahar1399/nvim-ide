@@ -3,11 +3,14 @@ local opts = { noremap = true, silent = true }
 return {
 	{
 		"mfussenegger/nvim-dap",
-		lazy = true,
+		lazy = false,
+		config = function()
+			require("dap.ext.vscode").load_launchjs()
+		end,
 		dependencies = {
+      "mfussenegger/nvim-dap-python",
 			{
 				"theHamsta/nvim-dap-virtual-text",
-
 				dependencies = {
 					"nvim-treesitter/nvim-treesitter",
 				},
@@ -33,7 +36,6 @@ return {
 			},
 			{
 				"rcarriga/nvim-dap-ui",
-
 				config = function()
 					local dapui = require("dapui")
 
@@ -130,9 +132,6 @@ return {
 					end
 				end,
 			},
-			{
-				"mfussenegger/nvim-dap-python",
-			},
 		},
 		keys = {
 			{
@@ -194,7 +193,7 @@ return {
 	{
 		"Weissle/persistent-breakpoints.nvim",
 		lazy = true,
-    event = "BufRead *",
+		event = "BufRead *",
 		keys = {
 			{
 				"<leader>db",

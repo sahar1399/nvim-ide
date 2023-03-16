@@ -38,6 +38,7 @@ function Python:setup(language_utils)
 	})
 
 	require("dap-python").setup(Consts.PYTHON3_PATH, {})
+  require("dap.ext.vscode").load_launchjs()
 
 	return LanguageResults.new({
 		null_ls_sources = {
