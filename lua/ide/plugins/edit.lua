@@ -83,28 +83,38 @@ return {
 		end,
 	},
 	{
-		"m4xshen/autoclose.nvim",
+		"windwp/nvim-autopairs",
 		lazy = true,
 		event = "InsertEnter",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"hrsh7th/nvim-cmp",
+		},
 		config = function()
-			local config = {
-				keys = {
-					["("] = { escape = false, close = true, pair = "()" },
-					["["] = { escape = false, close = true, pair = "[]" },
-					["{"] = { escape = false, close = true, pair = "{}" },
-					[">"] = { escape = true, close = false, pair = "<>" },
-					[")"] = { escape = true, close = false, pair = "()" },
-					["]"] = { escape = true, close = false, pair = "[]" },
-					["}"] = { escape = true, close = false, pair = "{}" },
-					['"'] = { escape = true, close = true, pair = '""' },
-					["'"] = { escape = true, close = true, pair = "''" },
-					["`"] = { escape = true, close = true, pair = "``" },
-				},
-				options = {
-					disabled_filetypes = { "text" },
-				},
-			}
-			require("autoclose").setup(config)
+			local npairs = require("nvim-autopairs")
+			local Rule = require("nvim-autopairs.rule")
+
+			npairs.setup({
+				check_ts = true,
+				-- ts_config = {
+				-- 	lua = { "string" }, -- it will not add a pair on that treesitter node
+				-- 	javascript = { "template_string" },
+				-- 	java = false, -- don't check treesitter on java
+				-- },
+			})
+
+			local ts_conds = require("nvim-autopairs.ts-conds")
+
+			-- press % => %% only while inside a comment or string
+			npairs.add_rules({
+				Rule("%", "%", "lua"):with_pair(ts_conds.is_ts_node({ "string", "comment" })),
+				Rule("$", "$", "lua"):with_pair(ts_conds.is_not_ts_node({ "function" })),
+			})
+
+			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+			local cmp = require("cmp")
+
+			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 		end,
 	},
 	{
@@ -155,16 +165,16 @@ return {
 			require("colorizer").setup()
 		end,
 	},
-  {
-    "dhruvasagar/vim-table-mode",
+	{
+		"dhruvasagar/vim-table-mode",
 		event = {
 			"BufRead *md",
 		},
 		config = function()
-      vim.cmd[[
+			vim.cmd([[
         let g:table_mode_corner_corner='+`
         let g:table_mode_header_fillchar='='
-      ]]
+      ]])
 		end,
-  }
+	},
 }
