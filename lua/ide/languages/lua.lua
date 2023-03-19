@@ -28,7 +28,8 @@ function Lua:setup(language_utils)
 	return LanguageResults.new({
 		null_ls_sources = {
 			language_utils.null_ls.builtins.formatting.stylua,
-			language_utils.null_ls.builtins.code_actions.refactoring,
+      -- TODO: this is loaded in python... please fix this.
+			-- language_utils.null_ls.builtins.code_actions.refactoring,
 		},
 	})
 end

@@ -484,9 +484,9 @@ return {
 			{
 				"<leader>rr",
 				function()
-					require("refactoring").select_refactor()
+          require('telescope').extensions.refactoring.refactors()
 				end,
-				{ noremap = true, silent = true, expr = false },
+				{ noremap = true },
 				mode = "v",
 				desc = "Refactor",
 			},

@@ -30,7 +30,7 @@ return {
 		"terrortylor/nvim-comment",
 		lazy = true,
 		keys = {
-			{ "gcc", mode = "n", noremap = true, desc = "Comment" },
+			{ "gc", mode = "n", noremap = true, desc = "Comment" },
 			{ "gc", mode = "v", noremap = true, desc = "Comment" },
 			{ "ic", mode = { "o", "x" }, noremap = true, desc = "Comment" },
 		},

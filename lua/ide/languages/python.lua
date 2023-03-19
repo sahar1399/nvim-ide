@@ -10,7 +10,9 @@ function Python:setup(language_utils)
 		capabilities = language_utils.capabilities,
 		flags = language_utils.lsp_flags,
 		settings = {
-			pyright = { autoImportCompletion = true },
+			pyright = {
+				autoImportCompletion = true,
+			},
 			python = {
 				analysis = {
 					autoSearchPaths = true,
@@ -38,7 +40,7 @@ function Python:setup(language_utils)
 	})
 
 	require("dap-python").setup(Consts.PYTHON3_PATH, {})
-  require("dap.ext.vscode").load_launchjs()
+	require("dap.ext.vscode").load_launchjs()
 
 	return LanguageResults.new({
 		null_ls_sources = {
