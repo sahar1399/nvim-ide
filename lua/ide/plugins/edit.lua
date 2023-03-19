@@ -6,6 +6,7 @@ return {
 		lazy = true,
 		keys = {
 			{ "<C-n>", mode = "n", desc = "Find Under" },
+			{ "<C-n>", mode = "v", desc = "Find Under" },
 			{ "<C-j>", mode = "n", desc = "Add Cursor Down" },
 			{ "<C-k>", mode = "n", desc = "Add Cursor Up" },
 			{ "<leader>A", mode = "n", desc = "Select All" },
