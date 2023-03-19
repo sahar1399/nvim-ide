@@ -20,6 +20,7 @@ function Python:setup(language_utils)
 				},
 			},
 		},
+		single_file_support = true,
 	})
 
 	language_utils.lspconfig.sourcery.setup({
@@ -37,6 +38,7 @@ function Python:setup(language_utils)
 			--- The editor's name and version as defined by the editor.
 			editor_version = "vim",
 		},
+		single_file_support = true,
 	})
 
 	require("dap-python").setup(Consts.PYTHON3_PATH, {})
