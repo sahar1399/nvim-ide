@@ -1,5 +1,3 @@
-local keymap = vim.keymap.set
-
 return {
 	{
 		"nvim-neo-tree/neo-tree.nvim",
@@ -631,6 +629,51 @@ return {
 				},
 				mappings = {},
 			})
+		end,
+	},
+	{
+		"MattesGroeger/vim-bookmarks",
+		lazy = false,
+		keys = {
+			{
+				"<leader>bb",
+				"<Plug>BookmarkToggle",
+				mode = "n",
+				desc = "Bookmark Toggle",
+			},
+			{
+				"<leader>bC",
+				"<Plug>BookmarkClearAll",
+				mode = "n",
+				desc = "Bookmark Clear All",
+			},
+		},
+		config = {
+			vim.cmd([[
+          highlight BookmarkSign ctermbg=NONE ctermfg=160
+          highlight BookmarkLine ctermbg=194 ctermfg=NONE
+          let g:bookmark_sign = '♥'
+          let g:bookmark_highlight_lines = 1
+          let g:bookmark_save_per_working_dir = 1
+          let g:bookmark_auto_save = 1
+      ]]),
+		},
+	},
+	{
+		"tom-anders/telescope-vim-bookmarks.nvim",
+		lazy = true,
+		keys = {
+			{
+				"<leader>fl",
+				function()
+					require("telescope").extensions.vim_bookmarks.all()
+				end,
+				mode = "n",
+				desc = "Show Bookmarks",
+			},
+		},
+		config = function()
+			require("telescope").load_extension("vim_bookmarks")
 		end,
 	},
 }
