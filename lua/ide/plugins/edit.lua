@@ -166,16 +166,33 @@ return {
 			require("colorizer").setup()
 		end,
 	},
+	-- {
+	-- 	"dhruvasagar/vim-table-mode",
+	-- 	event = {
+	-- 		"BufRead *md",
+	-- 	},
+	-- 	keys = {
+	-- 		{ "eta", "<cmd>TableModeEnable<CR>", mode = "n", desc = "Align Table" },
+	-- 		{ "ett", "<cmd>TableModeToggle<CR>", mode = "n", desc = "Toggle Table Mode" },
+	-- 	},
+	-- 	config = function()
+	-- 		vim.cmd([[
+	--         let g:table_mode_corner_corner='+'
+	--         let g:table_mode_header_fillchar='='
+	--       ]])
+	-- 	end,
+	-- },
 	{
-		"dhruvasagar/vim-table-mode",
-		event = {
-			"BufRead *md",
+		"junegunn/vim-easy-align",
+		keys = {
+			{
+				"ga",
+				"<Plug>(EasyAlign)",
+				mode = { "n", "v" },
+				noremap = true,
+				silent = true,
+				desc = "Easy Align",
+			},
 		},
-		config = function()
-			vim.cmd([[
-        let g:table_mode_corner_corner='+`
-        let g:table_mode_header_fillchar='='
-      ]])
-		end,
 	},
 }
