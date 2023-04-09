@@ -260,7 +260,7 @@ return {
 		"nvim-lualine/lualine.nvim",
 		lazy = true,
 		event = "BufRead *",
-		dependencies = { "nvim-tree/nvim-web-devicons", "SmiteshP/nvim-navic" },
+		dependencies = { "nvim-tree/nvim-web-devicons", "SmiteshP/nvim-navic", "stevearc/aerial.nvim" },
 		config = function()
 			local navic = require("nvim-navic")
 
@@ -275,6 +275,7 @@ return {
 						"NVimTree",
 						"NeoTree",
 						"neo-tree",
+						"aerial",
 						statusline = {},
 						winbar = {},
 					},
@@ -293,7 +294,7 @@ return {
 					lualine_c = { "filename" },
 					lualine_d = { { getnavic } },
 					lualine_e = {},
-					lualine_x = { "encoding", "fileformat", "filetype" },
+					lualine_x = { "aerial", "encoding", "fileformat", "filetype" },
 					lualine_y = { "progress" },
 					lualine_z = { "location" },
 				},

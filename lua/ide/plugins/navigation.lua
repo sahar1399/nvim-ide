@@ -17,7 +17,7 @@ return {
 							-- filter using buffer options
 							bo = {
 								-- if the file type is one of following, the window will be ignored
-								filetype = { "neo-tree", "neo-tree-popup", "notify" },
+								filetype = { "neo-tree", "neo-tree-popup", "notify", "aerial" },
 								-- if the buffer type is one of following, the window will be ignored
 								buftype = { "terminal", "quickfix" },
 							},
@@ -29,7 +29,7 @@ return {
 		},
 		keys = {
 			{
-				"<leader>b",
+				"<leader>B",
 				function()
 					vim.cmd([[:Neotree source=buffers]])
 				end,

@@ -194,5 +194,8 @@ return {
 				desc = "Easy Align",
 			},
 		},
+    config = function()
+      vim.cmd[[qtgaip*|q]]
+    end
 	},
 }
