@@ -636,6 +636,12 @@ return {
 		lazy = false,
 		keys = {
 			{
+				"<leader>ba",
+				"<Plug>BookmarkAnnotate",
+				mode = "n",
+				desc = "Bookmark Annotate",
+			},
+			{
 				"<leader>bb",
 				"<Plug>BookmarkToggle",
 				mode = "n",
@@ -653,6 +659,7 @@ return {
           highlight BookmarkSign ctermbg=NONE ctermfg=160
           highlight BookmarkLine ctermbg=194 ctermfg=NONE
           let g:bookmark_sign = ''
+          let g:bookmark_annotation_sign = ''
           let g:bookmark_highlight_lines = 1
           let g:bookmark_save_per_working_dir = 1
           let g:bookmark_auto_save = 1
@@ -668,7 +675,13 @@ return {
 			{
 				"<leader>fl",
 				function()
-					require("telescope").extensions.vim_bookmarks.all()
+					local bookmark_actions = require("telescope").extensions.vim_bookmarks.actions
+					require("telescope").extensions.vim_bookmarks.all({
+						attach_mappings = function(_, map)
+							map("n", "dd", bookmark_actions.delete_selected_or_at_cursor)
+							return true
+						end,
+					})
 				end,
 				mode = "n",
 				desc = "Show Bookmarks",
