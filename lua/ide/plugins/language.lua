@@ -509,13 +509,13 @@ return {
 	},
 	{
 		"stevearc/aerial.nvim",
-    lazy = false,
-    keys = {
-      {
+		lazy = false,
+		keys = {
+			{
 				"<leader>S",
 				"<cmd>AerialToggle!<CR>",
 				mode = "n",
-        desc = "Toggle Symbol Tree"
+				desc = "Toggle Symbol Tree",
 			},
 			{
 				"<leader>fa",
@@ -525,7 +525,7 @@ return {
 				mode = "n",
 				desc = "Search in Symbol Tree",
 			},
-    },
+		},
 		config = function()
 			local wk = require("which-key")
 
@@ -540,7 +540,10 @@ return {
 					width = nil,
 					min_width = 10,
 					-- key-value pairs of window-local options for aerial window (e.g. winhl)
-					win_opts = {},
+					win_opts = {
+						number = true,
+						relativenumber = true,
+          },
 					-- Determines the default direction to open the aerial window. The 'prefer'
 					-- options will open the window in the other direction *if* there is a
 					-- different buffer in the way of the preferred direction
@@ -819,6 +822,11 @@ return {
 				},
 				on_attach = function(bufnr)
 					-- Jump forwards/backwards with '{' and '}'
+					-- for i, winnr in ipairs(vim.fn.win_findbuf(bufnr)) do
+					-- 	vim.wo[winnr].number = false
+					-- 	vim.wo[winnr].relativenumber = false
+					-- end
+
 					wk.register({
 						["{"] = {
 							"<cmd>AerialPrev<CR>",
