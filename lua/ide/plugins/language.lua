@@ -554,12 +554,12 @@ return {
 					--   window - open aerial to the right/left of the current window
 					placement = "window",
 					-- Preserve window size equality with (:help CTRL-W_=)
-					preserve_equality = false,
+					preserve_equality = true,
 				},
 				-- Determines how the aerial window decides which buffer to display symbols for
 				--   window - aerial window will display symbols for the buffer in the window from which it was opened
 				--   global - aerial window will display symbols for the current window
-				attach_mode = "window",
+				attach_mode = "global",
 				-- List of enum values that configure when to auto-close the aerial window
 				--   unfocus       - close aerial when you leave the original source window
 				--   switch_buffer - close aerial when you change buffers in the source window

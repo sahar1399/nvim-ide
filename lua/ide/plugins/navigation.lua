@@ -404,7 +404,7 @@ return {
 						["o"] = "open_with_window_picker",
 						["<esc>"] = "revert_preview",
 						["P"] = { "toggle_preview", config = { use_float = true } },
-						["l"] = "focus_preview",
+						-- ["l"] = "focus_preview",
 						["S"] = "open_split",
 						-- ["S"] = "split_with_window_picker",
 						["s"] = "open_vsplit",
@@ -665,6 +665,7 @@ return {
           let g:bookmark_auto_save = 1
           let g:bookmark_center = 1
           let g:bookmark_no_default_key_mappings = 1
+          let g:bookmark_manage_per_buffer = 1
       ]])
 		end,
 	},
