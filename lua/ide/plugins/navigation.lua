@@ -4,6 +4,7 @@ return {
 		lazy = false,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+			"miversen33/netman.nvim",
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 			{
@@ -72,6 +73,7 @@ return {
 				-- The name used here must be the same name you would use in a require() call.
 				sources = {
 					"filesystem",
+					"netman.ui.neo-tree",
 					"buffers",
 					"git_status",
 				},
@@ -110,6 +112,7 @@ return {
 				use_default_mappings = false,
 				-- source_selector provides clickable tabs to switch between sources.
 				source_selector = {
+					sources = { "remote" },
 					winbar = false, -- toggle to show selector on winbar
 					statusline = false, -- toggle to show selector on statusline
 					show_scrolled_off_parent_node = false, -- this will replace the tabs with the parent path
