@@ -20,13 +20,12 @@ return {
 				signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
 				numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
 				linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
-				word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
+				word_diff = true, -- Toggle with `:Gitsigns toggle_word_diff`
 				watch_gitdir = {
-					interval = 1000,
 					follow_files = true,
 				},
 				attach_to_untracked = true,
-				current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+				current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
 				current_line_blame_opts = {
 					virt_text = true,
 					virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
@@ -34,7 +33,7 @@ return {
 					ignore_whitespace = false,
 				},
 				current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
-				sign_priority = 6,
+				sign_priority = 100,
 				update_debounce = 100,
 				status_formatter = nil, -- Use default
 				max_file_length = 40000, -- Disable if file is longer than this (in lines)
@@ -89,19 +88,50 @@ return {
 								s = {
 									gs.stage_hunk,
 									"Stage Hunk",
-									mode = { "n", "v" },
+									mode = { "n" },
 									buffer = bufnr,
 								},
 								r = {
 									gs.reset_hunk,
 									"Reset Hunk",
-									mode = { "n", "v" },
+									mode = { "n" },
+									buffer = bufnr,
+								},
+								D = {
+									gs.diffthis,
+									"Diff This",
+									mode = { "n" },
 									buffer = bufnr,
 								},
 								S = { gs.stage_buffer, "Stage Buffer", mode = "n", buffer = bufnr },
 								u = { gs.undo_stage_hunk, "Stage Buffer", mode = "n", buffer = bufnr },
 								R = { gs.reset_buffer, "Reset Buffer", mode = "n", buffer = bufnr },
 								p = { gs.preview_hunk, "Preview Hunk", mode = "n", buffer = bufnr },
+							},
+						},
+					})
+
+					wk.register({
+						["<leader>"] = {
+							g = {
+								s = {
+									function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end,
+									"Stage Hunk",
+									mode = { "v" },
+									buffer = bufnr,
+								},
+								r = {
+									function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end,
+									"Reset Hunk",
+									mode = { "v" },
+									buffer = bufnr,
+								},
+								D = {
+									function() gs.diffthis('~') end,
+									"Diff This",
+									mode = { "v" },
+									buffer = bufnr,
+								},
 							},
 						},
 					})

@@ -62,6 +62,7 @@ return {
 				}),
 				sources = cmp.config.sources({
 					{ name = "luasnip" },
+					{ name = "neorg" },
 					{ name = "nvim_lsp" },
 					{ name = "nvim_lsp_signature_help" },
 					{ name = "path" },
@@ -530,7 +531,7 @@ return {
 			local wk = require("which-key")
 
 			require("aerial").setup({
-				backends = { "treesitter", "lsp", "markdown", "man" },
+				backends = { "treesitter", "lsp", "markdown", "man", "norg" },
 				layout = {
 					-- These control the width of the aerial window.
 					-- They can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)

@@ -41,6 +41,9 @@ local options = {
   sidescrolloff = 15, -- minimal number of screen columns either side of cursor if wrap is `false`
   guifont = "monospace:h17", -- the font used in graphical neovim applications
   whichwrap = "bs<>[]hl", -- which "horizontal" keys are allowed to travel to prev/next line
+  spelllang = "en_us",
+  spell = true,
+  spelloptions = "camel",
 }
 
 for k, v in pairs(options) do

@@ -76,6 +76,7 @@ return {
 					"lspsaga",
 					-- "mini",
 					"neogit",
+					"neorg",
 					"nvim-cmp",
 					-- "nvim-navic",
 					-- "nvim-tree",
@@ -94,7 +95,7 @@ return {
 				},
 				high_visibility = {
 					lighter = false, -- Enable higher contrast text for lighter style
-					darker = false, -- Enable higher contrast text for darker style
+					darker = true, -- Enable higher contrast text for darker style
 				},
 				lualine_style = "stealth", -- Lualine style ( can be 'stealth' or 'default' )
 				async_loading = true, -- Load parts of the theme asyncronously for faster startup (turned on by default)
@@ -344,7 +345,6 @@ return {
 		lazy = false,
 		config = function()
 			require("transparent").setup({
-				enable = true, -- boolean: enable transparent
 				extra_groups = { -- table/string: additional groups that should be cleared
 					-- In particular, when you set it to 'all', that means all available groups
 
@@ -356,7 +356,6 @@ return {
 					"BufferLineSeparator",
 					"BufferLineIndicatorSelected",
 				},
-				exclude = {}, -- table: groups you don't want to clear
 			})
 		end,
 	},

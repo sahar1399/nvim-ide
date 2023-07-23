@@ -4,18 +4,17 @@ Consts = require("ide.consts")
 Markdown = {}
 Markdown.__index = Markdown
 
-
 function Markdown:setup(language_utils)
 	language_utils.lspconfig.grammarly.setup({
 		on_attach = language_utils.on_attach,
 		capabilities = language_utils.capabilities,
 		flags = language_utils.lsp_flags,
-    clientId = "client_Ho2fSR5ooHtVvFGJ3x9szi"
+		filetypes = { "markdown", "norg" },
+		clientId = "client_Ho2fSR5ooHtVvFGJ3x9szi",
 	})
 
 	return LanguageResults.new({
-		null_ls_sources = {
-		},
+		null_ls_sources = {},
 	})
 end
 
