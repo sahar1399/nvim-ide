@@ -42,7 +42,7 @@ local options = {
   guifont = "monospace:h17", -- the font used in graphical neovim applications
   whichwrap = "bs<>[]hl", -- which "horizontal" keys are allowed to travel to prev/next line
   spelllang = "en_us",
-  spell = true,
+  spell = false,
   spelloptions = "camel",
 }
 
