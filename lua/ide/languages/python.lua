@@ -15,7 +15,8 @@ function Python:setup(language_utils)
 			},
 			python = {
 				analysis = {
-					autoSearchPaths = true,
+					autoSearchPaths = false,
+					useLibraryCodesForTypes = false,
 					diagnosticMode = "openFilesOnly",
 				},
 			},
@@ -23,7 +24,49 @@ function Python:setup(language_utils)
 		single_file_support = true,
 	})
 
+	-- language_utils.lspconfig.ruff_lsp.setup({
+	-- 	on_attach = language_utils.on_attach,
+	-- 	capabilities = language_utils.capabilities,
+	-- 	flags = language_utils.lsp_flags,
+	-- 	settings = {
+	-- 		-- Any extra CLI arguments for `ruff` go here.
+	-- 		args = {},
+	-- 	},
+	-- })
+	--
+
+	-- local util = require("lspconfig").util
+	--
+	-- language_utils.lspconfig.pylyzer.setup({
+	-- 	on_attach = language_utils.on_attach,
+	-- 	capabilities = language_utils.capabilities,
+	-- 	flags = language_utils.lsp_flags,
+	--
+	-- 	filetypes = { "python" },
+	--
+	-- 	root_dir = function(fname)
+	-- 		local root_files = {
+	-- 			"setup.py",
+	-- 			"tox.ini",
+	-- 			"requirements.txt",
+	-- 			"Pipfile",
+	-- 			"pyproject.toml",
+	-- 		}
+	-- 		return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
+	-- 	end,
+	--
+	-- 	settings = {
+	-- 		python = {
+	-- 			diagnostics = true,
+	-- 			inlayHints = true,
+	-- 			smartCompletion = true,
+	-- 			checkOnType = false,
+	-- 		},
+	-- 	},
+	-- })
+
 	language_utils.lspconfig.sourcery.setup({
+
 		on_attach = language_utils.on_attach,
 		capabilities = language_utils.capabilities,
 		flags = language_utils.lsp_flags,

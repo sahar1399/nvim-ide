@@ -8,7 +8,7 @@ return {
 			{ "<M-n>", mode = "n", desc = "Find Under" },
 			{ "<M-n>", mode = "v", desc = "Find Under" },
 			{ "<M-j>", mode = "n", desc = "Add Cursor Down" },
-			{ "<M-k>", mode = "n", desc = "Add Cursor Up" },
+			{ "<C-k>", mode = "n", desc = "Add Cursor Up" },
 			{ "<leader>A", mode = "n", desc = "Select All" },
 			{ "<leader>/", mode = "n", desc = "Start Regex Search" },
 		},
@@ -21,6 +21,7 @@ return {
       let g:VM_maps['Add Cursor Down']             = '<M-j>'
       let g:VM_maps['Add Cursor Up']               = '<M-k>'
       let g:VM_maps['Find Under']                  = '<M-n>'
+      let g:VM_maps['Find Subword Under']                  = '<M-n>'
       let g:VM_maps["Select All"]                  = '<leader>A'
       let g:VM_maps["Start Regex Search"]          = '<leader>/'
       let g:VM_maps["Add Cursor At Pos"]           = '\\\'

@@ -92,4 +92,120 @@ return {
 			})
 		end,
 	},
+	{
+		"chrisgrieser/nvim-early-retirement",
+		config = true,
+		event = "VeryLazy",
+		opts = {
+			-- if a buffer has been inactive for this many minutes, close it
+			retirementAgeMins = 20,
+
+			-- filetypes to ignore
+			ignoredFiletypes = {},
+
+			-- ignore files matching this lua pattern; empty string disables this setting
+			ignoreFilenamePattern = "",
+
+			-- will not close the alternate file
+			ignoreAltFile = true,
+
+			-- minimum number of open buffers for auto-closing to become active. E.g.,
+			-- by setting this to 4, no auto-closing will take place when you have 3
+			-- or fewer open buffers. Note that this plugin never closes the currently
+			-- active buffer, so a number < 2 will effectively disable this setting.
+			minimumBufferNum = 1,
+
+			-- will ignore buffers with unsaved changes. If false, the buffers will
+			-- automatically be written and then closed.
+			ignoreUnsavedChangesBufs = true,
+
+			-- ignore non-empty buftypes, for example terminal buffers
+			ignoreSpecialBuftypes = true,
+
+			-- ignore visible buffers ("a" in `:buffers`). Buffers that are open in
+			-- a window or in a tab are considered visible by vim.
+			ignoreVisibleBufs = true,
+
+			-- ignore unloaded buffers. Session-management plugin often add buffers
+			-- to the buffer list without loading them.
+			ignoreUnloadedBufs = false,
+
+			-- Show notification on closing. Works with nvim-notify or noice.nvim
+			notificationOnAutoClose = false,
+		},
+	},
+	{
+		"rest-nvim/rest.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		lazy = true,
+		ft = "http",
+		keys = {
+			{
+				"<leader>Rr",
+				function()
+					require("rest-nvim").run()
+				end,
+				opts,
+				mode = "n",
+				desc = "HTTP REST Run",
+			},
+			{
+				"<leader>Rp",
+				function()
+					require("rest-nvim").run(true)
+				end,
+				opts,
+				mode = "n",
+				desc = "HTTP REST Preview",
+			},
+			{
+				"<leader>Rl",
+				function()
+					require("rest-nvim").last()
+				end,
+				opts,
+				mode = "n",
+				desc = "HTTP REST Run Last",
+			},
+		},
+		config = function()
+			require("rest-nvim").setup({
+				-- Open request results in a horizontal split
+				result_split_horizontal = false,
+				-- Keep the http file buffer above|left when split horizontal|vertical
+				result_split_in_place = false,
+				-- Skip SSL verification, useful for unknown certificates
+				skip_ssl_verification = false,
+				-- Encode URL before making request
+				encode_url = true,
+				-- Highlight request on run
+				highlight = {
+					enabled = true,
+					timeout = 150,
+				},
+				result = {
+					-- toggle showing URL, HTTP info, headers at top the of result window
+					show_url = true,
+					-- show the generated curl command in case you want to launch
+					-- the same request via the terminal (can be verbose)
+					show_curl_command = false,
+					show_http_info = true,
+					show_headers = true,
+					-- executables or functions for formatting response body [optional]
+					-- set them to false if you want to disable them
+					formatters = {
+						json = "jq",
+						html = function(body)
+							return vim.fn.system({ "tidy", "-i", "-q", "-" }, body)
+						end,
+					},
+				},
+				-- Jump to request line on run
+				jump_to_request = false,
+				env_file = ".env",
+				custom_dynamic_variables = {},
+				yank_dry_run = true,
+			})
+		end,
+	},
 }

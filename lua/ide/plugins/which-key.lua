@@ -121,6 +121,9 @@ return {
 			["<leader>k"] = {
 				name = "+ Documentation",
 			},
+			["<leader>R"] = {
+				name = "+ HTTP REST",
+			},
 			mode = { "n" },
 		})
 		wk.register({

@@ -330,6 +330,10 @@ return {
 					navic.attach(client, bufnr)
 				end
 
+				if client.server_capabilities.inlayHintProvider then
+					require("vim.lsp.inlay_hint")(bufnr, true)
+				end
+
 				illuminate.on_attach(client)
 
 				-- TODO: do this to every command
@@ -441,6 +445,7 @@ return {
 				on_attach = on_attach,
 				root_dir = require("null-ls.utils").root_pattern(".git"),
 			})
+
 		end,
 	},
 	{
@@ -529,8 +534,9 @@ return {
 		},
 		config = function()
 			local wk = require("which-key")
+			local aerial = require("aerial")
 
-			require("aerial").setup({
+			aerial.setup({
 				backends = { "treesitter", "lsp", "markdown", "man", "norg" },
 				layout = {
 					-- These control the width of the aerial window.
@@ -539,12 +545,12 @@ return {
 					-- max_width = {40, 0.2} means "the lesser of 40 columns or 20% of total"
 					max_width = { 40, 0.2 },
 					width = nil,
-					min_width = 10,
+					min_width = { 40, 0.2 },
 					-- key-value pairs of window-local options for aerial window (e.g. winhl)
 					win_opts = {
 						number = true,
 						relativenumber = true,
-          },
+					},
 					-- Determines the default direction to open the aerial window. The 'prefer'
 					-- options will open the window in the other direction *if* there is a
 					-- different buffer in the way of the preferred direction
@@ -565,7 +571,7 @@ return {
 				--   unfocus       - close aerial when you leave the original source window
 				--   switch_buffer - close aerial when you change buffers in the source window
 				--   unsupported   - close aerial when attaching to a buffer that has no symbol source
-				close_automatic_events = {},
+				close_automatic_events = { "unsupported" },
 				-- Keymaps in aerial window. Can be any value that `vim.keymap.set` accepts OR a table of keymap
 				-- options with a `callback` (e.g. { callback = function() ... end, desc = "", nowait = true })
 				-- Additionally, if it is a string that matches "actions.<name>",
@@ -694,7 +700,15 @@ return {
 				on_first_symbols = function(bufnr) end,
 				-- Automatically open aerial when entering supported buffers.
 				-- This can be a function (see :help aerial-open-automatic)
-				open_automatic = true,
+				open_automatic = function(bufnr)
+					-- Enforce a minimum line count
+					return vim.api.nvim_buf_line_count(bufnr) > 80
+						-- Enforce a minimum symbol count
+						and aerial.num_symbols(bufnr) > 4
+						-- A useful way to keep aerial closed when closed manually
+						and not aerial.was_closed()
+				end,
+
 				-- Run this command after jumping to a symbol (false will disable)
 				post_jump_cmd = "normal! zz",
 				-- Invoked after each symbol is parsed, can be used to modify the parsed item,
@@ -849,5 +863,8 @@ return {
 				end,
 			})
 		end,
+	},
+	{
+		"towolf/vim-helm",
 	},
 }

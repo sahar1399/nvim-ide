@@ -3,6 +3,8 @@ return {
 		"nvim-neorg/neorg",
 		build = ":Neorg sync-parsers",
 
+    commit = "99f33e08fe074126b491e02854e5d00dab10f5ae",
+
 		lazy = true,
 		ft = "norg",
 
@@ -31,7 +33,6 @@ return {
 					["core.export"] = {},
 					["core.export.markdown"] = {},
 
-					["core.qol.toc"] = {},
 					["core.qol.todo_items"] = {},
 
 					["core.autocommands"] = {},
@@ -59,7 +60,8 @@ return {
 				},
 			})
 
-			local neorg_callbacks = require("neorg.core.callbacks")
+			local neorg_callbacks = require("neorg.callbacks")
+      -- local neorg_callbacks = require("neorg.core.callbacks")
 
 			-- TODO: do better
 			-- TODO: do visual

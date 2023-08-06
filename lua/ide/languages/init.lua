@@ -11,5 +11,6 @@ languages["markdown"] = require("ide.languages.markdown")
 languages["sql"] = require("ide.languages.sql")
 languages["yaml"] = require("ide.languages.yaml")
 languages["typescript"] = require("ide.languages.typescript")
+languages["helm"] = require("ide.languages.helm")
 
 return languages

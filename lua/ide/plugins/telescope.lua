@@ -453,4 +453,20 @@ return {
 			require("telescope").load_extension("lazy")
 		end,
 	},
+	{
+		"jvgrootveld/telescope-zoxide",
+		lazy = true,
+		keys = {
+			{
+				"<leader>fz",
+				"<cmd>Telescope zoxide list<CR>",
+				mode = "n",
+				desc = "Search In Plugins",
+			},
+		},
+
+		config = function()
+			require("telescope").load_extension("zoxide")
+		end,
+	},
 }
