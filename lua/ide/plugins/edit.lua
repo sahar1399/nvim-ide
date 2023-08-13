@@ -8,7 +8,7 @@ return {
 			{ "<M-n>", mode = "n", desc = "Find Under" },
 			{ "<M-n>", mode = "v", desc = "Find Under" },
 			{ "<M-j>", mode = "n", desc = "Add Cursor Down" },
-			{ "<C-k>", mode = "n", desc = "Add Cursor Up" },
+			{ "<M-k>", mode = "n", desc = "Add Cursor Up" },
 			{ "<leader>A", mode = "n", desc = "Select All" },
 			{ "<leader>/", mode = "n", desc = "Start Regex Search" },
 		},
