@@ -208,4 +208,28 @@ return {
 			})
 		end,
 	},
+	{
+		"tomiis4/Hypersonic.nvim",
+
+		lazy = false,
+
+		keys = {
+			{
+				"<leader>er",
+				"<cmd>Hypersonic<cr>",
+				opts,
+				mode = "n",
+				desc = "Toggle Regex Explainer",
+			},
+			{
+				"<leader>er",
+				":<c-u>Hypersonic<cr>",
+				opts,
+				mode = "v",
+				desc = "Toggle Regex Explainer",
+			},
+		},
+
+		opts = {},
+	},
 }

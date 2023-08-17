@@ -115,19 +115,25 @@ return {
 						["<leader>"] = {
 							g = {
 								s = {
-									function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end,
+									function()
+										gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+									end,
 									"Stage Hunk",
 									mode = { "v" },
 									buffer = bufnr,
 								},
 								r = {
-									function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end,
+									function()
+										gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+									end,
 									"Reset Hunk",
 									mode = { "v" },
 									buffer = bufnr,
 								},
 								D = {
-									function() gs.diffthis('~') end,
+									function()
+										gs.diffthis("~")
+									end,
 									"Diff This",
 									mode = { "v" },
 									buffer = bufnr,
@@ -790,13 +796,15 @@ return {
 				mode = "n",
 				desc = "Blame Commit For Line",
 			},
-
+		
 			{
 				"<leader>gb",
 				function()
 					require("agitator").git_blame({
 						formatter = function(r)
-							return r.author .. " => " .. r.summary
+							return string.format("%02d-%02d-%02d %s", r.date.year, r.date.month, r.date.day, r.author)
+								.. " => "
+								.. string.sub(r.summary, 1, 11)
 						end,
 					})
 				end,
@@ -805,5 +813,17 @@ return {
 				desc = "Git Blame",
 			},
 		},
+	},
+	{
+		-- "FabijanZulj/blame.nvim",
+		-- lazy = true,
+		-- keys = {
+		-- 	{
+		-- 		"<leader>gb",
+		-- 		":ToggleBlame virtual<CR>",
+		-- 		mode = "n",
+		-- 		desc = "Git Blame",
+		-- 	},
+		-- },
 	},
 }

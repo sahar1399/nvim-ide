@@ -260,9 +260,15 @@ return {
 		"nvim-lualine/lualine.nvim",
 		lazy = true,
 		event = "BufRead *",
-		dependencies = { "nvim-tree/nvim-web-devicons", "SmiteshP/nvim-navic", "stevearc/aerial.nvim" },
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			"SmiteshP/nvim-navic",
+			"stevearc/aerial.nvim",
+			"f-person/git-blame.nvim",
+		},
 		config = function()
 			local navic = require("nvim-navic")
+			local git_blame = require("gitblame")
 
 			require("lualine").setup({
 				options = {
@@ -292,8 +298,11 @@ return {
 					lualine_a = { "mode" },
 					lualine_b = { "branch", "diff", "diagnostics" },
 					lualine_c = { "filename" },
-					lualine_d = { { getnavic } },
-					lualine_e = {},
+					lualine_d = {
+						{ git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
+					},
+					lualine_e = { { getnavic } },
+					lualine_f = {},
 					lualine_x = { "aerial", "encoding", "fileformat", "filetype" },
 					lualine_y = { "progress" },
 					lualine_z = { "location" },

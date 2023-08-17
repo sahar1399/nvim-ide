@@ -7,6 +7,12 @@ return {
 			"tyru/open-browser.vim",
 			"aklt/plantuml-syntax",
 		},
+		config = function()
+			vim.cmd([[
+ let g:plantuml_previewer#viewer_path = '/home/sahar/plantuml_viewer'
+
+ ]])
+		end,
 	},
 	{
 		"https://gitlab.com/itaranto/plantuml.nvim",
@@ -14,7 +20,7 @@ return {
 		version = "*",
 		ft = "plantuml",
 		opts = {
-			render_on_write = true, -- Set to false to disable auto-rendering.
+			render_on_write = false, -- Set to false to disable auto-rendering.
 
 			renderer = {
 				type = "image",
