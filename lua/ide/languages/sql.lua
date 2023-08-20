@@ -14,6 +14,7 @@ function SQL:setup(language_utils)
 	return LanguageResults.new({
 		null_ls_sources = {
 			language_utils.null_ls.builtins.diagnostics.sqlfluff,
+			language_utils.null_ls.builtins.formatting.sql_formatter,
 		},
 	})
 end

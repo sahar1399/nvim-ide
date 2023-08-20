@@ -131,13 +131,11 @@ return {
 		end,
 	},
 	{
-		{
-			"luukvbaal/stabilize.nvim",
-			lazy = false,
-			config = function()
-				require("stabilize").setup()
-			end,
-		},
+		-- "luukvbaal/stabilize.nvim",
+		-- lazy = false,
+		-- config = function()
+		-- 	require("stabilize").setup()
+		-- end,
 	},
 	{
 		"folke/todo-comments.nvim",
@@ -413,6 +411,13 @@ return {
 				},
 				ft_ignore = { "neorg" },
 			})
+		end,
+	},
+	{
+		"kwkarlwang/bufresize.nvim",
+		lazy = false,
+		config = function()
+			require("bufresize").setup()
 		end,
 	},
 	{
