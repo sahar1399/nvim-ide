@@ -59,7 +59,6 @@ return {
 					["core.integrations.treesitter"] = {},
 					["core.integrations.telescope"] = {},
 					["core.esupports.indent"] = {},
-					["core.esupports.hop"] = {},
 					["core.scanner"] = {},
 
 					["core.integrations.nvim-cmp"] = {},

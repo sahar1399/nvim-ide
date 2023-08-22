@@ -417,7 +417,28 @@ return {
 		"kwkarlwang/bufresize.nvim",
 		lazy = false,
 		config = function()
-			require("bufresize").setup()
+			local opts = { noremap = true, silent = true }
+			require("bufresize").setup({
+				register = {
+					keys = {
+						{ "n", "<C-w><", "<C-w><", opts },
+						{ "n", "<C-w>>", "<C-w>>", opts },
+						{ "n", "<C-w>+", "<C-w>+", opts },
+						{ "n", "<C-w>-", "<C-w>-", opts },
+						{ "n", "<C-w>_", "<C-w>_", opts },
+						{ "n", "<C-w>=", "<C-w>=", opts },
+						{ "n", "<C-w>|", "<C-w>|", opts },
+						{ "", "<LeftRelease>", "<LeftRelease>", opts },
+						{ "i", "<LeftRelease>", "<LeftRelease><C-o>", opts },
+					},
+					trigger_events = { "BufWinEnter", "WinEnter", "VimResized" },
+				},
+				resize = {
+					keys = {},
+					trigger_events = { "VimResized" },
+					increment = 1,
+				},
+			})
 		end,
 	},
 	{

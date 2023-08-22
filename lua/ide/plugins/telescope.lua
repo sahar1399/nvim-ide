@@ -20,7 +20,6 @@ return {
 				"nvim-telescope/telescope-fzf-native.nvim",
 				build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 			},
-			"folke/noice.nvim",
 		},
 		lazy = true,
 		keys = {
@@ -245,16 +244,9 @@ return {
 				mode = "n",
 				desc = "Search in Man Pages",
 			},
-			{
-				"<leader>fn",
-				"<cmd>Telescope noice<CR>",
-				mode = "n",
-				desc = "Search in Noice",
-			},
 		},
 		config = function()
 			local telescope = require("telescope")
-
 			local actions = require("telescope.actions")
 
 			telescope.setup({
@@ -315,14 +307,25 @@ return {
 					},
 				},
 				pickers = {},
-				extensions = {},
+				extensions = {
+					ast_grep = {
+						command = {
+							"sg",
+							"--json=stream",
+						}, -- must have --json=stream
+						grep_open_files = false, -- search in opened files
+						lang = nil, -- string value, specify language for ast-grep `nil` for default
+					},
+				},
 			})
-
-			require("telescope").load_extension("noice")
 		end,
 	},
 	{
 		"AckslD/nvim-neoclip.lua",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
+
 		lazy = true,
 		keys = {
 			{
@@ -337,9 +340,6 @@ return {
 				mode = "n",
 				desc = "Search In Macros",
 			},
-		},
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
 		},
 		config = function()
 			require("neoclip").setup({
@@ -407,6 +407,10 @@ return {
 	},
 	{
 		"lpoto/telescope-docker.nvim",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
+
 		lazy = true,
 		keys = {
 			{
@@ -440,6 +444,10 @@ return {
 	},
 	{
 		"tsakirist/telescope-lazy.nvim",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
+
 		lazy = true,
 		keys = {
 			{
@@ -455,6 +463,10 @@ return {
 	},
 	{
 		"jvgrootveld/telescope-zoxide",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
+
 		lazy = true,
 		keys = {
 			{
@@ -467,6 +479,25 @@ return {
 
 		config = function()
 			require("telescope").load_extension("zoxide")
+		end,
+	},
+	{
+		"Marskey/telescope-sg",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
+
+		lazy = true,
+		keys = {
+			{
+				"<leader>fG",
+				"<cmd>Telescope ast_grep<CR>",
+				mode = "n",
+				desc = "Grep In Files (with ast)",
+			},
+		},
+		config = function()
+			require("telescope").load_extension("ast_grep")
 		end,
 	},
 }

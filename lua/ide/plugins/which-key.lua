@@ -124,19 +124,23 @@ return {
 			["<leader>R"] = {
 				name = "+ HTTP REST",
 			},
-			mode = { "n" },
-		})
-		wk.register({
-			["<leader>t"] = {
-				name = "+ Terminal",
-			},
-			["<leader>g"] = {
-				name = "+ Git",
-			},
-			["<leader>r"] = {
-				name = "+ Refactor",
-			},
-			mode = { "v" },
-		})
-	end,
+      ["gp"] = {
+        name = "+ Preview",
+      },
+
+      mode = { "n" },
+    })
+    wk.register({
+      ["<leader>t"] = {
+        name = "+ Terminal",
+      },
+      ["<leader>g"] = {
+        name = "+ Git",
+      },
+      ["<leader>r"] = {
+        name = "+ Refactor",
+      },
+      mode = { "v" },
+    })
+  end,
 }

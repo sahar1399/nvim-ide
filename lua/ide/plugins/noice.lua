@@ -4,8 +4,15 @@ return {
 	dependencies = {
 		"MunifTanjim/nui.nvim",
 		"rcarriga/nvim-notify",
+		"nvim-telescope/telescope.nvim",
 	},
 	keys = {
+		{
+			"<leader>fn",
+			"<cmd>Telescope noice<CR>",
+			mode = "n",
+			desc = "Search in Noice",
+		},
 		{
 			"<leader>nl",
 			function()
@@ -222,5 +229,7 @@ return {
 			---@type NoiceFormatOptions
 			format = {}, --- @see section on formatting
 		})
+
+    require("telescope").load_extension("noice")
 	end,
 }

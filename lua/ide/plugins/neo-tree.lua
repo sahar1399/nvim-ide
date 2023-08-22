@@ -84,10 +84,10 @@ return {
 							-- filter using buffer options
 							bo = {
 								-- if the file type is one of following, the window will be ignored
-								filetype = { "NvimTree", "neo-tree", "notify", "aerial", "NeogitStatus", "neo-tree", "qf", "Trouble"},
+								filetype = { "NvimTree", "neo-tree", "notify", "aerial", "NeogitStatus", "neo-tree", "qf", "Trouble", "noice"},
 
 								-- if the file type is one of following, the window will be ignored
-								buftype = { "terminal" },
+								buftype = { "terminal", "popup" },
 							},
 
 							-- filter using window options

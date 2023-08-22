@@ -31,7 +31,7 @@ return {
 				desc = "Debug Nearst Test",
 			},
 			{
-				"<leader>to",
+				"<leader>tt",
 				function()
 					require("neotest").summary.open({ enter = true })
 				end,

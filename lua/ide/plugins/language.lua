@@ -141,6 +141,12 @@ return {
 						dependencies = "neovim/nvim-lspconfig",
 					},
 					"nvim-tree/nvim-web-devicons", -- optional dependency
+					{
+						"rmagatti/goto-preview",
+						opts = {
+							opacity = 15, -- 0-100 opacity level of the floating window where 100 is fully transparent.
+						},
+					},
 				},
 				config = function()
 					require("barbecue").setup({
@@ -321,6 +327,7 @@ return {
 			local dap = require("dap")
 			local illuminate = require("illuminate")
 			local navic = require("nvim-navic")
+			local goto_preview = require("goto-preview")
 
 			local on_attach = function(client, bufnr)
 				-- Enable completion triggered by <c-x><c-o>
@@ -337,6 +344,29 @@ return {
 				illuminate.on_attach(client)
 
 				-- TODO: do this to every command
+				if client.server_capabilities.implementationProvider then
+					wk.register({
+						["gpi"] = {
+							function()
+								require("goto-preview").goto_preview_implementation()
+							end,
+							"Preview Implementation",
+							mode = "n",
+							noremap = true,
+							silent = true,
+							buffer = bufnr,
+						},
+						["gi"] = {
+							vim.lsp.buf.implementation,
+							"Go To Implementation",
+							mode = "n",
+							noremap = true,
+							silent = true,
+							buffer = bufnr,
+						},
+					})
+				end
+
 				if client.server_capabilities.definitionProvider then
 					wk.register({
 						["gd"] = {
@@ -347,21 +377,53 @@ return {
 							silent = true,
 							buffer = bufnr,
 						},
+						["gpd"] = {
+							function()
+								require("goto-preview").goto_preview_definition()
+							end,
+							"Preview Definition",
+							mode = "n",
+							noremap = true,
+							silent = true,
+							buffer = bufnr,
+						},
+						["gpt"] = {
+							function()
+								require("goto-preview").goto_preview_type_definition()
+							end,
+							"Preview Type Definition",
+							mode = "n",
+							noremap = true,
+							silent = true,
+							buffer = bufnr,
+						},
+						["gpr"] = {
+							function()
+								require("goto-preview").goto_preview_references()
+							end,
+							"Preview References",
+							mode = "n",
+							noremap = true,
+							silent = true,
+							buffer = bufnr,
+						},
 					})
 				end
 
 				wk.register({
-					["gD"] = {
-						vim.lsp.buf.declaration,
-						"Go To Declaration",
+					["gpc"] = {
+						function()
+							require("goto-preview").close_all_win()
+						end,
+						"Close all Previews",
 						mode = "n",
 						noremap = true,
 						silent = true,
 						buffer = bufnr,
 					},
-					["gi"] = {
-						vim.lsp.buf.implementation,
-						"Go To Implementation",
+					["gD"] = {
+						vim.lsp.buf.declaration,
+						"Go To Declaration",
 						mode = "n",
 						noremap = true,
 						silent = true,
@@ -445,7 +507,6 @@ return {
 				on_attach = on_attach,
 				root_dir = require("null-ls.utils").root_pattern(".git"),
 			})
-
 		end,
 	},
 	{
