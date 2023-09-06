@@ -1,8 +1,5 @@
 local agitator_opts = { silent = true }
 
-local disable_blankline = require("ide.plugins.view").disable_blankline
-local enable_blankline = require("ide.plugins.view").enable_blankline
-
 return {
 	{
 		"lewis6991/gitsigns.nvim",
@@ -190,14 +187,6 @@ return {
 					-- Only applies when use_icons is true.
 					folder_closed = "",
 					folder_open = "",
-				},
-				hooks = {
-					diff_buf_win_enter = disable_blankline,
-					diff_buf_read = disable_blankline,
-					view_enter = disable_blankline,
-					view_opened = disable_blankline,
-					view_leave = enable_blankline,
-					view_closed = enable_blankline,
 				},
 				signs = {
 					fold_closed = "",

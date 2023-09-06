@@ -10,33 +10,7 @@ local function getnavic()
 	end
 end
 
-local function enable_blankline()
-	vim.opt.list = true
-
-	require("indent_blankline").setup({
-		space_char_blankline = " ",
-		char_highlight_list = {
-			"IndentBlanklineIndent1",
-			"IndentBlanklineIndent2",
-			"IndentBlanklineIndent3",
-			"IndentBlanklineIndent4",
-			"IndentBlanklineIndent5",
-			"IndentBlanklineIndent6",
-		},
-	})
-
-	require("indent_blankline.commands").enable()
-end
-
-local function disable_blankline()
-	vim.opt_local.list = false
-
-	require("indent_blankline.commands").disable()
-end
-
 return {
-	enable_blankline = enable_blankline,
-	disable_blankline = disable_blankline,
 	{
 		"marko-cerovac/material.nvim",
 		lazy = false,
@@ -322,20 +296,110 @@ return {
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		lazy = true,
-		event = "BufRead *",
+		branch = "v3",
+		lazy = false,
 		config = function()
-			vim.cmd([[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]])
-			vim.cmd([[highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine]])
-			vim.cmd([[highlight IndentBlanklineIndent3 guifg=#98C379 gui=nocombine]])
-			vim.cmd([[highlight IndentBlanklineIndent4 guifg=#56B6C2 gui=nocombine]])
-			vim.cmd([[highlight IndentBlanklineIndent5 guifg=#61AFEF gui=nocombine]])
-			vim.cmd([[highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine]])
+			vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
+			vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
+			vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
+			vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
+			vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
+			vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
+			vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
 
-			vim.opt.listchars:append("space:⋅")
-			vim.opt.listchars:append("eol:↴")
-
-			enable_blankline()
+			require("ibl").setup({
+				enabled = true,
+				debounce = 50,
+				viewport_buffer = {
+					min = 30,
+					max = 500,
+				},
+				indent = {
+					char = "▎",
+					tab_char = nil,
+					highlight = {
+						"RainbowRed",
+						"RainbowYellow",
+						"RainbowBlue",
+						"RainbowOrange",
+						"RainbowGreen",
+						"RainbowViolet",
+						"RainbowCyan",
+					},
+					smart_indent_cap = true,
+					priority = 1,
+				},
+				whitespace = {
+					highlight = "Whitespace",
+					remove_blankline_trail = true,
+				},
+				scope = {
+					enabled = false,
+					show_start = true,
+					show_end = true,
+					injected_languages = true,
+					-- highlight = "LineNr",
+					priority = 1024,
+					exclude = {
+						language = {
+							"markdown",
+							"markdown_inline",
+							"comment",
+							"jsdoc",
+							"org",
+						},
+						node_type = {
+							["*"] = {
+								"source_file",
+								"comment",
+								"line_comment",
+							},
+							rust = {
+								"use_declaration",
+								"identifier",
+								"scoped_identifier",
+							},
+							lua = {
+								"chunk",
+								"block",
+							},
+							typescript = {
+								"identifier",
+								"import_statement",
+								"program",
+							},
+							python = {
+								"module",
+							},
+							html = {
+								"fragment",
+							},
+							bash = {
+								"program",
+							},
+						},
+					},
+				},
+				exclude = {
+					filetypes = {
+						"lspinfo",
+						"packer",
+						"checkhealth",
+						"help",
+						"man",
+						"gitcommit",
+						"TelescopePrompt",
+						"TelescopeResults",
+						"",
+					},
+					buftypes = {
+						"terminal",
+						"nofile",
+						"quickfix",
+						"prompt",
+					},
+				},
+			})
 		end,
 	},
 	{

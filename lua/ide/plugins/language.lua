@@ -348,7 +348,7 @@ return {
 					wk.register({
 						["gpi"] = {
 							function()
-								require("goto-preview").goto_preview_implementation()
+								goto_preview.goto_preview_implementation()
 							end,
 							"Preview Implementation",
 							mode = "n",
@@ -379,7 +379,7 @@ return {
 						},
 						["gpd"] = {
 							function()
-								require("goto-preview").goto_preview_definition()
+								goto_preview.goto_preview_definition()
 							end,
 							"Preview Definition",
 							mode = "n",
@@ -389,7 +389,7 @@ return {
 						},
 						["gpt"] = {
 							function()
-								require("goto-preview").goto_preview_type_definition()
+								goto_preview.goto_preview_type_definition()
 							end,
 							"Preview Type Definition",
 							mode = "n",
@@ -399,7 +399,7 @@ return {
 						},
 						["gpr"] = {
 							function()
-								require("goto-preview").goto_preview_references()
+								goto_preview.goto_preview_references()
 							end,
 							"Preview References",
 							mode = "n",
@@ -413,7 +413,7 @@ return {
 				wk.register({
 					["gpc"] = {
 						function()
-							require("goto-preview").close_all_win()
+							goto_preview.close_all_win()
 						end,
 						"Close all Previews",
 						mode = "n",
@@ -598,7 +598,6 @@ return {
 			local aerial = require("aerial")
 
 			aerial.setup({
-				backends = { "treesitter", "lsp", "markdown", "man", "norg" },
 				layout = {
 					-- These control the width of the aerial window.
 					-- They can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
@@ -632,7 +631,7 @@ return {
 				--   unfocus       - close aerial when you leave the original source window
 				--   switch_buffer - close aerial when you change buffers in the source window
 				--   unsupported   - close aerial when attaching to a buffer that has no symbol source
-				close_automatic_events = { "unsupported" },
+				close_automatic_events = { "unsupported", "unfocus" },
 				-- Keymaps in aerial window. Can be any value that `vim.keymap.set` accepts OR a table of keymap
 				-- options with a `callback` (e.g. { callback = function() ... end, desc = "", nowait = true })
 				-- Additionally, if it is a string that matches "actions.<name>",
@@ -919,10 +918,10 @@ return {
 							silent = true,
 						},
 					})
-
-					require("telescope").load_extension("aerial")
 				end,
 			})
+
+      require("telescope").load_extension("aerial")
 		end,
 	},
 	{
