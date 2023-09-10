@@ -35,7 +35,7 @@ local options = {
 	foldexpr = "nvim_treesitter#foldexpr()",
 	foldlevel = 99,
 
-	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
+	signcolumn = "yes:2", -- always show the sign column, otherwise it would shift the text each time
 	wrap = false, -- display lines as one long line
 	linebreak = true, -- companion to wrap, don't split words
 	scrolloff = 15, -- minimal number of screen lines to keep above and below the cursor

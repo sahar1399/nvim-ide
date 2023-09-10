@@ -163,7 +163,7 @@ return {
 				local bm = require("bookmarks")
 
 				bm.setup({
-					-- sign_priority = 8,  --set bookmark sign priority to cover other sign
+					sign_priority = 80,  --set bookmark sign priority to cover other sign
 					save_file = bookmarks_file_path, -- bookmarks save file path
 
 					keywords = {

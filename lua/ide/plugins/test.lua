@@ -54,7 +54,9 @@ return {
 				adapters = {
 					require("neotest-python")({
 						dap = { justMyCode = false },
-						args = { "--cov=." },
+						args = {
+							-- "--cov=."
+						},
 					}),
 					require("neotest-plenary"),
 				},
