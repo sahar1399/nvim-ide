@@ -58,3 +58,4 @@ vim.opt.formatoptions:remove({ "c", "r", "o" }) -- don't insert the current comm
 vim.opt.fillchars:append("eob: ")
 
 vim.cmd([[ packadd cfilter ]])
+vim.cmd([[ nmap cp :let @+ = "{/ " .. expand("%:p")..":"..line(".") .. "}"<cr> ]])

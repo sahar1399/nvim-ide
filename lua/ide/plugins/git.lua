@@ -787,7 +787,7 @@ return {
 				mode = "n",
 				desc = "Blame Commit For Line",
 			},
-		
+
 			{
 				"<leader>gb",
 				function()
@@ -816,5 +816,26 @@ return {
 		-- 		desc = "Git Blame",
 		-- 	},
 		-- },
+	},
+	{
+		"ThePrimeagen/git-worktree.nvim",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
+		lazy = true,
+		keys = {
+			{
+				"<leader>gw",
+				function()
+					require("telescope").extensions.git_worktree.git_worktrees()
+				end,
+				mode = "n",
+				desc = "Switch git worktrees",
+			},
+		},
+		opts = {},
+		config = function()
+			require("telescope").load_extension("git_worktree")
+		end,
 	},
 }

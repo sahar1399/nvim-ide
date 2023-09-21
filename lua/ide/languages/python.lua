@@ -24,16 +24,16 @@ function Python:setup(language_utils)
 		single_file_support = true,
 	})
 
-	language_utils.lspconfig.ruff_lsp.setup({
-		on_attach = language_utils.on_attach,
-		capabilities = language_utils.capabilities,
-		flags = language_utils.lsp_flags,
-		settings = {
-			-- Any extra CLI arguments for `ruff` go here.
-			args = {},
-		},
-	})
-
+	-- language_utils.lspconfig.ruff_lsp.setup({
+	-- 	on_attach = language_utils.on_attach,
+	-- 	capabilities = language_utils.capabilities,
+	-- 	flags = language_utils.lsp_flags,
+	-- 	settings = {
+	-- 		-- Any extra CLI arguments for `ruff` go here.
+	-- 		args = {},
+	-- 	},
+	-- })
+	--
 	-- local util = require("lspconfig").util
 	--
 	-- language_utils.lspconfig.pylyzer.setup({

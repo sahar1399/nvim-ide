@@ -7,6 +7,10 @@ return {
 		config = function()
 			require("dap.ext.vscode").load_launchjs()
       vim.fn.sign_define('DapBreakpoint', {text='🔴', texthl='red', linehl='', numhl=''})
+      vim.fn.sign_define('DapBreakpointRejected', {text='⭕', texthl='red', linehl='', numhl=''})
+      vim.fn.sign_define('DapStopped', {text='', texthl='red', linehl='', numhl=''})
+      vim.fn.sign_define('DapBreakpointCondition', {text='❓', texthl='red', linehl='', numhl=''})
+      vim.fn.sign_define('DapLogPoint', {text='❓', texthl='red', linehl='', numhl=''})
 		end,
 		dependencies = {
 			"mfussenegger/nvim-dap-python",
