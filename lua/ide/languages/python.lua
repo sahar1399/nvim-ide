@@ -101,7 +101,7 @@ function Python:setup(language_utils)
 				},
 			}),
 			language_utils.null_ls.builtins.formatting.isort,
-			language_utils.null_ls.builtins.formatting.usort,
+			-- language_utils.null_ls.builtins.formatting.usort,
 			language_utils.null_ls.builtins.formatting.autoflake,
 			-- language_utils.null_ls.builtins.diagnostics.flake8,
 			language_utils.null_ls.builtins.code_actions.refactoring,

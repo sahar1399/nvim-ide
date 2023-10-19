@@ -82,6 +82,16 @@ return {
             toggle = { key = "<cr>", mode = "n" },
           },
         },
+        editor = {
+          -- mappings for the buffer
+          mappings = {
+            -- run what's currently selected on the active connection
+            run_selection = { key = "BB", mode = "v" },
+            -- run the whole file on the active connection
+            run_file = { key = "BB", mode = "n" },
+          },
+        },
+
         result = {
           -- mappings for the buffer
           mappings = {

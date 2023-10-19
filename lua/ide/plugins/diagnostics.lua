@@ -87,19 +87,4 @@ return {
 			require("lsp_lines").setup()
 		end,
 	},
-	{
-		"rcarriga/nvim-notify",
-		lazy = false,
-		config = function()
-			local notify = require("notify")
-
-			notify.setup({
-				stages = "fade_in_slide_out",
-				background_colour = "FloatShadow",
-				timeout = 3 * 60,
-			})
-
-			vim.notify = notify
-		end,
-	},
 }

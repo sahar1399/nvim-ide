@@ -24,6 +24,7 @@ return {
 			"hrsh7th/cmp-cmdline",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"Dosx001/cmp-commit",
+			"rcarriga/cmp-dap",
 			"davidsierradz/cmp-conventionalcommits",
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
@@ -43,6 +44,9 @@ return {
 			})
 
 			cmp.setup({
+				enabled = function()
+					return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
+				end,
 				snippet = {
 					-- REQUIRED - you must specify a snippet engine
 					expand = function(args)
@@ -104,6 +108,12 @@ return {
 				mapping = cmp.mapping.preset.cmdline(),
 				sources = {
 					{ name = "buffer" },
+				},
+			})
+
+			require("cmp").setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+				sources = {
+					{ name = "dap" },
 				},
 			})
 
@@ -604,7 +614,7 @@ return {
 			local wk = require("which-key")
 			local aerial = require("aerial")
 
-      -- TODO: restore config after goto definition is fixed on aerial + splits/quickfix.
+			-- TODO: restore config after goto definition is fixed on aerial + splits/quickfix.
 			aerial.setup({
 				-- layout = {
 				-- 	-- These control the width of the aerial window.
