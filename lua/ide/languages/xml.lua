@@ -9,7 +9,7 @@ function XML:setup(language_utils)
 
   return LanguageResults.new({
     null_ls_sources = {
-      language_utils.null_ls.builtins.formatting.xmlformatter,
+      -- language_utils.null_ls.builtins.formatting.xmlformatter,
     },
   })
 end

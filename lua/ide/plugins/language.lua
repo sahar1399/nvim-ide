@@ -503,7 +503,7 @@ return {
 
 			local null_ls_sources = {}
 			for language_name, language in pairs(languages) do
-				print("configuring " .. language_name)
+				-- print("configuring " .. language_name)
 				local result = language:setup(language_utils)
 				for _, v in ipairs(result.null_ls_sources) do
 					table.insert(null_ls_sources, v)

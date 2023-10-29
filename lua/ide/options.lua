@@ -36,7 +36,7 @@ local options = {
 	foldlevel = 99,
 
 	signcolumn = "yes:2", -- always show the sign column, otherwise it would shift the text each time
-	wrap = false, -- display lines as one long line
+	wrap = vim.api.nvim_win_get_option(0, "diff") or false, -- display lines as one long line
 	linebreak = true, -- companion to wrap, don't split words
 	scrolloff = 15, -- minimal number of screen lines to keep above and below the cursor
 	sidescrolloff = 15, -- minimal number of screen columns either side of cursor if wrap is `false`
@@ -45,17 +45,32 @@ local options = {
 	spelllang = "en_us",
 	spell = false,
 	spelloptions = "camel",
+	diffopt = "filler,context:5,linematch:500,followwrap,indent-heuristic,algorithm:patience",
 }
 
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
--- vim.opt.shortmess = "ilmnrx"                        -- flags to shorten vim messages, see :help 'shortmess'
-vim.opt.shortmess:append("c") -- don't give |ins-completion-menu| messages
+vim.opt.shortmess = "Iilmnrx" -- flags to shorten vim messages, see :help 'shortmess'
+--vim.opt.shortmess:append("c") -- don't give |ins-completion-menu| messages
+--vim.opt.shortmess:append("I") -- don't open new buffer on startup
 vim.opt.iskeyword:append("-") -- hyphenated words recognized by searches
 vim.opt.formatoptions:remove({ "c", "r", "o" }) -- don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode.
 vim.opt.fillchars:append("eob: ")
 
 vim.cmd([[ packadd cfilter ]])
 vim.cmd([[ nmap cp :let @+ = "{/ " .. expand("%:p")..":"..line(".") .. "}"<cr> ]])
+
+vim.cmd([[
+function! CleanNoNameEmptyBuffers()
+    let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val) < 0 && (getbufline(v:val, 1, "$") == [""])')
+    if !empty(buffers)
+        exe 'bd '.join(buffers, ' ')
+    else
+        echo 'No buffer deleted'
+    endif
+endfunction
+
+nnoremap <silent> ,C :call CleanNoNameEmptyBuffers()<CR>
+]])

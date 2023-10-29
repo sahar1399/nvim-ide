@@ -689,7 +689,7 @@ return {
 	},
 	{
 		"TimUntersberger/neogit",
-		lazy = true,
+		lazy = false,
 		cmd = { "G" },
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -838,4 +838,18 @@ return {
 			require("telescope").load_extension("git_worktree")
 		end,
 	},
+	{
+		-- "chrisbra/vim-diff-enhanced",
+		--     lazy = false,
+		-- config = function()
+		-- 	vim.cmd([[
+		--       if &diff
+		--            let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
+		--        endif
+		--       ]])
+		-- end,
+	},
+  {
+    "rickhowe/diffchar.vim"
+  }
 }
