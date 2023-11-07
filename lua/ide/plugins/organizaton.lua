@@ -4,8 +4,11 @@ return {
 		build = ":Neorg sync-parsers",
 
 		commit = "99f33e08fe074126b491e02854e5d00dab10f5ae",
+		init = function()
+			vim.o.conceallevel = 3
+		end,
 
-		lazy = true,
+		lazy = vim.g.non_modified ~= true,
 		ft = "norg",
 
 		dependencies = {
@@ -26,6 +29,11 @@ return {
 						config = {
 							markup_preset = "brave",
 							icon_preset = "diamond",
+							icons = {
+								code_block = {
+									conceal = true,
+								},
+							},
 						},
 					},
 
@@ -75,6 +83,9 @@ return {
 					["core.summary"] = {},
 
 					["core.defaults"] = {}, -- Loads default behaviour
+
+					["core.neorgcmd.commands.module.list"] = {},
+					["core.neorgcmd.commands.module.load"] = {},
 				},
 			})
 
@@ -160,6 +171,20 @@ return {
 					noremap = true,
 				})
 			end)
+
+			if vim.g.non_modified then
+				-- concealer only works if there is more then one buffer or a reize of the terminal is occured
+				-- this workarround solvesit
+				vim.api.nvim_create_autocmd({ "VimEnter" }, {
+					pattern = "*",
+					callback = function()
+						vim.cmd([[
+            :Neorg toggle-concealer
+            :Neorg toggle-concealer
+            ]])
+					end,
+				})
+			end
 		end,
 	},
 }

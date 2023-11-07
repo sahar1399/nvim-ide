@@ -12,6 +12,10 @@ return {
 				event = "VeryLazy",
 				version = "2.*",
 				config = function()
+					if vim.g.non_modified then
+						return
+					end
+
 					require("window-picker").setup({
 						-- type of hints you want to get
 						-- following types are supported
@@ -148,6 +152,9 @@ return {
 			{
 				"<leader>B",
 				function()
+					if vim.g.non_modified then
+						return
+					end
 					vim.cmd([[:Neotree source=buffers]])
 				end,
 				mode = "n",
@@ -156,6 +163,9 @@ return {
 			{
 				"<leader>j",
 				function()
+					if vim.g.non_modified then
+						return
+					end
 					vim.cmd([[:Neotree reveal_force_cwd]])
 				end,
 				mode = "n",
@@ -164,6 +174,9 @@ return {
 			{
 				"<leader>c",
 				function()
+					if vim.g.non_modified then
+						return
+					end
 					vim.cmd([[:NeoTreeClose]])
 				end,
 				mode = "n",
@@ -171,6 +184,10 @@ return {
 			},
 		},
 		config = function()
+			if vim.g.non_modified then
+				return
+			end
+
 			-- Unless you are still migrating, remove the deprecated commands from v1.x
 			vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 

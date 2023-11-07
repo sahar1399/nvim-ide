@@ -5,6 +5,10 @@ return {
 		"lewis6991/gitsigns.nvim",
 		lazy = false,
 		config = function()
+			if vim.g.non_modified then
+				return
+			end
+
 			require("gitsigns").setup({
 				signs = {
 					add = { text = "│" },
@@ -166,6 +170,10 @@ return {
 			},
 		},
 		config = function()
+			if vim.g.non_modified then
+				return
+			end
+
 			local actions = require("diffview.actions")
 
 			vim.cmd([[highlight DiffAdd gui=none guifg=none guibg=#103235]])
@@ -697,6 +705,10 @@ return {
 			"ttibsi/pre-commit.nvim",
 		},
 		config = function()
+			if vim.g.non_modified then
+				return
+			end
+
 			local neogit = require("neogit")
 
 			neogit.setup({
@@ -849,7 +861,7 @@ return {
 		--       ]])
 		-- end,
 	},
-  {
-    "rickhowe/diffchar.vim"
-  }
+	{
+		"rickhowe/diffchar.vim",
+	},
 }

@@ -24,6 +24,10 @@ return {
 			},
 		},
 		config = function()
+			if vim.g.non_modified then
+				return
+			end
+
 			require("trouble").setup({
 				position = "bottom", -- position of the list can be: bottom, top, left, right
 				height = 10, -- height of the trouble list when position is top or bottom
@@ -82,6 +86,10 @@ return {
 			{ "<Leader>o", "<cmd>lua require('lsp_lines').toggle()<cr>", mode = "n", desc = "Toggle lsp_lines" },
 		},
 		config = function()
+			if vim.g.non_modified then
+				return
+			end
+
 			vim.diagnostic.config({ virtual_lines = false })
 
 			require("lsp_lines").setup()

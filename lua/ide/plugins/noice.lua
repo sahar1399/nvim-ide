@@ -3,7 +3,18 @@ return {
 	lazy = false,
 	dependencies = {
 		"MunifTanjim/nui.nvim",
-		"rcarriga/nvim-notify",
+		{
+			"rcarriga/nvim-notify",
+			config = function()
+				if vim.g.non_modified then
+					return
+				end
+
+				require("notify").setup({
+					background_colour = "#000000",
+				})
+			end,
+		},
 		"nvim-telescope/telescope.nvim",
 	},
 	keys = {
@@ -32,6 +43,10 @@ return {
 		},
 	},
 	config = function()
+		if vim.g.non_modified then
+			return
+		end
+
 		require("noice").setup({
 			cmdline = {
 				enabled = true, -- enables the Noice cmdline UI
@@ -230,6 +245,6 @@ return {
 			format = {}, --- @see section on formatting
 		})
 
-    require("telescope").load_extension("noice")
+		require("telescope").load_extension("noice")
 	end,
 }

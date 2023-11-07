@@ -66,6 +66,10 @@ return {
 			"nvim-neorg/neorg",
 		},
 		config = function()
+			if vim.g.non_modified then
+				return
+			end
+
 			require("image").setup({
 				backend = "kitty",
 				integrations = {

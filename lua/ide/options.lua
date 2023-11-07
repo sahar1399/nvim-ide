@@ -42,9 +42,9 @@ local options = {
 	sidescrolloff = 15, -- minimal number of screen columns either side of cursor if wrap is `false`
 	guifont = "monospace:h17", -- the font used in graphical neovim applications
 	whichwrap = "bs<>[]hl", -- which "horizontal" keys are allowed to travel to prev/next line
-	spelllang = "en_us",
-	spell = false,
-	spelloptions = "camel",
+	-- spelllang = "en_us",
+	-- spell = false,
+	-- spelloptions = "camel",
 	diffopt = "filler,context:5,linematch:500,followwrap,indent-heuristic,algorithm:patience",
 }
 
@@ -74,3 +74,14 @@ endfunction
 
 nnoremap <silent> ,C :call CleanNoNameEmptyBuffers()<CR>
 ]])
+
+if vim.g.non_modified then
+	vim.cmd([[
+      set noshowmode
+      set noruler
+      set laststatus=0
+      set noshowcmd
+      set cmdheight=0
+]])
+	vim.opt.shortmess = "cFWI"
+end

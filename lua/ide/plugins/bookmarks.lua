@@ -159,7 +159,6 @@ return {
 				end
 
 				local bookmarks_file_path = vim.fn.expand(proj_dir .. "/.bookmarks.json")
-				print(bookmarks_file_path)
 				local bm = require("bookmarks")
 
 				bm.setup({

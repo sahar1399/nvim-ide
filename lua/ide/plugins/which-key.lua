@@ -2,6 +2,10 @@ return {
 	"folke/which-key.nvim",
 	lazy = false,
 	config = function()
+		if vim.g.non_modified then
+			return
+		end
+
 		vim.o.timeout = true
 		vim.o.timeoutlen = 300
 
@@ -124,23 +128,23 @@ return {
 			["<leader>R"] = {
 				name = "+ HTTP REST",
 			},
-      ["gp"] = {
-        name = "+ Preview",
-      },
+			["gp"] = {
+				name = "+ Preview",
+			},
 
-      mode = { "n" },
-    })
-    wk.register({
-      ["<leader>t"] = {
-        name = "+ Terminal",
-      },
-      ["<leader>g"] = {
-        name = "+ Git",
-      },
-      ["<leader>r"] = {
-        name = "+ Refactor",
-      },
-      mode = { "v" },
-    })
-  end,
+			mode = { "n" },
+		})
+		wk.register({
+			["<leader>t"] = {
+				name = "+ Terminal",
+			},
+			["<leader>g"] = {
+				name = "+ Git",
+			},
+			["<leader>r"] = {
+				name = "+ Refactor",
+			},
+			mode = { "v" },
+		})
+	end,
 }
