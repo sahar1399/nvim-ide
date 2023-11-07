@@ -66,7 +66,6 @@ return {
 					["core.autocommands"] = {},
 					["core.integrations.treesitter"] = {},
 					["core.integrations.telescope"] = {},
-					["core.esupports.indent"] = {},
 					["core.scanner"] = {},
 
 					["core.integrations.nvim-cmp"] = {},

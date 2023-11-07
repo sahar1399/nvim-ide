@@ -339,7 +339,6 @@ return {
 				pathStrict = true,
 			})
 
-			local wk = require("which-key")
 			local null_ls = require("null-ls")
 			local lspconfig = require("lspconfig")
 			local dap = require("dap")
@@ -360,6 +359,12 @@ return {
 				end
 
 				illuminate.on_attach(client)
+
+				if vim.g.non_modified then
+					return
+				end
+
+				local wk = require("which-key")
 
 				-- TODO: do this to every command
 				if client.server_capabilities.implementationProvider then
@@ -623,7 +628,6 @@ return {
 			},
 		},
 		config = function()
-			local wk = require("which-key")
 			local aerial = require("aerial")
 
 			-- TODO: restore config after goto definition is fixed on aerial + splits/quickfix.
@@ -961,5 +965,6 @@ return {
 	},
 	{
 		"towolf/vim-helm",
-	},
+	  "towolf/vim-helm",
+  },
 }

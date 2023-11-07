@@ -84,4 +84,5 @@ if vim.g.non_modified then
       set cmdheight=0
 ]])
 	vim.opt.shortmess = "cFWI"
+	vim.opt.signcolumn = "no"
 end
