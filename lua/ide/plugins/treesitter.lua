@@ -9,6 +9,7 @@ return {
 					require("nvim-dap-repl-highlights").setup()
 				end,
 			},
+			"JoosepAlviste/nvim-ts-context-commentstring",
 		},
 		lazy = false,
 		config = function()
@@ -24,6 +25,10 @@ return {
 				ignore_install = { "javascript" },
 				---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
 				-- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+				--
+				context_commentstring = {
+					enable = true,
+				},
 				yati = {
 					enable = true,
 					-- Disable by languages, see `Supported languages`

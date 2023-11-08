@@ -5,6 +5,7 @@ else
 	vim.g.non_modified = true
 	vim.cmd([[
     :cabbrev q q!
+    :cabbrev q!! q!
   ]])
 end
 

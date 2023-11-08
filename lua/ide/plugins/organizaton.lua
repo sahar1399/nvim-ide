@@ -175,7 +175,7 @@ return {
 				-- concealer only works if there is more then one buffer or a reize of the terminal is occured
 				-- this workarround solvesit
 				vim.api.nvim_create_autocmd({ "VimEnter" }, {
-					pattern = "*",
+					pattern = "norg",
 					callback = function()
 						vim.cmd([[
             :Neorg toggle-concealer
