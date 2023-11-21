@@ -296,7 +296,8 @@ return {
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		branch = "v3",
+		main = "ibl",
+		branch = "master",
 		lazy = false,
 		config = function()
 			vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })

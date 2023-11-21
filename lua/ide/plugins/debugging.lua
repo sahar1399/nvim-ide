@@ -82,7 +82,7 @@ return {
                   { id = "stacks",  size = 0.3 },
                   { id = "watches", size = 0.2 },
                 },
-                size = 0.4, -- 40 columns
+                size = 0.2, -- 40 columns
                 position = "left",
               },
               {
@@ -90,7 +90,7 @@ return {
                   { id = "repl",    size = 0.7 },
                   { id = "console", size = 0.3 },
                 },
-                size = 0.5, -- 25% of total lines
+                size = 0.25, -- 25% of total lines
                 position = "bottom",
               },
             },

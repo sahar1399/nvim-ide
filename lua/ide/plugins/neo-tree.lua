@@ -150,6 +150,28 @@ return {
 		},
 		keys = {
 			{
+				"<leader>G",
+				function()
+					if vim.g.non_modified then
+						return
+					end
+					vim.cmd([[:Neotree source=git_status git_base=develop]])
+				end,
+				mode = "n",
+				desc = "Open Git File Tree",
+			},
+			{
+				"<leader>F",
+				function()
+					if vim.g.non_modified then
+						return
+					end
+					vim.cmd([[:Neotree source=filesystem]])
+				end,
+				mode = "n",
+				desc = "Open File Tree",
+			},
+			{
 				"<leader>B",
 				function()
 					if vim.g.non_modified then
@@ -158,7 +180,7 @@ return {
 					vim.cmd([[:Neotree source=buffers]])
 				end,
 				mode = "n",
-				desc = "Open File Tree",
+				desc = "Open Buffer Tree",
 			},
 			{
 				"<leader>j",
@@ -166,22 +188,22 @@ return {
 					if vim.g.non_modified then
 						return
 					end
-					vim.cmd([[:Neotree reveal_force_cwd]])
+					vim.cmd([[:Neotree reveal_force_cwd last]])
 				end,
 				mode = "n",
 				desc = "Focus File In File Tree",
 			},
-			{
-				"<leader>c",
-				function()
-					if vim.g.non_modified then
-						return
-					end
-					vim.cmd([[:NeoTreeClose]])
-				end,
-				mode = "n",
-				desc = "Close File Tree",
-			},
+			-- {
+			-- 	"<leader>c",
+			-- 	function()
+			-- 		if vim.g.non_modified then
+			-- 			return
+			-- 		end
+			-- 		vim.cmd([[:NeoTreeClose]])
+			-- 	end,
+			-- 	mode = "n",
+			-- 	desc = "Close File Tree",
+			-- },
 		},
 		config = function()
 			if vim.g.non_modified then
@@ -296,11 +318,11 @@ return {
 						["t"] = "open_tabnew",
 						-- ["<cr>"] = "open_drop",
 						-- ["t"] = "open_tab_drop",
-						["w"] = "nothing", -- nothing is illegal. its in order to disable this
+						["w"] = "noop", -- nothing is illegal. its in order to disable this
 						--["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
 						["C"] = "close_node",
 						-- ['C'] = 'close_all_subnodes',
-						["z"] = "nothing", -- nothing is illegal. its in order to disable this
+						["z"] = "noop", -- nothing is illegal. its in order to disable this
 						--["Z"] = "expand_all_nodes",
 						["a"] = {
 							"add",
@@ -373,7 +395,7 @@ return {
 						mappings = {
 							["<bs>"] = "navigate_up",
 							["."] = "set_root",
-							["/"] = "nothing", -- nothing is illegal. its in order to disable this
+							["/"] = "noop", -- nothing is illegal. its in order to disable this
 							["H"] = "toggle_hidden",
 							["f"] = "fuzzy_finder",
 							["D"] = "fuzzy_finder_directory",
@@ -412,15 +434,16 @@ return {
 				},
 				git_status = {
 					window = {
-						position = "float",
+						position = "left",
+						-- position = "float",
 						mappings = {
-							["A"] = "git_add_all",
-							["gu"] = "git_unstage_file",
-							["ga"] = "git_add_file",
-							["gr"] = "git_revert_file",
-							["gc"] = "git_commit",
-							["gp"] = "git_push",
-							["gg"] = "git_commit_and_push",
+							["A"] = "noop", -- "git_add_all",
+							["gu"] = "noop", -- "git_unstage_file",
+							["ga"] = "noop", -- "git_add_file",
+							["gr"] = "noop", -- "git_revert_file",
+							["gc"] = "noop", -- "git_commit",
+							["gp"] = "noop", -- "git_push",
+							["gg"] = "noop", -- "git_commit_and_push",
 						},
 					},
 				},

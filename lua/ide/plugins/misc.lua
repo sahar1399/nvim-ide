@@ -236,4 +236,5 @@ return {
 
 		opts = {},
 	},
+	{ "mipmip/vim-scimark" },
 }

@@ -632,6 +632,13 @@ return {
 
 			-- TODO: restore config after goto definition is fixed on aerial + splits/quickfix.
 			aerial.setup({
+				layout = {
+					win_opts = {
+						relativenumber = true,
+						number = true,
+					},
+				},
+        disable_max_lines = 20000,
 				-- layout = {
 				-- 	-- These control the width of the aerial window.
 				-- 	-- They can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
@@ -965,6 +972,6 @@ return {
 	},
 	{
 		"towolf/vim-helm",
-	  "towolf/vim-helm",
-  },
+		"towolf/vim-helm",
+	},
 }

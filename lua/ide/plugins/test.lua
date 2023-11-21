@@ -59,7 +59,7 @@ return {
 							"--log-level",
 							"DEBUG",
 						},
-						python = "src/.venv/bin/python",
+						python = ".venv/bin/python",
 					}),
 					require("neotest-plenary"),
 				},
@@ -107,7 +107,7 @@ return {
 						target = "t",
 						watch = "W",
 					},
-					open = "botright vsplit",
+          open = "botright vsplit | vertical resize 50",
 				},
 			})
 		end,
