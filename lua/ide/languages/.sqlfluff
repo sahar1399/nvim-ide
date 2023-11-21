@@ -1,3 +1,10 @@
+[sqlfluff]
+
+max_line_length = 150
+large_file_skip_char_limit = 0
+large_file_skip_byte_limit = 0
+exclude_rules = structure.column_order
+
 [sqlfluff:indentation]
 indented_joins = True
 

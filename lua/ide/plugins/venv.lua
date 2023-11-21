@@ -20,11 +20,14 @@ return {
 	},
 	config = function()
 		local venv_selector = require("venv-selector")
+		local venv_search_path = vim.fn.findfile("pyproject.toml", vim.g.wenrix_workdir .. ";") and vim.g.wenrix_workdir
+			or nil
 
 		venv_selector.setup({
 			dap_enabled = true,
-      auto_refresh = true,
+			auto_refresh = true,
 			name = { "venv", ".venv" },
+			path = venv_search_path, -- venv_search_path,
 			changed_venv_hooks = { venv_selector.hooks.pyright },
 			parents = 0,
 		})
@@ -33,12 +36,13 @@ return {
 			desc = "Auto select virtualenv Nvim open",
 			pattern = "*",
 			callback = function()
-				local venv = vim.fn.findfile("pyproject.toml", vim.fn.getcwd() .. ";")
+        local path = venv_search_path or vim.fn.getcwd()
+				local venv = vim.fn.findfile("pyproject.toml", path .. ";")
 				if venv ~= "" then
 					venv_selector.retrieve_from_cache()
 				end
 
-				local src_venv = vim.fn.findfile("src/pyproject.toml", vim.fn.getcwd() .. ";")
+				local src_venv = vim.fn.findfile("src/pyproject.toml", path .. ";")
 				if src_venv ~= "" then
 					venv_selector.retrieve_from_cache()
 				end
