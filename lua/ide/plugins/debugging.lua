@@ -260,7 +260,7 @@ return {
     },
     config = function()
       require("persistent-breakpoints").setup({
-        load_breakpoints_event = { "BufRead *Post" },
+        load_breakpoints_event = { "BufReadPost" },
       })
     end,
   },
