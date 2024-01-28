@@ -1,0 +1,6 @@
+{
+  "bash": {
+    "body": "#!/bin/bash",
+    "prefix": "bash"
+  }
+}

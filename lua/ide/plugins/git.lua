@@ -148,7 +148,7 @@ return {
 	},
 	{
 		"sindrets/diffview.nvim",
-		lazy = true,
+		lazy = false,
 		cmd = {
 			"DiffviewOpen",
 			"DiffviewFocusFiles",
@@ -175,14 +175,6 @@ return {
 			end
 
 			local actions = require("diffview.actions")
-
-			vim.cmd([[highlight DiffAdd gui=none guifg=none guibg=#103235]])
-			vim.cmd([[highlight DiffChange gui=none guifg=none guibg=#272D43]])
-			vim.cmd([[highlight DiffText gui=none guifg=none guibg=#394b70]])
-			vim.cmd([[highlight DiffDelete gui=none guifg=none guibg=#6F2D3D]])
-			vim.cmd([[highlight DiffviewDiffAddAsDelete guibg=#3f2d3d gui=none guifg=none]])
-			vim.cmd([[highlight DiffviewDiffDelete gui=none guifg=#3B4252 guibg=none]])
-
 			require("diffview").setup({
 				diff_binaries = false, -- Show diffs for binaries
 				enhanced_diff_hl = false, -- See ':h diffview-config-enhanced_diff_hl'
