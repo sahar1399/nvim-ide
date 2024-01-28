@@ -177,7 +177,7 @@ return {
 					if vim.g.non_modified then
 						return
 					end
-					vim.cmd([[:Neotree source=buffers]])
+					vim.cmd([[:Neotree source=bookmarks]])
 				end,
 				mode = "n",
 				desc = "Open Buffer Tree",
@@ -222,6 +222,12 @@ return {
 			-- in the form "LspDiagnosticsSignWarning"
 
 			require("neo-tree").setup({
+				sources = {
+					"filesystem",
+					"buffers",
+					"git_status",
+					"ide.plugins.neotree.sources.bookmarks",
+				},
 				close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
 				popup_border_style = "rounded",
 				enable_git_status = true,
