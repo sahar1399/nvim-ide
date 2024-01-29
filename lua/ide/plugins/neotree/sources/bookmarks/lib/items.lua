@@ -24,8 +24,9 @@ M.get_bookmarks = function(state)
   end
   state.loading = true
 
-  local _, project_root = git.status(state.git_base, true)
-
+  local project_root = vim.fn.getcwd()
+  -- local _, project_root = git.status(state.git_base, true)
+  --
   state.path = project_root or state.path or vim.fn.getcwd()
   local context = file_items.create_context()
   context.state = state

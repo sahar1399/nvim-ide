@@ -6,6 +6,12 @@
           "sh"
         ],
         "path": "./sh.json"
+      },
+      {
+        "language": [
+          "sql"
+        ],
+        "path": "./sql.json"
       }
     ]
   },

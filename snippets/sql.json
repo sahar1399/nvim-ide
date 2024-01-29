@@ -1,0 +1,6 @@
+{
+  "sqlfluff": {
+    "body": "-- sqlfluff:dialect:$1",
+    "prefix": "sqlfluff"
+  }
+}

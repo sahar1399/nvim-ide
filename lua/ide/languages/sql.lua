@@ -14,10 +14,10 @@ function SQL:setup(language_utils)
 	return LanguageResults.new({
 		null_ls_sources = {
 			language_utils.null_ls.builtins.diagnostics.sqlfluff.with({
-				extra_args = { "--dialect", "postgres", "--config", "/home/sahar/nvim-ide/lua/ide/languages/.sqlfluff" },
+				extra_args = { "--dialect", "postgres", "--config", "/home/sahar/nvim-ide/lua/ide/languages/.sqlfluff.toml" },
 			}),
 			language_utils.null_ls.builtins.formatting.sqlfluff.with({
-				extra_args = { "--dialect", "postgres", "--config", "/home/sahar/nvim-ide/lua/ide/languages/.sqlfluff" },
+				extra_args = { "--dialect", "postgres", "--config", "/home/sahar/nvim-ide/lua/ide/languages/.sqlfluff.toml" },
 			}),
 			-- language_utils.null_ls.builtins.formatting.sql_formatter,
 		},
