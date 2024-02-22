@@ -4,6 +4,7 @@ return {
 		version = "*",
 		lazy = true,
 		opts = {},
+    enabled = not vim.g.non_modified,
 		keys = {
 			{
 				"<leader>D",

@@ -2,6 +2,7 @@ return {
 	{
 		"nvim-neotest/neotest",
 		lazy = true,
+    enabled = not vim.g.non_modified,
 		keys = {
 			{
 				"<leader>tr",

@@ -4,7 +4,7 @@ handle:close()
 local venv_search_path = os.getenv("VENV_SEARCH_PATH")
 if tmux_session_name ~= nil and tmux_session_name ~= "" then
 	vim.g.wenrix_workdir = venv_search_path
-		or (os.getenv("HOME") .. "/work/wenrix/" .. string.gsub(tmux_session_name, "DEV--", ""))
+		or (os.getenv("HOME") .. "/work/wenrix/" .. string.gsub(tmux_session_name, "DEV--", "") .. "/src" )
 end
 
 local non_modified = os.getenv("NON_MODIFIED")

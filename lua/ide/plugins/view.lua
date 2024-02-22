@@ -139,6 +139,7 @@ return {
   {
     "akinsho/bufferline.nvim",
     lazy = false,
+    enabled = not vim.g.non_modified,
     keys = {
       { "gp", ":BufferLinePick<CR>",      opts, mode = "n", desc = "Pick Tab" },
       { "gx", ":BufferLinePickClose<CR>", opts, mode = "n", desc = "Close Tab" },

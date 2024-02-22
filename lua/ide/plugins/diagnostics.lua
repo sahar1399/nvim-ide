@@ -4,6 +4,7 @@ return {
 	{
 		"folke/trouble.nvim",
 		lazy = true,
+    enabled = not vim.g.non_modified,
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
@@ -24,10 +25,6 @@ return {
 			},
 		},
 		config = function()
-			if vim.g.non_modified then
-				return
-			end
-
 			require("trouble").setup({
 				position = "bottom", -- position of the list can be: bottom, top, left, right
 				height = 10, -- height of the trouble list when position is top or bottom
@@ -82,14 +79,11 @@ return {
 		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 		lazy = true,
 		event = "LspAttach",
+    enabled = not vim.g.non_modified,
 		keys = {
 			{ "<Leader>o", "<cmd>lua require('lsp_lines').toggle()<cr>", mode = "n", desc = "Toggle lsp_lines" },
 		},
 		config = function()
-			if vim.g.non_modified then
-				return
-			end
-
 			vim.diagnostic.config({ virtual_lines = false })
 
 			require("lsp_lines").setup()

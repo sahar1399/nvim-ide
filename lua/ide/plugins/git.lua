@@ -3,12 +3,9 @@ local agitator_opts = { silent = true }
 return {
 	{
 		"lewis6991/gitsigns.nvim",
+    enabled = not vim.g.non_modified,
 		lazy = false,
 		config = function()
-			if vim.g.non_modified then
-				return
-			end
-
 			require("gitsigns").setup({
 				signs = {
 					add = { text = "│" },
@@ -148,6 +145,7 @@ return {
 	},
 	{
 		"sindrets/diffview.nvim",
+    enabled = not vim.g.non_modified,
 		lazy = false,
 		cmd = {
 			"DiffviewOpen",
@@ -170,10 +168,6 @@ return {
 			},
 		},
 		config = function()
-			if vim.g.non_modified then
-				return
-			end
-
 			local actions = require("diffview.actions")
 			require("diffview").setup({
 				diff_binaries = false, -- Show diffs for binaries
@@ -690,6 +684,7 @@ return {
 	{
 		"TimUntersberger/neogit",
 		lazy = false,
+    enabled = not vim.g.non_modified,
 		cmd = { "G" },
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -697,10 +692,6 @@ return {
 			"ttibsi/pre-commit.nvim",
 		},
 		config = function()
-			if vim.g.non_modified then
-				return
-			end
-
 			local neogit = require("neogit")
 
 			neogit.setup({
@@ -780,6 +771,7 @@ return {
 	{
 		"emmanueltouzery/agitator.nvim",
 		lazy = true,
+    enabled = not vim.g.non_modified,
 		keys = {
 			{
 				"<leader>gc",
@@ -823,6 +815,7 @@ return {
 	},
 	{
 		"ThePrimeagen/git-worktree.nvim",
+    enabled = not vim.g.non_modified,
 		dependencies = {
 			"nvim-telescope/telescope.nvim",
 		},
@@ -855,5 +848,6 @@ return {
 	},
 	{
 		"rickhowe/diffchar.vim",
+    enabled = not vim.g.non_modified,
 	},
 }

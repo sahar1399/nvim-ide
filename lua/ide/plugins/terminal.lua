@@ -2,6 +2,7 @@ local opts = { silent = true }
 return {
 	{
 		"akinsho/toggleterm.nvim",
+    enabled = not vim.g.non_modified,
 		keys = {
 			{
 				"<C-t>",

@@ -2,15 +2,12 @@ return {
 	-- TODO: fix this mess...
 	{
 		"L3MON4D3/LuaSnip",
+    enabled = not vim.g.non_modified,
 		lazy = false,
 		dependencies = {
 			"rafamadriz/friendly-snippets",
 		},
 		config = function()
-			if vim.g.non_modified then
-				return
-			end
-
 			require("luasnip/loaders/from_vscode").load({
 				paths = {
 					vim.fn.stdpath("data") .. "/lazy" .. "/friendly-snippets",
@@ -22,6 +19,7 @@ return {
 	-- TODO: fix this mess...
 	{
 		"hrsh7th/nvim-cmp",
+    enabled = vim.g.non_modified,
 		lazy = false,
 		dependencies = {
 			"neovim/nvim-lspconfig",
@@ -39,10 +37,6 @@ return {
 			"onsails/lspkind.nvim",
 		},
 		config = function()
-			if vim.g.non_modified then
-				return
-			end
-
 			local cmp = require("cmp")
 			local lspkind = require("lspkind")
 
@@ -587,6 +581,7 @@ return {
 		"ThePrimeagen/refactoring.nvim",
 		lazy = true,
 		event = "LspAttach",
+    enabled = not vim.g.non_modified,
 		keys = {
 			{
 				"<leader>rr",
@@ -603,10 +598,6 @@ return {
 			{ "nvim-treesitter/nvim-treesitter" },
 		},
 		config = function()
-			if vim.g.non_modified then
-				return
-			end
-
 			require("refactoring").setup()
 			require("telescope").load_extension("refactoring")
 		end,

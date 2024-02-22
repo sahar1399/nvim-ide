@@ -1,11 +1,7 @@
-
-if vim.g.non_modified then
-  return {}
-end
-
 return {
   "folke/which-key.nvim",
   lazy = false,
+  enabled = not vim.g.non_modified,
   config = function()
     vim.o.timeout = true
     vim.o.timeoutlen = 300

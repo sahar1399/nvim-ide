@@ -4,6 +4,7 @@ return {
 	{
 		"folke/zen-mode.nvim",
 		lazy = true,
+    enabled = not vim.g.non_modified,
 		keys = {
 			{
 				"<leader>z",

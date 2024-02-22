@@ -8,11 +8,12 @@ return {
 			vim.o.conceallevel = 3
 		end,
 
-		lazy = vim.g.non_modified ~= true,
+		lazy = not vim.g.non_modified,
 		ft = "norg",
 
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+      "tyru/open-browser.vim",
 			{
 				"sahar1399/neorg-telescope",
 				branch = "task/sahar/add_defs_to_insert",
@@ -171,19 +172,19 @@ return {
 				})
 			end)
 
-			if vim.g.non_modified then
-				-- concealer only works if there is more then one buffer or a reize of the terminal is occured
-				-- this workarround solvesit
-				vim.api.nvim_create_autocmd({ "VimEnter" }, {
-					pattern = "norg",
-					callback = function()
-						vim.cmd([[
-            :Neorg toggle-concealer
-            :Neorg toggle-concealer
-            ]])
-					end,
-				})
-			end
+			-- if vim.g.non_modified then
+			-- 	-- concealer only works if there is more then one buffer or a reize of the terminal is occured
+			-- 	-- this workarround solvesit
+			-- 	vim.api.nvim_create_autocmd({ "VimEnter" }, {
+			-- 		pattern = "norg",
+			-- 		callback = function()
+			-- 			vim.cmd([[
+			--               :Neorg toggle-concealer
+			--               :Neorg toggle-concealer
+			--             ]])
+			-- 		end,
+			-- 	})
+			-- end
 		end,
 	},
 }

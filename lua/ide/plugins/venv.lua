@@ -3,6 +3,7 @@ return {
 	dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
 	lazy = false,
 	opts = {},
+  enabled = not vim.g.non_modified,
 	event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
 	keys = {
 		{
@@ -28,6 +29,7 @@ return {
       venv_search_path = cwd
     else
       if vim.g.wenrix_workdir and vim.fn.findfile("pyproject.toml", vim.g.wenrix_workdir .. ";") ~= '' then
+        print("here")
         venv_search_path = vim.g.wenrix_workdir
       end
     end

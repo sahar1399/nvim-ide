@@ -60,16 +60,13 @@ return {
 	{
 		"3rd/image.nvim",
 		lazy = true,
+    enabled = not vim.g.non_modified,
 		ft = { "markdown", "norg" },
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-neorg/neorg",
 		},
 		config = function()
-			if vim.g.non_modified then
-				return
-			end
-
 			require("image").setup({
 				backend = "kitty",
 				integrations = {

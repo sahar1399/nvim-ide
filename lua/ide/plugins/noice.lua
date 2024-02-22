@@ -1,15 +1,12 @@
 return {
 	"folke/noice.nvim",
 	lazy = false,
+  enabled = not vim.g.non_modified,
 	dependencies = {
 		"MunifTanjim/nui.nvim",
 		{
 			"rcarriga/nvim-notify",
 			config = function()
-				if vim.g.non_modified then
-					return
-				end
-
 				require("notify").setup({
 					background_colour = "#000000",
 				})
@@ -43,10 +40,6 @@ return {
 		},
 	},
 	config = function()
-		if vim.g.non_modified then
-			return
-		end
-
 		require("noice").setup({
 			cmdline = {
 				enabled = true, -- enables the Noice cmdline UI

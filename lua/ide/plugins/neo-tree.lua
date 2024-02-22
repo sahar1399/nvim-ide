@@ -1,7 +1,36 @@
+local function read_file(path)
+	local file = io.open(path, "rb") -- r read mode and b binary mode
+	if not file then
+		return nil
+	end
+	local content = file:read("*a") -- *a or *all reads the whole file
+	file:close()
+	return content
+end
+
+local function file_exists(name)
+   local f=io.open(name,"r")
+   if f~=nil then io.close(f) return true else return false end
+end
+
+local function dump(o)
+   if type(o) == 'table' then
+      local s = '{ '
+      for k,v in pairs(o) do
+         if type(k) ~= 'number' then k = '"'..k..'"' end
+         s = s .. '['..k..'] = ' .. dump(v) .. ','
+      end
+      return s .. '} '
+   else
+      return tostring(o)
+   end
+end
+---Get a table of all open buffers, along with all parent paths of those buffers.
 return {
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		lazy = false,
+    enabled = not vim.g.non_modified,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"miversen33/netman.nvim",
@@ -12,10 +41,6 @@ return {
 				event = "VeryLazy",
 				version = "2.*",
 				config = function()
-					if vim.g.non_modified then
-						return
-					end
-
 					require("window-picker").setup({
 						-- type of hints you want to get
 						-- following types are supported
@@ -152,9 +177,6 @@ return {
 			{
 				"<leader>G",
 				function()
-					if vim.g.non_modified then
-						return
-					end
 					vim.cmd([[:Neotree source=git_status git_base=develop]])
 				end,
 				mode = "n",
@@ -163,9 +185,6 @@ return {
 			{
 				"<leader>F",
 				function()
-					if vim.g.non_modified then
-						return
-					end
 					vim.cmd([[:Neotree source=filesystem]])
 				end,
 				mode = "n",
@@ -174,9 +193,6 @@ return {
 			{
 				"<leader>B",
 				function()
-					if vim.g.non_modified then
-						return
-					end
 					vim.cmd([[:Neotree source=bookmarks]])
 				end,
 				mode = "n",
@@ -185,9 +201,6 @@ return {
 			{
 				"<leader>j",
 				function()
-					if vim.g.non_modified then
-						return
-					end
 					vim.cmd([[:Neotree reveal_force_cwd last]])
 				end,
 				mode = "n",
@@ -196,9 +209,6 @@ return {
 			-- {
 			-- 	"<leader>c",
 			-- 	function()
-			-- 		if vim.g.non_modified then
-			-- 			return
-			-- 		end
 			-- 		vim.cmd([[:NeoTreeClose]])
 			-- 	end,
 			-- 	mode = "n",
@@ -206,10 +216,6 @@ return {
 			-- },
 		},
 		config = function()
-			if vim.g.non_modified then
-				return
-			end
-
 			-- Unless you are still migrating, remove the deprecated commands from v1.x
 			vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
@@ -220,6 +226,21 @@ return {
 			vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 			-- NOTE: this is changed from v1.x, which used the old style of highlight groups
 			-- in the form "LspDiagnosticsSignWarning"
+      local project_root = vim.fn.getcwd()
+      local include_dir_file = project_root .. "/.include_dirs.json"
+      local include_dir_table = nil
+
+      if file_exists(include_dir_file) then
+        local include_dir_content = read_file(include_dir_file)
+        if include_dir_content then
+          include_dir_table = vim.json.decode(include_dir_content)
+        end
+      end
+
+      local hide_by_pattern = include_dir_table == nil and {} or {"*"}
+      -- print(dump(hide_by_pattern))
+      local always_show = include_dir_table or {}
+      -- print(dump(always_show))
 
 			require("neo-tree").setup({
 				sources = {
@@ -329,7 +350,7 @@ return {
 						["C"] = "close_node",
 						-- ['C'] = 'close_all_subnodes',
 						["z"] = "noop", -- nothing is illegal. its in order to disable this
-						--["Z"] = "expand_all_nodes",
+						["Z"] = "expand_all_nodes",
 						["a"] = {
 							"add",
 							-- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc). see `:h neo-tree-file-actions` for details
@@ -369,20 +390,15 @@ return {
 						hide_by_name = {
 							--"node_modules"
 						},
-						hide_by_pattern = { -- uses glob style patterns
-							--"*.meta",
-							--"*/src/*/tsconfig.json",
-						},
-						always_show = { -- remains visible even if other settings would normally hide it
-							--".gitignored",
-						},
+            -- uses glob style patterns
+						hide_by_pattern = {},
+            -- remains visible even if other settings would normally hide it
+						always_show = always_show,
 						never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
 							--".DS_Store",
 							--"thumbs.db"
 						},
-						never_show_by_pattern = { -- uses glob style patterns
-							--".null-ls_*",
-						},
+						never_show_by_pattern = hide_by_pattern,
 					},
 					follow_current_file = {
 						enabled = false, -- This will find and focus the file in the active buffer every time
