@@ -60,7 +60,7 @@ return {
 	{
 		"3rd/image.nvim",
 		lazy = true,
-    enabled = not vim.g.non_modified,
+		enabled = not vim.g.non_modified,
 		ft = { "markdown", "norg" },
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -279,9 +279,32 @@ return {
 	},
 	{
 		"rafcamlet/nvim-luapad",
-    ft = "lua",
+		ft = "lua",
 		config = function()
 			require("luapad").setup({})
+		end,
+	},
+	{
+		"krivahtoo/silicon.nvim",
+		build = "./install.sh build",
+		branch = "nvim-0.9",
+		config = function()
+			require("silicon").setup({
+				font = "JetBrainsMono Nerd Font=16",
+				theme = "Monokai Extended",
+				output = {
+					path = "/home/sahar/notes/code-screenshots",
+					clipboard = false,
+					format = "silicon_[year][month][day]_[hour][minute][second].png",
+				},
+        line_number = true,
+        gobble = true,
+        round_corner = true,
+        window_controls = false,
+				window_title = function()
+					return vim.fn.fnamemodify(vim.fn.bufname(vim.fn.bufnr()), ":~:.")
+				end,
+			})
 		end,
 	},
 }

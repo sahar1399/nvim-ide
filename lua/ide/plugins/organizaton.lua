@@ -22,10 +22,7 @@ return {
 
 		-- TODO: make all plugins use opts
 		config = function()
-			require("neorg").setup({
-				load = {
-					["core.syntax"] = {},
-
+      local modules = {
 					["core.concealer"] = {
 						config = {
 							markup_preset = "brave",
@@ -69,14 +66,6 @@ return {
 					["core.integrations.telescope"] = {},
 					["core.scanner"] = {},
 
-					["core.integrations.nvim-cmp"] = {},
-					["core.completion"] = {
-						config = {
-							name = "[Neorg]",
-							engine = "nvim-cmp",
-						},
-					},
-
 					["core.export"] = {},
 					["core.export.markdown"] = {},
 
@@ -86,7 +75,23 @@ return {
 
 					["core.neorgcmd.commands.module.list"] = {},
 					["core.neorgcmd.commands.module.load"] = {},
-				},
+          ["core.esupports.hop"] = {}
+      }
+      if not vim.g.non_modified then
+				modules["core.syntax"] = {}
+
+        modules["core.integrations.nvim-cmp"] = {}
+        modules["core.completion"] = {
+						config = {
+							name = "[Neorg]",
+							engine = "nvim-cmp",
+						}
+					}
+
+      end
+
+			require("neorg").setup({
+				load = modules,
 			})
 
 			local neorg_callbacks = require("neorg.callbacks")
@@ -102,6 +107,7 @@ return {
 				-- Map all the below keybinds only when the "norg" mode is active
 				keybinds.map_event_to_mode("norg", {
 					n = { -- Bind keys in normal mode
+            { "gd", "core.esupports.hop.hop-link", opts = { desc = "Jump to Link" } },
 						{ "<leader>fd", "core.integrations.telescope.find_linkable" },
 						{ "<leader>i", "core.integrations.telescope.insert_link" },
 						{
@@ -171,20 +177,6 @@ return {
 					noremap = true,
 				})
 			end)
-
-			-- if vim.g.non_modified then
-			-- 	-- concealer only works if there is more then one buffer or a reize of the terminal is occured
-			-- 	-- this workarround solvesit
-			-- 	vim.api.nvim_create_autocmd({ "VimEnter" }, {
-			-- 		pattern = "norg",
-			-- 		callback = function()
-			-- 			vim.cmd([[
-			--               :Neorg toggle-concealer
-			--               :Neorg toggle-concealer
-			--             ]])
-			-- 		end,
-			-- 	})
-			-- end
 		end,
 	},
 }

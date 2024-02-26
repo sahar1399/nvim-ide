@@ -85,4 +85,9 @@ if vim.g.non_modified then
 ]])
 	vim.opt.shortmess = "cFWI"
 	vim.opt.signcolumn = "no"
+else
+  vim.cmd([[
+    autocmd FileType markdown setlocal spell spelllang=en spelloptions=camel
+    autocmd FileType norg setlocal spell spelllang=en spelloptions=camel
+  ]])
 end

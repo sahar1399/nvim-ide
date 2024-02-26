@@ -19,7 +19,7 @@ return {
 	-- TODO: fix this mess...
 	{
 		"hrsh7th/nvim-cmp",
-    enabled = vim.g.non_modified,
+    enabled = not vim.g.non_modified,
 		lazy = false,
 		dependencies = {
 			"neovim/nvim-lspconfig",
@@ -363,10 +363,6 @@ return {
 				end
 
 				illuminate.on_attach(client)
-
-				if vim.g.non_modified then
-					return
-				end
 
 				local wk = require("which-key")
 
