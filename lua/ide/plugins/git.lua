@@ -3,7 +3,7 @@ local agitator_opts = { silent = true }
 return {
 	{
 		"lewis6991/gitsigns.nvim",
-    enabled = not vim.g.non_modified,
+		enabled = not vim.g.non_modified,
 		lazy = false,
 		config = function()
 			require("gitsigns").setup({
@@ -145,7 +145,7 @@ return {
 	},
 	{
 		"sindrets/diffview.nvim",
-    enabled = not vim.g.non_modified,
+		enabled = not vim.g.non_modified,
 		lazy = false,
 		cmd = {
 			"DiffviewOpen",
@@ -684,7 +684,7 @@ return {
 	{
 		"TimUntersberger/neogit",
 		lazy = false,
-    enabled = not vim.g.non_modified,
+		enabled = not vim.g.non_modified,
 		cmd = { "G" },
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -768,54 +768,83 @@ return {
 			vim.cmd([[ command! G execute 'lua require("neogit").open{kind = "split"}' ]])
 		end,
 	},
+	-- {
+	-- 	"emmanueltouzery/agitator.nvim",
+	-- 	lazy = true,
+	--     enabled = not vim.g.non_modified,
+	-- 	keys = {
+	-- 		{
+	-- 			"<leader>gc",
+	-- 			function()
+	-- 				local commit_sha = require("agitator").git_blame_commit_for_line()
+	-- 				vim.cmd("DiffviewOpen " .. commit_sha .. "^.." .. commit_sha)
+	-- 			end,
+	-- 			agitator_opts,
+	-- 			mode = "n",
+	-- 			desc = "Blame Commit For Line",
+	-- 		},
+	--
+	-- 		{
+	-- 			"<leader>gb",
+	-- 			function()
+	-- 				require("agitator").git_blame({
+	-- 					formatter = function(r)
+	-- 						return string.format("%02d-%02d-%02d %s", r.date.year, r.date.month, r.date.day, r.author)
+	-- 							.. " => "
+	-- 							.. string.sub(r.summary, 1, 11)
+	-- 					end,
+	-- 				})
+	-- 			end,
+	-- 			agitator_opts,
+	-- 			mode = "n",
+	-- 			desc = "Git Blame",
+	-- 		},
+	-- 	},
+	-- },
 	{
-		"emmanueltouzery/agitator.nvim",
+		"FabijanZulj/blame.nvim",
 		lazy = true,
-    enabled = not vim.g.non_modified,
 		keys = {
 			{
-				"<leader>gc",
-				function()
-					local commit_sha = require("agitator").git_blame_commit_for_line()
-					vim.cmd("DiffviewOpen " .. commit_sha .. "^.." .. commit_sha)
-				end,
-				agitator_opts,
-				mode = "n",
-				desc = "Blame Commit For Line",
-			},
-
-			{
 				"<leader>gb",
-				function()
-					require("agitator").git_blame({
-						formatter = function(r)
-							return string.format("%02d-%02d-%02d %s", r.date.year, r.date.month, r.date.day, r.author)
-								.. " => "
-								.. string.sub(r.summary, 1, 11)
-						end,
-					})
-				end,
-				agitator_opts,
+				":ToggleBlame window<CR>",
 				mode = "n",
 				desc = "Git Blame",
 			},
 		},
-	},
-	{
-		-- "FabijanZulj/blame.nvim",
-		-- lazy = true,
-		-- keys = {
-		-- 	{
-		-- 		"<leader>gb",
-		-- 		":ToggleBlame virtual<CR>",
-		-- 		mode = "n",
-		-- 		desc = "Git Blame",
-		-- 	},
-		-- },
+		config = function()
+			require("blame").setup({ merge_consecutive = true })
+			local winbar_settings_group = vim.api.nvim_create_augroup("winbar_settings", { clear = true })
+
+			vim.api.nvim_create_autocmd({ "WinEnter", "WinResized" }, {
+				group = winbar_settings_group,
+				desc = "Hide lualine winbar when blame is open",
+				callback = function()
+					local win_ids = vim.api.nvim_list_wins()
+
+					for _, win_id in ipairs(win_ids) do
+						local buf_id = vim.api.nvim_win_get_buf(win_id)
+						local buf_ft = vim.api.nvim_buf_get_option(buf_id, "filetype")
+						if buf_ft == "blame" then
+							require("lualine").hide({
+								place = { "winbar" },
+								unhide = false,
+							})
+							break -- Exit the loop since a 'blame' filetype was found
+						else
+							require("lualine").hide({
+								place = { "winbar" },
+								unhide = true,
+							})
+						end
+					end
+				end,
+			})
+		end,
 	},
 	{
 		"ThePrimeagen/git-worktree.nvim",
-    enabled = not vim.g.non_modified,
+		enabled = not vim.g.non_modified,
 		dependencies = {
 			"nvim-telescope/telescope.nvim",
 		},
@@ -848,6 +877,6 @@ return {
 	},
 	{
 		"rickhowe/diffchar.vim",
-    enabled = not vim.g.non_modified,
+		enabled = not vim.g.non_modified,
 	},
 }

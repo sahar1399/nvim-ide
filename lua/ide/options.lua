@@ -86,8 +86,17 @@ if vim.g.non_modified then
 	vim.opt.shortmess = "cFWI"
 	vim.opt.signcolumn = "no"
 else
-  vim.cmd([[
-    autocmd FileType markdown setlocal spell spelllang=en spelloptions=camel
-    autocmd FileType norg setlocal spell spelllang=en spelloptions=camel
+	vim.cmd([[
+    " autocmd FileType markdown setlocal spell spelllang=en spelloptions=camel
+    " autocmd FileType norg setlocal spell spelllang=en spelloptions=camel
+
+    augroup XML
+    autocmd!
+    autocmd FileType xml let g:xml_syntax_folding=1
+    autocmd FileType xml setlocal foldmethod=syntax
+    autocmd FileType xml :syntax on
+    autocmd FileType xml :%foldopen!
+    autocmd FileType xml setlocal foldmethod=indent foldlevelstart=999 foldminlines=0
+augroup END
   ]])
 end

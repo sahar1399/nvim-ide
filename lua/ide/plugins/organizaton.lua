@@ -78,7 +78,7 @@ return {
           ["core.esupports.hop"] = {}
       }
       if not vim.g.non_modified then
-				modules["core.syntax"] = {}
+				-- modules["core.syntax"] = {}
 
         modules["core.integrations.nvim-cmp"] = {}
         modules["core.completion"] = {

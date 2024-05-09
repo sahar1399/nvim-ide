@@ -12,6 +12,12 @@
           "sql"
         ],
         "path": "./sql.json"
+      },
+      {
+        "language": [
+          "python"
+        ],
+        "path": "./python.json"
       }
     ]
   },

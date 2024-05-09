@@ -1,0 +1,6 @@
+{
+  "info": {
+    "body": "await self._logger.info($1)",
+    "prefix": "info"
+  }
+}
