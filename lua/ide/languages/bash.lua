@@ -15,7 +15,7 @@ function Bash:setup(language_utils)
 		null_ls_sources = {
 			language_utils.null_ls.builtins.formatting.shfmt,
 			language_utils.null_ls.builtins.formatting.shellharden,
-      language_utils.null_ls.builtins.diagnostics.shellcheck,
+      -- language_utils.null_ls.builtins.diagnostics.shellcheck,
 		},
 	})
 end

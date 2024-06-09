@@ -2,7 +2,7 @@ return {
 	{
 		"nvim-neotest/neotest",
 		lazy = true,
-    enabled = not vim.g.non_modified,
+		enabled = not vim.g.non_modified,
 		keys = {
 			{
 				"<leader>tr",
@@ -44,7 +44,7 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
-			"antoinemadec/FixCursorHold.nvim",
+			-- "antoinemadec/FixCursorHold.nvim",
 			"nvim-neotest/neotest-python",
 			"nvim-neotest/neotest-plenary",
 		},
@@ -63,6 +63,10 @@ return {
 						python = ".venv/bin/python",
 					}),
 					require("neotest-plenary"),
+				},
+				discovery = {
+					enabled = true,
+					depth = 3,
 				},
 				output_panel = {
 					enabled = true,
@@ -108,7 +112,7 @@ return {
 						target = "t",
 						watch = "W",
 					},
-          open = "botright vsplit | vertical resize 50",
+					open = "botright vsplit | vertical resize 50",
 				},
 			})
 		end,

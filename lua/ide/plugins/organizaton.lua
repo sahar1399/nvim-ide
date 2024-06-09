@@ -2,6 +2,7 @@ return {
 	{
 		"nvim-neorg/neorg",
 		build = ":Neorg sync-parsers",
+    version = "v7.0.0",
 
 		commit = "99f33e08fe074126b491e02854e5d00dab10f5ae",
 		init = function()
@@ -18,6 +19,7 @@ return {
 				"sahar1399/neorg-telescope",
 				branch = "task/sahar/add_defs_to_insert",
 			},
+       "nvim-treesitter/nvim-treesitter"
 		},
 
 		-- TODO: make all plugins use opts
@@ -70,16 +72,19 @@ return {
 					["core.export.markdown"] = {},
 
 					["core.summary"] = {},
+					["core.tempus"] = {},
 
 					["core.defaults"] = {}, -- Loads default behaviour
 
 					["core.neorgcmd.commands.module.list"] = {},
 					["core.neorgcmd.commands.module.load"] = {},
-          ["core.esupports.hop"] = {}
+          ["core.esupports.hop"] = {},
+
+          ["core.syntax"] = {},
       }
       if not vim.g.non_modified then
-				-- modules["core.syntax"] = {}
-
+				modules["core.ui"] = {}
+				modules["core.ui.calendar"] = {}
         modules["core.integrations.nvim-cmp"] = {}
         modules["core.completion"] = {
 						config = {

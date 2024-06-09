@@ -1,6 +1,7 @@
 return {
 	"linux-cultist/venv-selector.nvim",
 	dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
+  branch = "regexp",
 	lazy = false,
 	opts = {},
   enabled = not vim.g.non_modified,
@@ -37,28 +38,32 @@ return {
 		venv_selector.setup({
 			dap_enabled = true,
 			auto_refresh = true,
+      enable_cached_venvs = true,
+      activate_venv_in_terminal = true,
+      set_environment_variables = true,
+      notify_user_on_venv_activation = true,
 			name = { "venv", ".venv" },
 			path = venv_search_path, -- venv_search_path,
-			changed_venv_hooks = { venv_selector.hooks.pyright },
+			-- changed_venv_hooks = { venv_selector.hooks.pyright },
 			parents = 0,
 		})
 
-		vim.api.nvim_create_autocmd("VimEnter", {
-			desc = "Auto select virtualenv Nvim open",
-			pattern = "*",
-			callback = function()
-				local path = venv_search_path or vim.fn.getcwd()
-				local venv = vim.fn.findfile("pyproject.toml", path .. ";")
-				if venv ~= "" then
-					venv_selector.retrieve_from_cache()
-				end
-
-				local src_venv = vim.fn.findfile("src/pyproject.toml", path .. ";")
-				if src_venv ~= "" then
-					venv_selector.retrieve_from_cache()
-				end
-			end,
-			once = true,
-		})
+		-- vim.api.nvim_create_autocmd("VimEnter", {
+		-- 	desc = "Auto select virtualenv Nvim open",
+		-- 	pattern = "*",
+		-- 	callback = function()
+		-- 		local path = venv_search_path or vim.fn.getcwd()
+		-- 		local venv = vim.fn.findfile("pyproject.toml", path .. ";")
+		-- 		if venv ~= "" then
+		-- 			venv_selector.retrieve_from_cache()
+		-- 		end
+		--
+		-- 		local src_venv = vim.fn.findfile("src/pyproject.toml", path .. ";")
+		-- 		if src_venv ~= "" then
+		-- 			venv_selector.retrieve_from_cache()
+		-- 		end
+		-- 	end,
+		-- 	once = true,
+		-- })
 	end,
 }

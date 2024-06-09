@@ -698,6 +698,11 @@ return {
 				disable_signs = false,
 				disable_hint = false,
 				disable_context_highlighting = false,
+				highlight = {
+					italic = true,
+					bold = true,
+					underline = true,
+				},
 				disable_commit_confirmation = true,
 				-- Neogit refreshes its internal state after specific events, which can be expensive depending on the repository size.
 				-- Disabling `auto_refresh` will make it so you have to manually refresh the status after you open it.
@@ -754,6 +759,24 @@ return {
 						folded = true,
 					},
 				},
+				commit_editor = {
+					kind = "vsplit",
+					show_staged_diff = true,
+					-- Accepted values:
+					-- "split" to show the staged diff below the commit editor
+					-- "vsplit" to show it to the right
+					-- "split_above" Like :top split
+					-- "vsplit_left" like :vsplit, but open to the left
+					-- "auto" "vsplit" if window would have 80 cols, otherwise "split"
+					staged_diff_split_kind = "vsplit",
+				},
+				commit_select_view = {
+					kind = "vsplit",
+				},
+				commit_view = {
+					kind = "vsplit",
+					verify_commit = vim.fn.executable("gpg") == 1, -- Can be set to true or false, otherwise we try to find the binary
+				},
 				-- override/add mappings
 				mappings = {
 					-- modify status buffer mappings
@@ -807,7 +830,7 @@ return {
 		keys = {
 			{
 				"<leader>gb",
-				":ToggleBlame window<CR>",
+				":BlameToggle window<CR>",
 				mode = "n",
 				desc = "Git Blame",
 			},

@@ -13,7 +13,7 @@ function JSON:setup(language_utils)
 
 	return LanguageResults.new({
 		null_ls_sources = {
-			language_utils.null_ls.builtins.formatting.jq,
+      language_utils.null_ls.builtins.formatting.prettierd
 		},
 	})
 end

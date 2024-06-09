@@ -100,3 +100,6 @@ else
 augroup END
   ]])
 end
+
+-- vim.g.root_spec = { "lsp", { ".git", "lua", "pyproject.toml", "Makefile", "src" }, "cwd" }
+vim.g.root_spec = { "cwd" }

@@ -5,18 +5,38 @@ Python = {}
 Python.__index = Python
 
 function Python:setup(language_utils)
-	language_utils.lspconfig.pyright.setup({
+	--	language_utils.lspconfig.pyright.setup({
+	--		on_attach = language_utils.on_attach,
+	--		capabilities = language_utils.capabilities,
+	--		flags = language_utils.lsp_flags,
+	--		settings = {
+	--			pyright = {
+	--				autoImportCompletion = true,
+	--			},
+	--			python = {
+	--				analysis = {
+	--					autoSearchPaths = false,
+	--					useLibraryCodesForTypes = false,
+	--					diagnosticMode = "openFilesOnly",
+	--				},
+	--			},
+	--		},
+	--		single_file_support = true,
+	--	})
+
+	language_utils.lspconfig.basedpyright.setup({
 		on_attach = language_utils.on_attach,
 		capabilities = language_utils.capabilities,
 		flags = language_utils.lsp_flags,
 		settings = {
-			pyright = {
+			basedpyright = {
 				autoImportCompletion = true,
+				typeCheckingMode = "standard",
 			},
 			python = {
 				analysis = {
 					autoSearchPaths = false,
-					useLibraryCodesForTypes = false,
+					useLibraryCodesForTypes = true,
 					diagnosticMode = "openFilesOnly",
 				},
 			},
@@ -102,7 +122,7 @@ function Python:setup(language_utils)
 			}),
 			language_utils.null_ls.builtins.formatting.isort,
 			-- language_utils.null_ls.builtins.formatting.usort,
-			language_utils.null_ls.builtins.formatting.autoflake,
+			-- language_utils.null_ls.builtins.formatting.autoflake,
 			-- language_utils.null_ls.builtins.diagnostics.flake8,
 			language_utils.null_ls.builtins.code_actions.refactoring,
 		},

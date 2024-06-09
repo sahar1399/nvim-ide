@@ -9,28 +9,35 @@ local function read_file(path)
 end
 
 local function file_exists(name)
-   local f=io.open(name,"r")
-   if f~=nil then io.close(f) return true else return false end
+	local f = io.open(name, "r")
+	if f ~= nil then
+		io.close(f)
+		return true
+	else
+		return false
+	end
 end
 
 local function dump(o)
-   if type(o) == 'table' then
-      local s = '{ '
-      for k,v in pairs(o) do
-         if type(k) ~= 'number' then k = '"'..k..'"' end
-         s = s .. '['..k..'] = ' .. dump(v) .. ','
-      end
-      return s .. '} '
-   else
-      return tostring(o)
-   end
+	if type(o) == "table" then
+		local s = "{ "
+		for k, v in pairs(o) do
+			if type(k) ~= "number" then
+				k = '"' .. k .. '"'
+			end
+			s = s .. "[" .. k .. "] = " .. dump(v) .. ","
+		end
+		return s .. "} "
+	else
+		return tostring(o)
+	end
 end
 ---Get a table of all open buffers, along with all parent paths of those buffers.
 return {
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		lazy = false,
-    enabled = not vim.g.non_modified,
+		enabled = not vim.g.non_modified,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"miversen33/netman.nvim",
@@ -226,21 +233,21 @@ return {
 			vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 			-- NOTE: this is changed from v1.x, which used the old style of highlight groups
 			-- in the form "LspDiagnosticsSignWarning"
-      local project_root = vim.fn.getcwd()
-      local include_dir_file = project_root .. "/.include_dirs.json"
-      local include_dir_table = nil
+			local project_root = vim.fn.getcwd()
+			local include_dir_file = project_root .. "/.include_dirs.json"
+			local include_dir_table = nil
 
-      if file_exists(include_dir_file) then
-        local include_dir_content = read_file(include_dir_file)
-        if include_dir_content then
-          include_dir_table = vim.json.decode(include_dir_content)
-        end
-      end
+			if file_exists(include_dir_file) then
+				local include_dir_content = read_file(include_dir_file)
+				if include_dir_content then
+					include_dir_table = vim.json.decode(include_dir_content)
+				end
+			end
 
-      local hide_by_pattern = include_dir_table == nil and {} or {"*"}
-      -- print(dump(hide_by_pattern))
-      local always_show = include_dir_table or {}
-      -- print(dump(always_show))
+			local hide_by_pattern = include_dir_table == nil and {} or { "*" }
+			-- print(dump(hide_by_pattern))
+			local always_show = include_dir_table or {}
+			-- print(dump(always_show))
 
 			require("neo-tree").setup({
 				sources = {
@@ -253,7 +260,7 @@ return {
 				popup_border_style = "rounded",
 				enable_git_status = true,
 				enable_diagnostics = true,
-				enable_normal_mode_for_inputs = false, -- Enable normal mode for input dialogs.
+				-- enable_normal_mode_for_inputs = false, -- Enable normal mode for input dialogs.
 				open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
 				sort_case_insensitive = false, -- used when sorting files and directories in the tree
 				sort_function = nil, -- use a custom function for sorting files and directories in the tree
@@ -390,9 +397,9 @@ return {
 						hide_by_name = {
 							--"node_modules"
 						},
-            -- uses glob style patterns
+						-- uses glob style patterns
 						hide_by_pattern = {},
-            -- remains visible even if other settings would normally hide it
+						-- remains visible even if other settings would normally hide it
 						always_show = always_show,
 						never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
 							--".DS_Store",
@@ -437,6 +444,8 @@ return {
 					},
 
 					commands = {}, -- Add a custom command or override a global one using the same function name
+
+					bind_to_cwd = true, -- true creates a 2-way binding between vim's cwd and neo-tree's root
 				},
 				buffers = {
 					follow_current_file = {
