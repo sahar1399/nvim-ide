@@ -187,7 +187,15 @@ return {
 					vim.cmd([[:Neotree source=git_status git_base=develop]])
 				end,
 				mode = "n",
-				desc = "Open Git File Tree",
+				desc = "Open Git File Tree Compared to develop",
+			},
+			{
+				"<leader>H",
+				function()
+					vim.cmd([[:Neotree source=git_status git_base=HEAD]])
+				end,
+				mode = "n",
+				desc = "Open Git File Tree Compared to HEAD",
 			},
 			{
 				"<leader>F",

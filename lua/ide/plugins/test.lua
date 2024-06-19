@@ -61,6 +61,7 @@ return {
 							"DEBUG",
 						},
 						python = ".venv/bin/python",
+						pytest_discover_instances = false,
 					}),
 					require("neotest-plenary"),
 				},

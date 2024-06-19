@@ -61,6 +61,10 @@ vim.opt.fillchars:append("eob: ")
 
 vim.cmd([[ packadd cfilter ]])
 vim.cmd([[ nmap cp :let @+ = "{/ " .. expand("%:p")..":"..line(".") .. "}"<cr> ]])
+vim.cmd([[
+set list
+set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
+]])
 
 vim.cmd([[
 function! CleanNoNameEmptyBuffers()

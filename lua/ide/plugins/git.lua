@@ -95,9 +95,15 @@ return {
 									mode = { "n" },
 									buffer = bufnr,
 								},
-								D = {
+								f = {
 									gs.diffthis,
 									"Diff This",
+									mode = { "n" },
+									buffer = bufnr,
+								},
+								F = {
+									function() gs.diffthis("~") end,
+									"Diff This relative to parent",
 									mode = { "n" },
 									buffer = bufnr,
 								},
