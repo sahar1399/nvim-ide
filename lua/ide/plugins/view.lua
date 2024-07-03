@@ -193,30 +193,30 @@ return {
 			-- vim.cmd([[colorscheme material]])
 		end,
 	},
-	{
-		"declancm/cinnamon.nvim",
-		lazy = false,
-		config = function()
-			require("cinnamon").setup({
-				-- KEYMAPS:
-				default_keymaps = true, -- Create default keymaps.
-				extra_keymaps = false, -- Create extra keymaps.
-				extended_keymaps = false, -- Create extended keymaps.
-				override_keymaps = false, -- The plugin keymaps will override any existing keymaps.
-				-- OPTIONS:
-				always_scroll = false, -- Scroll the cursor even when the window hasn't scrolled.
-				centered = true, -- Keep cursor centered in window when using window scrolling.
-				disabled = true, -- Disables the plugin.
-				default_delay = 3, -- The default delay (in ms) between each line when scrolling.
-				hide_cursor = false, -- Hide the cursor while scrolling. Requires enabling termguicolors!
-				horizontal_scroll = true, -- Enable smooth horizontal scrolling when view shifts left or right.
-				max_length = -1, -- Maximum length (in ms) of a command. The line delay will be
-				-- re-calculated. Setting to -1 will disable this option.
-				scroll_limit = 150, -- Max number of lines moved before scrolling is skipped. Setting
-				-- to -1 will disable this option.
-			})
-		end,
-	},
+	-- {
+	-- 	"declancm/cinnamon.nvim",
+	-- 	lazy = false,
+	-- 	config = function()
+	-- 		require("cinnamon").setup({
+	-- 			-- KEYMAPS:
+	-- 			default_keymaps = true, -- Create default keymaps.
+	-- 			extra_keymaps = false, -- Create extra keymaps.
+	-- 			extended_keymaps = false, -- Create extended keymaps.
+	-- 			override_keymaps = false, -- The plugin keymaps will override any existing keymaps.
+	-- 			-- OPTIONS:
+	-- 			always_scroll = false, -- Scroll the cursor even when the window hasn't scrolled.
+	-- 			centered = true, -- Keep cursor centered in window when using window scrolling.
+	-- 			disabled = true, -- Disables the plugin.
+	-- 			default_delay = 3, -- The default delay (in ms) between each line when scrolling.
+	-- 			hide_cursor = false, -- Hide the cursor while scrolling. Requires enabling termguicolors!
+	-- 			horizontal_scroll = true, -- Enable smooth horizontal scrolling when view shifts left or right.
+	-- 			max_length = -1, -- Maximum length (in ms) of a command. The line delay will be
+	-- 			-- re-calculated. Setting to -1 will disable this option.
+	-- 			scroll_limit = 150, -- Max number of lines moved before scrolling is skipped. Setting
+	-- 			-- to -1 will disable this option.
+	-- 		})
+	-- 	end,
+	-- },
 	{
 		-- "luukvbaal/stabilize.nvim",
 		-- lazy = false,
@@ -545,54 +545,54 @@ return {
 			})
 		end,
 	},
-	{
-		"anuvyklack/pretty-fold.nvim",
-		lazy = true,
-		event = "BufRead *",
-		config = function()
-			require("pretty-fold").setup({
-				keep_indentation = false,
-				fill_char = "━",
-				sections = {
-					left = {
-						"━ ",
-						function()
-							return string.rep("*", vim.v.foldlevel)
-						end,
-						" ━┫",
-						"content",
-						"┣",
-					},
-					right = {
-						"┫ ",
-						"number_of_folded_lines",
-						": ",
-						"percentage",
-						" ┣━━",
-					},
-				},
-				remove_fold_markers = true,
-				-- Possible values:
-				-- "delete" : Delete all comment signs from the fold string.
-				-- "spaces" : Replace all comment signs with equal number of spaces.
-				-- false    : Do nothing with comment signs.
-				process_comment_signs = "spaces",
-				-- Comment signs additional to the value of `&commentstring` option.
-				comment_signs = {},
-				-- List of patterns that will be removed from content foldtext section.
-				stop_words = {
-					"@brief%s*", -- (for C++) Remove '@brief' and all spaces after.
-				},
-				add_close_pattern = true, -- true, 'last_line' or false
-				matchup_patterns = {
-					{ "{", "}" },
-					{ "%(", ")" }, -- % to escape lua pattern char
-					{ "%[", "]" }, -- % to escape lua pattern char
-				},
-				ft_ignore = { "neorg" },
-			})
-		end,
-	},
+	-- {
+	-- 	"anuvyklack/pretty-fold.nvim",
+	-- 	lazy = true,
+	-- 	event = "BufRead *",
+	-- 	config = function()
+	-- 		require("pretty-fold").setup({
+	-- 			keep_indentation = false,
+	-- 			fill_char = "━",
+	-- 			sections = {
+	-- 				left = {
+	-- 					"━ ",
+	-- 					function()
+	-- 						return string.rep("*", vim.v.foldlevel)
+	-- 					end,
+	-- 					" ━┫",
+	-- 					"content",
+	-- 					"┣",
+	-- 				},
+	-- 				right = {
+	-- 					"┫ ",
+	-- 					"number_of_folded_lines",
+	-- 					": ",
+	-- 					"percentage",
+	-- 					" ┣━━",
+	-- 				},
+	-- 			},
+	-- 			remove_fold_markers = true,
+	-- 			-- Possible values:
+	-- 			-- "delete" : Delete all comment signs from the fold string.
+	-- 			-- "spaces" : Replace all comment signs with equal number of spaces.
+	-- 			-- false    : Do nothing with comment signs.
+	-- 			process_comment_signs = "spaces",
+	-- 			-- Comment signs additional to the value of `&commentstring` option.
+	-- 			comment_signs = {},
+	-- 			-- List of patterns that will be removed from content foldtext section.
+	-- 			stop_words = {
+	-- 				"@brief%s*", -- (for C++) Remove '@brief' and all spaces after.
+	-- 			},
+	-- 			add_close_pattern = true, -- true, 'last_line' or false
+	-- 			matchup_patterns = {
+	-- 				{ "{", "}" },
+	-- 				{ "%(", ")" }, -- % to escape lua pattern char
+	-- 				{ "%[", "]" }, -- % to escape lua pattern char
+	-- 			},
+	-- 			ft_ignore = { "neorg" },
+	-- 		})
+	-- 	end,
+	-- },
 	{
 		"kwkarlwang/bufresize.nvim",
 		lazy = false,

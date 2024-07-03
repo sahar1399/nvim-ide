@@ -124,6 +124,9 @@ return {
       ["<leader>R"] = {
         name = "+ HTTP REST",
       },
+      ["<leader>rr"] = {
+        name = "+ Reload all buffers",
+      },
       ["gp"] = {
         name = "+ Preview",
       },

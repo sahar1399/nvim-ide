@@ -460,7 +460,7 @@ return {
 						silent = true,
 						buffer = bufnr,
 					},
-					["<leader>D"] = {
+					["<leader>T"] = {
 						vim.lsp.buf.type_definition,
 						"Type Definition",
 						mode = "n",

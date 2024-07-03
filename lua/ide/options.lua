@@ -79,6 +79,10 @@ endfunction
 nnoremap <silent> ,C :call CleanNoNameEmptyBuffers()<CR>
 ]])
 
+vim.cmd([[
+nnoremap <silent> <leader>ar :bufdo e<CR>
+]])
+
 if vim.g.non_modified then
 	vim.cmd([[
       set noshowmode

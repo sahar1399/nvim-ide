@@ -7,7 +7,7 @@ return {
     enabled = not vim.g.non_modified,
 		keys = {
 			{
-				"<leader>D",
+				"<leader>O",
 				mode = "n",
 				desc = "Toogle Lazy Docker",
 			},

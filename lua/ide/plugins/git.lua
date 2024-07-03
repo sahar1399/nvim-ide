@@ -7,9 +7,19 @@ return {
 		lazy = false,
 		config = function()
 			require("gitsigns").setup({
+				-- diff_opts = {
+				-- 	internal = false,
+				-- 	-- indent_heuristic = false,
+				-- 	-- vertical = false,
+				-- 	-- linematch= false,
+				-- 	-- ignore_whitespace_change= false,
+				-- 	-- ignore_whitespace= false,
+				-- 	-- ignore_whitespace_change_at_eol= false,
+				-- 	-- ignore_blank_lines= false,
+				-- },
 				signs = {
-					add = { text = "│" },
-					change = { text = "│" },
+					add = { text = "┃" },
+					change = { text = "┃" },
 					delete = { text = "_" },
 					topdelete = { text = "‾" },
 					changedelete = { text = "~" },
@@ -18,23 +28,25 @@ return {
 				signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
 				numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
 				linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
-				word_diff = true, -- Toggle with `:Gitsigns toggle_word_diff`
+				word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
 				watch_gitdir = {
 					follow_files = true,
 				},
-				attach_to_untracked = true,
+				auto_attach = true,
+				attach_to_untracked = false,
 				current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
 				current_line_blame_opts = {
 					virt_text = true,
 					virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
 					delay = 1000,
 					ignore_whitespace = false,
+					virt_text_priority = 100,
 				},
-				current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
-				sign_priority = 100,
+				current_line_blame_formatter = "<author>, <author_time:%R> - <summary>",
+				sign_priority = 6,
 				update_debounce = 100,
 				status_formatter = nil, -- Use default
-				max_file_length = 40000, -- Disable if file is longer than t (in lines)
+				max_file_length = 40000, -- Disable if file is longer than this (in lines)
 				preview_config = {
 					-- Options passed to nvim_open_win
 					border = "single",
@@ -42,9 +54,6 @@ return {
 					relative = "cursor",
 					row = 0,
 					col = 1,
-				},
-				yadm = {
-					enable = false,
 				},
 				on_attach = function(bufnr)
 					local gs = package.loaded.gitsigns
@@ -86,7 +95,7 @@ return {
 								s = {
 									gs.stage_hunk,
 									"Stage Hunk",
-									mode = { "n" },
+									mode = { "n", "v" },
 									buffer = bufnr,
 								},
 								r = {
@@ -95,18 +104,24 @@ return {
 									mode = { "n" },
 									buffer = bufnr,
 								},
-								f = {
-									gs.diffthis,
-									"Diff This",
-									mode = { "n" },
-									buffer = bufnr,
-								},
-								F = {
-									function() gs.diffthis("~") end,
-									"Diff This relative to parent",
-									mode = { "n" },
-									buffer = bufnr,
-								},
+								-- H = {
+								-- 	":Gitsigns diffthis<CR>",
+								-- 	"Diff This",
+								-- 	mode = { "n", "v" },
+								-- 	buffer = bufnr,
+								-- },
+								-- C = {
+								-- 	'<cmd>lua require"gitsigns".diffthis("HEAD^")<CR>',
+								-- 	"Diff This",
+								-- 	mode = { "n", "v" },
+								-- 	buffer = bufnr,
+								-- },
+								-- D = {
+								-- 	'<cmd>lua require"gitsigns".diffthis("~")<CR>',
+								-- 	"Diff This relative to parent",
+								-- 	mode = { "n", "v" },
+								-- 	buffer = bufnr,
+								-- },
 								S = { gs.stage_buffer, "Stage Buffer", mode = "n", buffer = bufnr },
 								u = { gs.undo_stage_hunk, "Stage Buffer", mode = "n", buffer = bufnr },
 								R = { gs.reset_buffer, "Reset Buffer", mode = "n", buffer = bufnr },
@@ -134,14 +149,6 @@ return {
 									mode = { "v" },
 									buffer = bufnr,
 								},
-								D = {
-									function()
-										gs.diffthis("~")
-									end,
-									"Diff This",
-									mode = { "v" },
-									buffer = bufnr,
-								},
 							},
 						},
 					})
@@ -161,16 +168,52 @@ return {
 		},
 		keys = {
 			{
+				"<leader>gf",
+				"<cmd>DiffviewFileHistory %<CR>",
+				mode = { "n" },
+				desc = "Git This File History",
+			},
+			{
+				"<leader>gf",
+				":DiffviewFileHistory<CR>",
+				mode = { "v" },
+				desc = "Git This Range History",
+			},
+			{
 				"<leader>gd",
-				"<cmd>DiffviewOpen<CR>",
-				mode = "n",
-				desc = "Git Diff (Toggle)",
+				"<cmd>DiffviewOpen develop -- %<CR>",
+				mode = { "n" },
+				desc = "Git Diff This File (develop)",
 			},
 			{
 				"<leader>gh",
-				"<cmd>DiffviewFileHistory %<CR>",
-				mode = "n",
-				desc = "Git Commit History (Toggle)",
+				"<cmd>DiffviewOpen HEAD -- %<CR>",
+				mode = { "n" },
+				desc = "Git Diff This File (HEAD)",
+			},
+			{
+				"<leader>gc",
+				"<cmd>DiffviewOpen HEAD^ -- %<CR>",
+				mode = { "n" },
+				desc = "Git Diff This File (HEAD^)",
+			},
+			{
+				"<leader>gD",
+				"<cmd>DiffviewOpen develop<CR>",
+				mode = { "n" },
+				desc = "Git Diff All (develop)",
+			},
+			{
+				"<leader>gH",
+				"<cmd>DiffviewOpen HEAD<CR>",
+				mode = { "n" },
+				desc = "Git Diff All (HEAD)",
+			},
+			{
+				"<leader>gC",
+				"<cmd>DiffviewOpen HEAD<CR>",
+				mode = { "n" },
+				desc = "Git Diff All (HEAD^)",
 			},
 		},
 		config = function()
