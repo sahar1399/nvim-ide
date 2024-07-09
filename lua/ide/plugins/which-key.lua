@@ -127,6 +127,9 @@ return {
       ["<leader>rr"] = {
         name = "+ Reload all buffers",
       },
+      ["<leader>bc"] = {
+        name = "+ Close all buffers but this one",
+      },
       ["gp"] = {
         name = "+ Preview",
       },

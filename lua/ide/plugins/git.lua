@@ -211,7 +211,7 @@ return {
 			},
 			{
 				"<leader>gC",
-				"<cmd>DiffviewOpen HEAD<CR>",
+				"<cmd>DiffviewOpen HEAD^<CR>",
 				mode = { "n" },
 				desc = "Git Diff All (HEAD^)",
 			},

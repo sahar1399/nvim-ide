@@ -80,7 +80,8 @@ nnoremap <silent> ,C :call CleanNoNameEmptyBuffers()<CR>
 ]])
 
 vim.cmd([[
-nnoremap <silent> <leader>ar :bufdo e<CR>
+nnoremap <silent> <leader>rr :bufdo e<CR>
+"nnoremap <silent> <leader>bc :%bdelete|edit #|normal<CR>
 ]])
 
 if vim.g.non_modified then
