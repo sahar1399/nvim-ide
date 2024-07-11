@@ -136,76 +136,55 @@ return {
 		},
 	},
 	{
-		"rest-nvim/rest.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		lazy = true,
+		"mistweaverco/kulala.nvim",
 		ft = "http",
 		keys = {
 			{
 				"<leader>Rr",
 				function()
-					require("rest-nvim").run()
+					require("kulala").run()
 				end,
 				opts,
 				mode = "n",
 				desc = "HTTP REST Run",
 			},
 			{
-				"<leader>Rp",
+				"<leader>Rv",
 				function()
-					require("rest-nvim").run(true)
+					require("kulala").toggle_view()
 				end,
 				opts,
 				mode = "n",
-				desc = "HTTP REST Preview",
-			},
-			{
-				"<leader>Rl",
-				function()
-					require("rest-nvim").last()
-				end,
-				opts,
-				mode = "n",
-				desc = "HTTP REST Run Last",
+				desc = "HTTP REST toggle view",
 			},
 		},
 		config = function()
-			require("rest-nvim").setup({
-				-- Open request results in a horizontal split
-				result_split_horizontal = false,
-				-- Keep the http file buffer above|left when split horizontal|vertical
-				result_split_in_place = false,
-				-- Skip SSL verification, useful for unknown certificates
-				skip_ssl_verification = false,
-				-- Encode URL before making request
-				encode_url = true,
-				-- Highlight request on run
-				highlight = {
-					enabled = true,
-					timeout = 150,
+			-- Setup is required, even if you don't pass any options
+			require("kulala").setup({
+				-- default_view, body or headers
+				default_view = "body",
+				-- dev, test, prod, can be anything
+				-- see: https://learn.microsoft.com/en-us/aspnet/core/test/http-files?view=aspnetcore-8.0#environment-files
+				default_env = "dev",
+				-- enable/disable debug mode
+				debug = false,
+				-- default formatters for different content types
+				formatters = {
+					json = { "jq", "." },
+					xml = { "xmllint", "--format", "-" },
+					html = { "xmllint", "--format", "--html", "-" },
 				},
-				result = {
-					-- toggle showing URL, HTTP info, headers at top the of result window
-					show_url = true,
-					-- show the generated curl command in case you want to launch
-					-- the same request via the terminal (can be verbose)
-					show_curl_command = false,
-					show_http_info = true,
-					show_headers = true,
-					-- executables or functions for formatting response body [optional]
-					-- set them to false if you want to disable them
-					formatters = {
-						json = "jq",
-						html = function(body)
-							return vim.fn.system({ "tidy", "-i", "-q", "-" }, body)
-						end,
+				-- default icons
+				icons = {
+					inlay = {
+						loading = "⏳",
+						done = "✅ ",
 					},
+					lualine = "🐼",
 				},
-				-- Jump to request line on run
-				jump_to_request = false,
-				env_file = ".env",
-				custom_dynamic_variables = {},
-				yank_dry_run = true,
+				-- additional cURL options
+				-- e.g. { "--insecure", "-A", "Mozilla/5.0" }
+				additional_curl_options = {},
 			})
 		end,
 	},
@@ -297,10 +276,10 @@ return {
 					clipboard = false,
 					format = "silicon_[year][month][day]_[hour][minute][second].png",
 				},
-        line_number = true,
-        gobble = true,
-        round_corner = true,
-        window_controls = false,
+				line_number = true,
+				gobble = true,
+				round_corner = true,
+				window_controls = false,
 				window_title = function()
 					return vim.fn.fnamemodify(vim.fn.bufname(vim.fn.bufnr()), ":~:.")
 				end,
