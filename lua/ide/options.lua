@@ -46,6 +46,7 @@ local options = {
 	-- spell = false,
 	-- spelloptions = "camel",
 	diffopt = "filler,context:5,linematch:500,followwrap,indent-heuristic,algorithm:patience",
+	sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions",
 }
 
 for k, v in pairs(options) do

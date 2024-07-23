@@ -137,6 +137,7 @@ return {
 	},
 	{
 		"mistweaverco/kulala.nvim",
+		lazy = false,
 		ft = "http",
 		keys = {
 			{

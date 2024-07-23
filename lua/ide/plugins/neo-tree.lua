@@ -44,6 +44,172 @@ return {
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 			{
+				"jedrzejboczar/possession.nvim",
+				lazy = false,
+				dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+				keys = {
+					{
+						"<leader>fp",
+						function()
+							require("telescope").extensions.possession.list()
+						end,
+						mode = "n",
+						desc = "Open Git File Tree Compared to develop",
+					},
+					{
+						"<leader>ps",
+						"<cmd>PossessionSave<cr>",
+						mode = "n",
+						desc = "Open Git File Tree Compared to develop",
+					},
+					{
+						"<leader>pl",
+						"<cmd>PossessionLoad<cr>",
+						mode = "n",
+						desc = "Open Git File Tree Compared to develop",
+					},
+				},
+				config = function()
+					local neo_is_open = function()
+						for _, buf_i in ipairs(vim.api.nvim_list_bufs()) do
+							if
+								vim.api.nvim_buf_get_option(buf_i, "filetype") == "neo-tree"
+								and next(vim.fn.win_findbuf(buf_i))
+							then
+								return true
+							end
+						end
+					end
+
+					local neo_get_state = function()
+						if not neo_is_open() then
+							return
+						end
+						local manager = require("neo-tree.sources.manager")
+						local renderer = require("neo-tree.ui.renderer")
+
+						local state = manager.get_state("filesystem")
+						local expanded_nodes = renderer.get_expanded_nodes(state.tree)
+						return {
+							path = state.path,
+							expanded_nodes = expanded_nodes,
+							show_hidden = state.filtered_items.visible,
+						}
+					end
+
+					local neo_set_state = function(data)
+						local command = require("neo-tree.command")
+						local manager = require("neo-tree.sources.manager")
+						local state = manager.get_state("filesystem")
+
+						command.execute({
+							action = "show",
+							dir = data["path"],
+						})
+						state.filtered_items.visible = data["show_hidden"]
+						state.force_open_folders = data["expanded_nodes"]
+					end
+
+					require("possession").setup({
+						-- session_dir = (Path:new(vim.fn.stdpath("data")) / "possession"):absolute(),
+						silent = false,
+						load_silent = true,
+						debug = false,
+						logfile = false,
+						prompt_no_cr = false,
+						autosave = {
+							current = false, -- or fun(name): boolean
+							cwd = true, -- or fun(): boolean
+							tmp = false, -- or fun(): boolean
+							tmp_name = "tmp", -- or fun(): string
+							on_load = true,
+							on_quit = true,
+						},
+						autoload = nil, -- or 'last' or 'auto_cwd' or 'last_cwd' or fun(): string
+						commands = {
+							save = "PossessionSave",
+							load = "PossessionLoad",
+							save_cwd = "PossessionSaveCwd",
+							load_cwd = "PossessionLoadCwd",
+							rename = "PossessionRename",
+							close = "PossessionClose",
+							delete = "PossessionDelete",
+							show = "PossessionShow",
+							list = "PossessionList",
+							migrate = "PossessionMigrate",
+						},
+						hooks = {
+							before_save = function(name)
+								local res = {}
+								local neo_state = neo_get_state()
+								if neo_state ~= nil then
+									res["neo_tree"] = neo_state
+								end
+								return res
+							end,
+							after_save = function(name, user_data, aborted) end,
+							before_load = function(name, user_data)
+								return user_data
+							end,
+							after_load = function(name, user_data)
+								if user_data["neo_tree"] ~= nil then
+									neo_set_state(user_data["neo_tree"])
+								end
+							end,
+						},
+						plugins = {
+							close_windows = {
+								hooks = { "before_save", "before_load" },
+								preserve_layout = true, -- or fun(win): boolean
+								match = {
+									floating = true,
+									buftype = {},
+									filetype = {},
+									custom = false, -- or fun(win): boolean
+								},
+							},
+							delete_hidden_buffers = {
+								hooks = {
+									"before_load",
+									vim.o.sessionoptions:match("buffer") and "before_save",
+								},
+								force = false, -- or fun(buf): boolean
+							},
+							nvim_tree = true,
+							neo_tree = true,
+							symbols_outline = true,
+							outline = true,
+							tabby = true,
+							dap = true,
+							dapui = true,
+							neotest = true,
+							delete_buffers = false,
+						},
+						telescope = {
+							previewer = {
+								enabled = true,
+								previewer = "pretty", -- or 'raw' or fun(opts): Previewer
+								wrap_lines = true,
+								include_empty_plugin_data = false,
+								cwd_colors = {
+									cwd = "Comment",
+									tab_cwd = { "#cc241d", "#b16286", "#d79921", "#689d6a", "#d65d0e", "#458588" },
+								},
+							},
+							list = {
+								default_action = "load",
+								mappings = {
+									save = { n = "<c-x>", i = "<c-x>" },
+									load = { n = "<c-v>", i = "<c-v>" },
+									delete = { n = "<c-t>", i = "<c-t>" },
+									rename = { n = "<c-r>", i = "<c-r>" },
+								},
+							},
+						},
+					})
+				end,
+			},
+			{
 				"s1n7ax/nvim-window-picker",
 				event = "VeryLazy",
 				version = "2.*",
@@ -272,6 +438,7 @@ return {
 					"git_status",
 					"ide.plugins.neotree.sources.bookmarks",
 				},
+				auto_clean_after_session_restore = false,
 				close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
 				popup_border_style = "rounded",
 				enable_git_status = true,
@@ -416,6 +583,7 @@ return {
 						-- uses glob style patterns
 						hide_by_pattern = {},
 						-- remains visible even if other settings would normally hide it
+						-- always_show = always_show,
 						always_show = always_show,
 						never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
 							--".DS_Store",
@@ -462,6 +630,10 @@ return {
 					commands = {}, -- Add a custom command or override a global one using the same function name
 
 					bind_to_cwd = true, -- true creates a 2-way binding between vim's cwd and neo-tree's root
+					cwd_target = {
+						sidebar = "global", -- sidebar is when position = left or right
+						current = "global", -- current is when position = current
+					},
 				},
 				buffers = {
 					follow_current_file = {
