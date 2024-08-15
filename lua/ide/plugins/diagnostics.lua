@@ -44,7 +44,7 @@ return {
 				padding = true, -- add an extra new line on top of the list
 				indent_lines = true, -- add an indent guide below the fold icons
         pinned=true,
-        multiline=true,
+        multiline=false,
 				auto_open = false, -- automatically open the list when you have diagnostics
 				auto_close = false, -- automatically close the list when you have no diagnostics
 				auto_preview = false, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window

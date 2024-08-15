@@ -60,9 +60,11 @@ return {
 
         local pos, _ = client:get_nearest(path, line - 1)
         if pos == nil then
+          print("nil")
           return
         end
 
+        print(pos:data().id)
         neotest.summary:expand(pos:data().id, true)
       end
 
