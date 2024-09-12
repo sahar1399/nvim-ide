@@ -1,0 +1,208 @@
+- {https://github.com/knqyf263/pet} - GitHub - knqyf263/pet: Simple command-line snippet manager
+- {https://github.com/GothenburgBitFactory/taskwarrior} - GitHub - GothenburgBitFactory/taskwarrior: Taskwarrior - Command line Task Management
+- {https://github.com/kellyjonbrazil/jc} - GitHub - kellyjonbrazil/jc: CLI tool and python library that converts the output of popular command-line tools, file-types, and common strings to JSON, YAML, or Dictionaries. This allows piping of output to tools like jq and simplifying automation scripts.
+- {https://www.youtube.com/watch?v=KF5dtxVsn1E} - (14) A tour around nushell - a modern replacement for zsh and bash based on structured data - YouTube
+- {https://github.com/Wilfred/difftastic?ref=terminaltrove} - GitHub - Wilfred/difftastic at terminaltrove
+- {https://github.com/ankitpokhrel/jira-cli?ref=terminaltrove} - GitHub - ankitpokhrel/jira-cli at terminaltrove
+- {https://anufrievroman.gitbook.io/calcure/} - Calcure - Calcure
+- {https://terminaltrove.com/} - Terminal Trove - The $HOME of all things in the terminal.
+- {https://github.com/jorgerojas26/lazysql} - GitHub - jorgerojas26/lazysql: A cross-platform TUI database management tool written in Go.
+- {https://github.com/tmux-plugins/tmux-yank} - GitHub - tmux-plugins/tmux-yank: Tmux plugin for copying to system clipboard. Works on OSX, Linux and Cygwin.
+- {https://www.youtube.com/watch?v=BDYaUtOoCP8} - (1) Launching Tmuxinator Projects with FZF - YouTube
+- {https://github.com/mfontanini/presenterm} - GitHub - mfontanini/presenterm: A terminal slideshow tool
+- {https://github.com/takaaki-kasai/git-foresta} - GitHub - takaaki-kasai/git-foresta: git-foresta: Text-based git log graph viewer
+- {https://github.com/sxyazi/yazi} - GitHub - sxyazi/yazi: 💥 Blazing fast terminal file manager written in Rust, based on async I/O.
+- {https://direnv.net/} - direnv – unclutter your .profile | direnv
+- {https://github.com/dlvhdr/gh-dash} - GitHub - dlvhdr/gh-dash: A beautiful CLI dashboard for GitHub 🚀
+- {https://github.com/mithrandie/csvq} - GitHub - mithrandie/csvq: SQL-like query language for csv
+- {https://zed.brimdata.io/docs/commands/zq/} - zq | Zed
+- {https://github.com/toolleeo/cli-apps/} - GitHub - toolleeo/cli-apps: The largest Awesome Curated list of CLI/TUI applications with source data organized into CSV files
+- {https://github.com/ardagnir/athame} - GitHub - ardagnir/athame: Full vim for your shell (bash, zsh, gdb, python, etc)
+- {https://github.com/erikw/vim-keybindings-everywhere-the-ultimate-list/blob/main/README.md} - vim-keybindings-everywhere-the-ultimate-list/README.md at main · erikw/vim-keybindings-everywhere-the-ultimate-list · GitHub
+- {https://www.visidata.org/docs/graph/} - Drawing graphs | Docs | VisiData
+- {https://github.com/fedeztk/got} - GitHub - fedeztk/got: Translating TUI written in go using simplytranslate&#39;s API
+- {https://github.com/jmbuhr/otter.nvim} - GitHub - jmbuhr/otter.nvim: Just ask an otter! 🦦
+- {https://github.com/kiyoon/python-import.nvim} - GitHub - kiyoon/python-import.nvim: Add import statements FAST ⚡️
+- {https://github.com/rbong/vim-flog} - GitHub - rbong/vim-flog: A blazingly fast, stunningly beautiful, exceptionally powerful git branch viewer for Vim/Neovim.
+- {https://github.com/teal-language/tl} - GitHub - teal-language/tl: The compiler for Teal, a typed dialect of Lua
+- {https://github.com/teal-language/teal-language-server} - GitHub - teal-language/teal-language-server: A language server for Teal, a typed dialect of Lua
+- {https://www.reddit.com/r/neovim/comments/1et23ag/diagramnvim_diagrams_as_code_mermaid_markdown_to/} - diagram.nvim - diagrams as code (mermaid + markdown to start) : r/neovim
+- {https://github.com/ynqa/jnv} - GitHub - ynqa/jnv: Interactive JSON filter using jq
+- {https://github.com/rothgar/awesome-tuis} - GitHub - rothgar/awesome-tuis: List of projects that provide terminal user interfaces
+- {https://github.com/denisidoro/navi?tab=readme-ov-file} - GitHub - denisidoro/navi: An interactive cheatsheet tool for the command-line
+- {https://github.com/toolleeo/cli-apps} - GitHub - toolleeo/cli-apps: The largest Awesome Curated list of CLI/TUI applications with source data organized into CSV files
+- {https://github.com/casey/just} - GitHub - casey/just: 🤖 Just a command runner
+- {https://github.com/agarrharr/awesome-cli-apps} - GitHub - agarrharr/awesome-cli-apps: 🖥 📊 🕹 🛠 A curated list of command line apps
+- {https://github.com/eradman/entr} - GitHub - eradman/entr: Run arbitrary commands when files change
+- {https://github.com/OXY2DEV/helpview.nvim} - GitHub - OXY2DEV/helpview.nvim: Decorations for vimdoc/help files in Neovim
+- {https://github.com/ryanmsnyder/toggleterm-manager.nvim} - GitHub - ryanmsnyder/toggleterm-manager.nvim: A Telescope extension to manage Toggleterm&#39;s terminals in NeoVim
+- {https://github.com/elijah-potter/harper} - GitHub - elijah-potter/harper: The Grammar Checker for Developers
+- {https://github.com/axkirillov/easypick.nvim} - GitHub - axkirillov/easypick.nvim: A neovim plugin that lets you easily create Telescope pickers from arbitrary console commands
+- {https://github.com/jellydn/hurl.nvim} - GitHub - jellydn/hurl.nvim: Hurl.nvim is a Neovim plugin designed to run HTTP requests directly from `.hurl` files. Elevate your API development workflow by executing and viewing responses without leaving your editor.
+- {https://github.com/gregorias/coerce.nvim} - GitHub - gregorias/coerce.nvim: A Neovim plugin for changing keyword case.
+- {https://github.com/simrat39/symbols-outline.nvim} - GitHub - simrat39/symbols-outline.nvim: A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
+- {https://github.com/someone-stole-my-name/yaml-companion.nvim} - GitHub - someone-stole-my-name/yaml-companion.nvim: Get, set and autodetect YAML schemas in your buffers.
+- {https://github.com/t-troebst/perfanno.nvim} - GitHub - t-troebst/perfanno.nvim: NeoVim lua plugin that annotates source code with profiling information from perf or other profilers
+- {https://github.com/nvim-neo-tree/neo-tree.nvim/wiki/Recipes#diff-files} - Recipes · nvim-neo-tree/neo-tree.nvim Wiki · GitHub
+- {https://github.com/nvim-neo-tree/neo-tree.nvim/issues/866#issuecomment-1510417673} - Method to diff arbitrary files · Issue #866 · nvim-neo-tree/neo-tree.nvim · GitHub
+- {https://github.com/nvim-telescope/telescope-frecency.nvim} - GitHub - nvim-telescope/telescope-frecency.nvim: A telescope.nvim extension that offers intelligent prioritization when selecting files from your editing history.
+- {https://github.com/tris203/hawtkeys.nvim} - GitHub - tris203/hawtkeys.nvim: ⌨️🔥 Suggest new easy to hit keymaps and find issues with your current key map configurations
+- {https://vonheikemen.github.io/devlog/tools/neovim-lsp-client-guide/} - A guide on Neovim&#39;s LSP client | Devlog
+- {https://github.com/altermo/nxwm} - GitHub - altermo/nxwm: An x11 window manager in neovim
+- {https://github.com/benlubas/molten-nvim} - GitHub - benlubas/molten-nvim: A neovim plugin for interactively running code with the jupyter kernel. Fork of magma-nvim with improvements in image rendering, performance, and more
+- {https://github.com/fdschmidt93/telescope-egrepify.nvim} - GitHub - fdschmidt93/telescope-egrepify.nvim: Variable user customization for telescope.live_grep to set rg flags on-the-fly
+- {https://github.com/Wansmer/treesj#languages} - GitHub - Wansmer/treesj: Neovim plugin for splitting/joining blocks of code
+- {https://github.com/utilyre/sentiment.nvim} - GitHub - utilyre/sentiment.nvim: Enhanced matchparen.vim plugin for Neovim
+- {https://github.com/yorickpeterse/nvim-pqf} - GitHub - yorickpeterse/nvim-pqf: Prettier quickfix/location list windows for NeoVim
+- {https://github.com/DNLHC/glance.nvim} - GitHub - DNLHC/glance.nvim: A pretty window for previewing, navigating and editing your LSP locations
+- {https://github.com/hedyhli/outline.nvim} - GitHub - hedyhli/outline.nvim: Code outline sidebar powered by LSP. Significantly enhanced &amp; refactored fork of symbols-outline.nvim.
+- {https://github.com/backdround/improved-ft.nvim} - GitHub - backdround/improved-ft.nvim
+- {https://github.com/Dronakurl/injectme.nvim/tree/main} - GitHub - Dronakurl/injectme.nvim: Neovim plugin to help setup language injections with treesitter
+- {https://github.com/andersevenrud/nvim_context_vt} - GitHub - andersevenrud/nvim_context_vt: Virtual text context for neovim treesitter
+- {https://github.com/cshuaimin/ssr.nvim} - GitHub - cshuaimin/ssr.nvim: Treesitter based structural search and replace plugin for Neovim.
+- {https://github.com/Olical/conjure} - GitHub - Olical/conjure: Interactive evaluation for Neovim (Clojure, Fennel, Janet, Racket, Hy, MIT Scheme, Guile)
+- {https://www.reddit.com/r/neovim/comments/181bsu8/my_take_on_a_word_movement/} - (2) My take on a (WORD) movement : neovim
+- {https://www.reddit.com/r/neovim/comments/180fmw5/add_this_to_make_nvmcmp_docs_look_way_better_in/} - (2) add this to make nvm-cmp docs look way better in neovim v0.10. : neovim
+- {https://github.com/Zeioth/garbage-day.nvim} - GitHub - Zeioth/garbage-day.nvim: Garbage collector that stops inactive LSP clients to free RAM
+- {https://github.com/rbong/vim-flog} - GitHub - rbong/vim-flog: A fast, beautiful, and powerful git branch viewer for vim.
+- {https://git.sr.ht/~swaits/thethethe.nvim} - ~swaits/thethethe.nvim - A neovim plugin to automatically correct common misspellings and typos like &quot;teh&quot; for &quot;the&quot;. - sourcehut git
+- {https://github.com/abeldekat/lazyflex.nvim} - GitHub - abeldekat/lazyflex.nvim: An addon for lazy.nvim. Easily enable/disable multiple plugins.
+- {https://github.com/tamago324/nlsp-settings.nvim} - GitHub - tamago324/nlsp-settings.nvim: A plugin for setting Neovim LSP with JSON or YAML files
+- {https://www.youtube.com/watch?v=FuYQ7M73bC0} - (985) These HIDDEN MOTIONS in Neovim will CHANGE how you work - YouTube
+- {https://github.com/luckasRanarison/clear-action.nvim} - GitHub - luckasRanarison/clear-action.nvim: Predictable LSP code actions
+- {https://www.reddit.com/r/neovim/comments/16sqyjz/finally_we_can_have_highlighted_folds/} - (2) Finally we can have highlighted folds! : neovim
+- {https://github.com/Wansmer/symbol-usage.nvim} - GitHub - Wansmer/symbol-usage.nvim: Display references, definitions and implementations of document symbols
+- {https://www.reddit.com/r/neovim/comments/16n7r0q/pretty_lsp_floating_windows_now_part_of_neovim/} - (2) Pretty LSP floating windows, now part of Neovim core :) : neovim
+- {https://www.reddit.com/r/neovim/comments/173ctlz/leetcodenvim_solve_leetcode_problems_within_neovim/} - (2) leetcode.nvim: solve leetcode problems within neovim! : neovim
+- {https://www.reddit.com/r/neovim/comments/16xz3q9/treesitter_highlighted_folds_are_now_in_neovim/} - (2) Treesitter highlighted folds are now in neovim core! : neovim
+- {https://github.com/sontungexpt/url-open} - GitHub - sontungexpt/url-open: Minimal plugin allow you to open url under cursor in neovim without netrw with default browser of your system and highlight url
+- {https://www.reddit.com/r/neovim/comments/16sqyjz/finally_we_can_have_highlighted_folds/} - (2) Finally we can have highlighted folds! : neovim
+- {https://github.com/luckasRanarison/clear-action.nvim} - GitHub - luckasRanarison/clear-action.nvim: Predictable LSP code actions
+- {https://www.reddit.com/r/neovim/comments/167xgag/ultimateautopairnvim_nextgen_autopairing_plugin/} - (1) Ultimate-autopair.nvim - next-gen auto-pairing plugin : neovim
+- {https://github.com/2KAbhishek/nerdy.nvim} - GitHub - 2KAbhishek/nerdy.nvim: Find Nerd Glyphs Easily 🤓🔭
+- {https://github.com/ldelossa/gh.nvim} - GitHub - ldelossa/gh.nvim: A fully featured GitHub integration for performing code reviews in Neovim.
+- {https://github.com/VidocqH/lsp-lens.nvim} - GitHub - VidocqH/lsp-lens.nvim: Neovim plugin for displaying references and difinition infos upon functions like JB&#39;s IDEA.
+- {https://michaeluloth.com/neovim-switch-configs/} - Switching Configs in Neovim • Michael Uloth
+- {https://github.com/niuiic/code-shot.nvim} - GitHub - niuiic/code-shot.nvim: Neovim plugin to shot code
+- {https://github.com/aznhe21/actions-preview.nvim} - GitHub - aznhe21/actions-preview.nvim: Fully customizable previewer for LSP code actions.
+- {https://github.com/luckasRanarison/nvim-devdocs} - GitHub - luckasRanarison/nvim-devdocs: Neovim DevDocs integration
+- {https://github.com/MagicDuck/grug-far.nvim} - GitHub - MagicDuck/grug-far.nvim: Find And Replace plugin for neovim
+- {https://github.com/stevearc/quicker.nvim} - GitHub - stevearc/quicker.nvim: Improved UI and workflow for the Neovim quickfix
+- {https://www.reddit.com/r/neovim/comments/1em9qkl/tired_of_seeing_catppuccin_everywhere_meet_the/} - Tired of seeing Catppuccin everywhere? Meet the Eldritch theme (plugin not mine) : r/neovim
+- {https://github.com/eldritch-theme/eldritch.nvim} - GitHub - eldritch-theme/eldritch.nvim: A theme for the Ancient Ones! (NVIM)
+- {https://github.com/LintaoAmons/bookmarks.nvim} - GitHub - LintaoAmons/bookmarks.nvim: Persistent bookmarks: powerful but simple (one shortcut to add, rename, and remove bookmark)
+- {https://github.com/isakbm/gitgraph.nvim} - GitHub - isakbm/gitgraph.nvim: Git Graph plugin for neovim
+- {https://github.com/piersolenski/wtf.nvim} - GitHub - piersolenski/wtf.nvim: Delicious diagnostic debugging in Neovim 🤤
+- {https://github.com/k-lar/dynomark.nvim} - GitHub - k-lar/dynomark.nvim: Dynamic notes with dynomark queries for markdown, similar to obsidian&#39;s dataview
+- {https://github.com/NicoElbers/nv} - GitHub - NicoElbers/nv: A patcher that takes in a regular lua neovim config and makes it nix compatible
+- {https://github.com/Ramilito/kubectl.nvim} - GitHub - Ramilito/kubectl.nvim
+- {https://github.com/lukas-reineke/cmp-under-comparator} - GitHub - lukas-reineke/cmp-under-comparator: nvim-cmp comparator function for completion items that start with one or more underlines
+- {https://github.com/OXY2DEV/markview.nvim} - GitHub - OXY2DEV/markview.nvim: An experimental markdown previewer for Neovim
+- {https://www.reddit.com/r/neovim/comments/1bh0kba/psa_new_python_lsp_that_supports_inlay_hints_and/} - PSA: New Python LSP that supports inlay hints and semantic highlighting has been added to lspconfig! : r/neovim
+- {https://github.com/isakbm/gitgraph.nvim} - GitHub - isakbm/gitgraph.nvim: Git Graph plugin for neovim
+- {https://github.com/LhKipp/nvim-nu} - GitHub - LhKipp/nvim-nu: Basic editor support for the nushell language
+- {https://hiphish.github.io/blog/2024/01/29/testing-neovim-plugins-with-busted/} - hiphish.github.io/blog/2...
+- {https://github.com/saifulapm/neotree-file-nesting-config} - GitHub - saifulapm/neotree-file-nesting-config
+- {https://github.com/shellRaining/hlchunk.nvim} - GitHub - shellRaining/hlchunk.nvim: This is the lua implementation of nvim-hlchunk, you can use this neovim plugin to highlight your indent line and the current chunk (context) your cursor stayed
+- {https://www.reddit.com/r/neovim/comments/1e8r4m2/kulalafmt_v102_is_out_an_opinionated_http_and/} - Kulala-fmt v1.0.2 is out - An opinionated 🦄 .http and .rest 🐼 files linter 💄 and formatter ⚡. : r/neovim
+- {https://dlvhdr.me/posts/how-i-use-github} - My Git &amp; GitHub workflow - an efficient yet messy setup | Dolev Hadar
+- {https://github.com/stevearc/resession.nvim} - GitHub - stevearc/resession.nvim: A replacement for mksession with a better API
+- {https://kulala.mwco.app/} - Kulala.nvim | Kulala.nvim
+- {https://github.com/tristone13th/lspmark.nvim} - GitHub - tristone13th/lspmark.nvim: A Sane Project-wise Bookmarks Plugin with Persistent Storage Based on LSP for Neovim.
+- {https://hiphish.github.io/blog/2024/02/20/debugging-lua-scripts-running-in-neovim/} - HiPhish&#39;s Workshop
+- {https://github.com/julienvincent/hunk.nvim} - GitHub - julienvincent/hunk.nvim: A tool for splitting diffs in Neovim
+- {https://github.com/Ramilito/kubectl.nvim} - GitHub - Ramilito/kubectl.nvim
+- {https://github.com/Chaitanyabsprip/fastaction.nvim} - GitHub - Chaitanyabsprip/fastaction.nvim: Efficient plugin designed to optimize code actions in Neovim
+- {https://github.com/chrisgrieser/nvim-lsp-endhints} - GitHub - chrisgrieser/nvim-lsp-endhints: Display LSP inlay hints at the end of the line, rather than within the line.
+- {https://github.com/Zeioth/none-ls-external-sources.nvim} - GitHub - Zeioth/none-ls-external-sources.nvim: All external sources not natively supported by none-ls
+- {https://github.com/scottmckendry/telescope-resession.nvim} - GitHub - scottmckendry/telescope-resession.nvim: Telescope extension for resession.nvim
+- {https://www.reddit.com/r/neovim/comments/1dljs0o/fold_linenvim_lines_not_for_indent_but_for_fold/} - fold_line.nvim: lines, not for indent, but for fold. : r/neovim
+- {https://github.com/mistweaverco/kulala.nvim} - GitHub - mistweaverco/kulala.nvim: A minimal 🤏 HTTP-client 🐼 interface 🖥️ for Neovim ❤️.
+- {https://github.com/tristone13th/lspmark.nvim} - GitHub - tristone13th/lspmark.nvim: A Sane Project-wise Bookmarks Plugin with Persistent Storage Based on LSP for Neovim.
+- {https://www.reddit.com/r/neovim/comments/1dpww7b/finally_managed_to_integrate_lsp_servers_and/} - Finally managed to integrate LSP servers and Linters in a somewhat cohesive way. : r/neovim
+- {https://github.com/zeioth/none-ls-autoload.nvim} - GitHub - Zeioth/none-ls-autoload.nvim: Minimalistic alternative for the plugin `mason-null-ls` with support for external sources.
+- {https://github.com/nvim-neo-tree/neo-tree.nvim/issues/1487} - FEATURE: Favorite list folder · Issue #1487 · nvim-neo-tree/neo-tree.nvim · GitHub
+- {https://github-wiki-see.page/m/nvim-neo-tree/neo-tree.nvim/wiki/Recipes} - Recipes - nvim-neo-tree/neo-tree.nvim GitHub Wiki
+- {https://github.com/akinsho/git-conflict.nvim} - GitHub - akinsho/git-conflict.nvim: A plugin to visualise and resolve merge conflicts in neovim
+- {https://github.com/ChuufMaster/buffer-vacuum} - GitHub - ChuufMaster/buffer-vacuum: A neovim plugin to vacuum up unused file buffers
+- {https://trstringer.com/neovim-auto-reopen-files/} - Automatically Reopen Previous Files and Session in Neovim | Thomas Stringer
+- {https://github.com/MeanderingProgrammer/markdown.nvim} - GitHub - MeanderingProgrammer/markdown.nvim: Plugin to improve viewing Markdown files in Neovim
+- {https://github.com/emmanueltouzery/decisive.nvim?tab=readme-ov-file} - GitHub - emmanueltouzery/decisive.nvim: Neovim plugin to assist work with CSV files
+- {https://github.com/tekumara/typos-lsp} - GitHub - tekumara/typos-lsp: Source code spell checker for Visual Studio Code, Neovim and other LSP clients
+- {https://github.com/lewis6991/spaceless.nvim?tab=readme-ov-file} - GitHub - lewis6991/spaceless.nvim: Automatically strip trailing whitespace as you are editing.
+- {https://github.com/MagicDuck/grug-far.nvim} - GitHub - MagicDuck/grug-far.nvim: Find And Replace plugin for neovim
+- {https://www.reddit.com/r/neovim/comments/1d1nrvv/kubectlnvim_navigate_your_cluster_in_a_buffer/} - Kubectl.nvim: navigate your cluster in a buffer : r/neovim
+- {https://github.com/MagicDuck/grug-far.nvim/tree/main} - GitHub - MagicDuck/grug-far.nvim: Find And Replace plugin for neovim
+- {https://github.com/lewis6991/whatthejump.nvim} - GitHub - lewis6991/whatthejump.nvim: Show jumplist in a floating window.
+- {https://github.com/rachartier/tiny-devicons-auto-colors.nvim} - GitHub - rachartier/tiny-devicons-auto-colors.nvim: A Neovim plugin that automatically assigns colors to devicons based on their nearest color in a predefined color palette.
+- {https://dotfyle.com/this-week-in-neovim/72} - Neovim v0.10.0 release, builtin autocompletion, faster LuaLS setup with lazydev.nvim, grug-far.nvim, tiny-devicons-auto-colors.nvim
+- {https://github.com/yorickpeterse/nvim-tree-pairs} - GitHub - yorickpeterse/nvim-tree-pairs: NeoVim plugin for jumping to the other end of the current Tree-sitter node
+- {https://github.com/nihancj/plugin-switcher.nvim} - GitHub - nihancj/plugin-switcher.nvim: A useful neovim plugin to use with lazy.nvim
+- {https://github.com/pogyomo/submode.nvim} - GitHub - pogyomo/submode.nvim: Create your own submode
+- {https://www.reddit.com/r/neovim/comments/1c5h0ky/blamenvim_fugitive_style_blame_big_update_with/} - blame.nvim - fugitive style blame, big update with new features : r/neovim
+- {https://github.com/h4ckm1n-dev/kube-utils-nvim} - GitHub - h4ckm1n-dev/kube-utils-nvim: 🚀 Neovim Kubernetes Plugin : This Neovim plugin provides seamless integration with Kubernetes and Helm, allowing you to deploy and manage Kubernetes resources directly from your editor.
+- {https://mambusskruj.github.io/posts/pub-neovim-for-markdown/} - Neovim as a markdown editor
+- {https://github.com/mikesmithgh/git-prompt-string-lualine.nvim} - GitHub - mikesmithgh/git-prompt-string-lualine.nvim: 📍Add git-prompt-string to your Neovim statusline!
+- {https://github.com/Makaze/watch.nvim} - GitHub - Makaze/watch.nvim: A scrollable `watch` alternative for Neovim.
+- {https://www.reddit.com/r/neovim/comments/1bq6w7f/trouble_v3_is_now_in_beta/} - Trouble v3 is now in beta! : r/neovim
+- {https://github.com/Makaze/watch.nvim} - GitHub - Makaze/watch.nvim: A scrollable `watch` alternative for Neovim.
+- {https://github.com/yujinyuz/gitpad.nvim} - GitHub - yujinyuz/gitpad.nvim: minimal neovim plugin for taking down notes for git projects, branch, etc.
+- {https://github.com/aaronhallaert/advanced-git-search.nvim} - GitHub - aaronhallaert/advanced-git-search.nvim: Search your git history by commit message, content and author in Neovim
+- {https://www.reddit.com/r/neovim/comments/1by1fyd/basedmypy_vs_basedpyright_vs_mypy_vs_pyright_for/} - basedmypy vs basedpyright vs mypy vs pyright for Python type checker : r/neovim
+- {https://github.com/Myzel394/jsonfly.nvim} - GitHub - Myzel394/jsonfly.nvim: ❴🦋❵ Fly through your JSON files with ease. Search ✨ blazingly fast ✨ for keys via Telescope.
+- {https://github.com/moyiz/git-dev.nvim} - GitHub - moyiz/git-dev.nvim: Open remote git repositories in the comfort of Neovim.
+- {https://github.com/Zeioth/makeit.nvim} - GitHub - Zeioth/makeit.nvim: Neovim Makefile plugin
+- {https://github.com/Willem-J-an/visidata.nvim} - GitHub - Willem-J-an/visidata.nvim: A plugin for neovim to render pandas dataframes in [nvim-dap][1] using the power of [visidata][2].
+- {https://www.reddit.com/r/neovim/comments/1c1ip46/how_to_remove_spacing_below_the_statusline_in/} - How to remove spacing below the statusline in NvChad : r/neovim
+- {https://github.com/yutkat/git-rebase-auto-diff.nvim} - GitHub - yutkat/git-rebase-auto-diff.nvim: Show diff automatically when git rebase
+- {https://www.reddit.com/r/neovim/comments/1c3gf93/commentreplnvim_run_code_from_your_buffer_and/} - Comment-REPL.nvim - Run code from your buffer and print output as a comment : r/neovim
+- {https://github.com/tigion/nvim-asciidoc-preview} - GitHub - tigion/nvim-asciidoc-preview: A simple AsciiDoc preview while editing AsciiDoc documents in Neovim
+- {https://github.com/MeanderingProgrammer/markdown.nvim} - GitHub - MeanderingProgrammer/markdown.nvim: Plugin to improve viewing Markdown files in Neovim
+- {https://github.com/catgoose/telescope-helpgrep.nvim} - GitHub - catgoose/telescope-helpgrep.nvim: Telescope extension that uses Telescope builtins (live_grep or grep_string) to grep through help files
+- {https://github.com/Mr-LLLLL/treesitter-outer} - GitHub - Mr-LLLLL/treesitter-outer: Jump outer node smartly
+- {https://github.com/gczcn/antonym.nvim} - GitHub - gczcn/antonym.nvim: The neovim plug-in can replace the word under the cursor with its antonym
+- {https://github.com/dlvhdr/gh-blame.nvim} - GitHub - dlvhdr/gh-blame.nvim: View the PR blame of the current line
+- {https://github.com/akinsho/git-conflict.nvim} - GitHub - akinsho/git-conflict.nvim: A plugin to visualise and resolve merge conflicts in neovim
+- {https://github.com/tadmccorkle/markdown.nvim} - GitHub - tadmccorkle/markdown.nvim: Configurable tools for working with Markdown in Neovim.
+- {https://github.com/2KAbhishek/termim.nvim} - GitHub - 2KAbhishek/termim.nvim: Neovim Terminal, Improved 🦾💻
+- {https://github.com/RAprogramm/nekifoch} - GitHub - RAprogramm/nekifoch: Neovim Kitty Font Changer
+- {https://github.com/isak102/telescope-git-file-history.nvim} - GitHub - isak102/telescope-git-file-history.nvim: Open/preview contents of the current file at a specific commit, without using git checkout
+- {https://github.com/fnune/recall.nvim} - GitHub - fnune/recall.nvim: Recall refines the use of Neovim marks by focusing on global marks, streamlining their usage and enhancing their visibility and navigability.
+- {https://github.com/neovim/neovim/issues/17862} - Neovim really slow with long files ( G, gg, % ) and syntax on · Issue #17862 · neovim/neovim · GitHub
+- {https://github.com/VPavliashvili/json-nvim} - GitHub - VPavliashvili/json-nvim: Powerful JSON processing capabilities in your Neovim buffer
+- {https://github.com/fredeeb/tardis.nvim?tab=readme-ov-file} - GitHub - FredeEB/tardis.nvim: Timetravel for neovim
+- {https://github.com/kr40/nvim-macros} - GitHub - kr40/nvim-macros: Easy way to save and load Macros!
+- {https://github.com/pauchiner/pastelnight.nvim?tab=readme-ov-file} - GitHub - pauchiner/pastelnight.nvim: Neovim theme inspired in Palenight, support a lot of plugins out-of-the-box. Includes themes for iTerm2, Alacritty, Kitty, Fish and others.
+- {https://github.com/otavioschwanck/telescope-cmdline-word.nvim} - GitHub - otavioschwanck/telescope-cmdline-word.nvim: Search buffer words for substitute and global command.
+- {https://github.com/dlvhdr/gh-addressed.nvim} - GitHub - dlvhdr/gh-addressed.nvim: Easily view and address comments left on your PR using folke/trouble.nvim
+- {https://github.com/Nedra1998/nvim-mdlink} - GitHub - Nedra1998/nvim-mdlink: Useful functionality for working with links in markdown
+- {https://github.com/siawkz/nvim-cheatsh} - GitHub - siawkz/nvim-cheatsh: Seamless integration of cheat.sh with Neovim: Access a wide range of cheat sheets directly through Telescope.
+- {https://github.com/briangwaltney/paren-hint.nvim} - GitHub - briangwaltney/paren-hint.nvim
+- {https://github.com/Willem-J-an/visidata.nvim} - GitHub - Willem-J-an/visidata.nvim: A plugin for neovim to render pandas dataframes in nvim-dap using the power of visidata.
+- {https://github.com/neovim/neovim/pull/28176} - feat(comment): add built-in commenting by echasnovski · Pull Request #28176 · neovim/neovim · GitHub
+- {https://il.mytrip.com/receipt.generate.confirmation.action} - pass
+- {https://github.com/mikesmithgh/git-prompt-string-lualine.nvim} - GitHub - mikesmithgh/git-prompt-string-lualine.nvim: 📍Add git-prompt-string to your Neovim statusline!
+- {https://github.com/Mr-LLLLL/cool-chunk.nvim} - GitHub - Mr-LLLLL/cool-chunk.nvim: forked from hlchunk.nvim and removed indent. only chunk and context, simple and faster.
+- {https://www.reddit.com/r/commandline/comments/1enyjb7/xcmd_mod_x_man_command_line_manual_fzf_enhances/} - x-cmd | mod 🧩 x man - Command Line Manual. fzf enhances interactive and search, combines with tldr for quick get usage, manual doc highlights syntax! : r/commandline
+- {https://www.reddit.com/r/commandline/comments/1en22h8/whenfs_a_fuse_filesystem_for_your_google_calendar/} - whenfs: A FUSE filesystem for your Google calendar : r/commandline
+- {https://aifaceswap.io/#face-swap-playground} - Free AI Face Swap Online (No Sign-up)
+- {https://github.com/orangekame3/stree} - GitHub - orangekame3/stree: 📁Directory trees of AWS S3 Bucket
+- {https://github.com/shshemi/tabiew} - GitHub - shshemi/tabiew: A lightweight, terminal-based application to view and query delimiter separated value formatted documents, such as CSV or TSV files.
+- {https://github.com/rockymadden/slack-cli} - GitHub - rockymadden/slack-cli: :neckbeard: Powerful Slack CLI via pure bash. Rich messaging, uploads, posts, piping, oh my!
+- {https://salotz.info/posts/runit_snooze/} - Cron alternative with runit and snooze | Salotz&#39;s Homepage
+- {https://ieee-tems-blogs.medium.com/shell-scripting-to-schedule-your-day-with-crontab-and-notify-send-b320f0a8f57a} - Shell scripting to schedule your day with Crontab and notify-send | by IEEE_TEMS BLOGS | Medium
+- {https://github.com/ynqa/jnv} - GitHub - ynqa/jnv: Interactive JSON filter using jq
+- {https://github.com/ynqa/sig} - GitHub - ynqa/sig: Interactive grep (for streaming)
+- {https://github.com/darrenburns/posting} - GitHub - darrenburns/posting: The modern API client that lives in your terminal.
+- {https://github.com/2KAbhishek/tmux2k} - GitHub - 2KAbhishek/tmux2k: Make tmux powerful and pretty 🥊💅
+- {https://www.reddit.com/r/commandline/comments/1ay5exw/is_there_a_tool_that_allows_you_to_wrap_an/} - Is there a tool that allows you to wrap an existing CLI tool and make it into an interactive shell? : r/commandline
+- {https://opensource.com/article/22/1/linux-desktop-notifications} - Send desktop notifications and reminders from Linux terminal | Opensource.com
+- {https://github.com/dhth/prs} - GitHub - dhth/prs: Stay updated on PRs without leaving the terminal
+- {https://github.com/dhth/punchout} - GitHub - dhth/punchout: punchout takes the suck out of logging time on JIRA
+- {https://github.com/nfrid/due.nvim} - GitHub - nfrid/due.nvim: Neovim plugin for displaying due dates
+- {https://github.com/Textualize/toolong} - GitHub - Textualize/toolong: A terminal application to view, tail, merge, and search log files (plus JSONL).
+- {https://github.com/libxmq/xmq} - GitHub - libxmq/xmq: Convert xml/html to a more human readable/editable format (xmq/htmq) and back can also work with json. Includes a syntax highlighter and pretty printer, pager and can render to html and tex.
+- {https://github.com/BnMcGn/vibase} - GitHub - BnMcGn/vibase: Edit a database table using the VIM editor
+- {https://github.com/trapd00r/vidir} - GitHub - trapd00r/vidir: edit directory in $EDITOR (better than vim . with netrw)
+- {https://github.com/trapd00r/vim-syntax-vidir-ls} - GitHub - trapd00r/vim-syntax-vidir-ls: dircolors in your vidir session
+- {https://github.com/orangekame3/stree} - GitHub - orangekame3/stree: 📁Directory trees of AWS S3 Bucket

@@ -1,4 +1,8 @@
 {
+  "snowflake": {
+    "body": "-- sqlfluff:dialect:snowflake",
+    "prefix": "snowflake"
+  },
   "sqlfluff": {
     "body": "-- sqlfluff:dialect:$1",
     "prefix": "sqlfluff"

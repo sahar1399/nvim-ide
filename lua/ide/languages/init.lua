@@ -14,5 +14,6 @@ languages["typescript"] = require("ide.languages.typescript")
 languages["helm"] = require("ide.languages.helm")
 languages["jq"] = require("ide.languages.jq")
 languages["xml"] = require("ide.languages.xml")
+languages["nix"] = require("ide.languages.nix")
 
 return languages
