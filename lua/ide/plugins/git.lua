@@ -168,6 +168,12 @@ return {
 		},
 		keys = {
 			{
+				"<leader>gM",
+				"<cmd>DiffviewOpen<CR>",
+				mode = { "n" },
+				desc = "Merge Tool",
+			},
+			{
 				"<leader>gf",
 				"<cmd>DiffviewFileHistory %<CR>",
 				mode = { "n" },
@@ -254,7 +260,7 @@ return {
 					},
 					merge_tool = {
 						-- Config for conflicted files in diff views during a merge or rebase.
-						layout = "diff3_horizontal",
+						layout = "diff4_mixed",
 						disable_diagnostics = true, -- Temporarily disable diagnostics for conflict buffers while in the view.
 						winbar_info = true, -- See ':h diffview-config-view.x.winbar_info'
 					},
@@ -950,5 +956,21 @@ return {
 	{
 		"rickhowe/diffchar.vim",
 		enabled = not vim.g.non_modified,
+	},
+	{
+		"akinsho/git-conflict.nvim",
+		version = "*",
+		config = function()
+			require("git-conflict").setup({
+				default_mappings = {
+					ours = "o",
+					theirs = "t",
+					none = "0",
+					both = "b",
+					next = "n",
+					prev = "p",
+				},
+			})
+		end,
 	},
 }

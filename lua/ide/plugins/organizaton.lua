@@ -23,7 +23,7 @@ return {
 			vim.o.conceallevel = 3
 		end,
 
-		lazy = false,
+		lazy = true,
 		version = "*",
 		ft = "norg",
 
