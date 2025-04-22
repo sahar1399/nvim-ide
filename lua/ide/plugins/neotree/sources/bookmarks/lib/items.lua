@@ -16,6 +16,27 @@ local function read_file(path)
 	return content
 end
 
+local function find_project_root()
+    local current_dir = vim.fn.getcwd()
+    local parent_dir = current_dir
+
+    while parent_dir ~= "/" do
+        if vim.fn.isdirectory(parent_dir .. "/.git") == 1 then
+            return parent_dir
+        end
+        local new_parent = vim.fn.fnamemodify(parent_dir, ":h")
+        if new_parent == parent_dir then -- Reached root or cannot go up
+            break
+        end
+        parent_dir = new_parent
+    end
+
+    -- If no .git found, return the original cwd
+    return current_dir
+end
+
+local project_root = find_project_root()
+
 ---Get a table of all open buffers, along with all parent paths of those buffers.
 ---The paths are the keys of the table, and all the values are 'true'.
 M.get_bookmarks = function(state)
@@ -24,7 +45,6 @@ M.get_bookmarks = function(state)
   end
   state.loading = true
 
-  local project_root = vim.fn.getcwd()
   -- local _, project_root = git.status(state.git_base, true)
   --
   state.path = project_root or state.path or vim.fn.getcwd()

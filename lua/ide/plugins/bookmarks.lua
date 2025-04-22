@@ -1,3 +1,24 @@
+local function find_project_root()
+    local current_dir = vim.fn.getcwd()
+    local parent_dir = current_dir
+
+    while parent_dir ~= "/" do
+        if vim.fn.isdirectory(parent_dir .. "/.git") == 1 then
+            return parent_dir
+        end
+        local new_parent = vim.fn.fnamemodify(parent_dir, ":h")
+        if new_parent == parent_dir then -- Reached root or cannot go up
+            break
+        end
+        parent_dir = new_parent
+    end
+
+    -- If no .git found, return the original cwd
+    return current_dir
+end
+
+local project_root = find_project_root()
+
 return {
   {
     "chentoast/marks.nvim",
@@ -151,14 +172,8 @@ return {
       },
 
       config = function()
-        local proj_dir = vim.fn.getcwd()
-        local git_root_dir = vim.fn.finddir(".git", ".;")
+        local bookmarks_file_path = vim.fn.expand(project_root .. "/.bookmarks.json")
 
-        if git_root_dir ~= "" then
-          proj_dir = vim.fn.expand(git_root_dir .. "/..")
-        end
-
-        local bookmarks_file_path = vim.fn.expand(proj_dir .. "/.bookmarks.json")
         local bm = require("bookmarks")
         local actions = require("bookmarks.actions")
 

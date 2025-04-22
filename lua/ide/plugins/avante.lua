@@ -1,5 +1,27 @@
-vim.api.nvim_set_hl(0, "AvanteDiffText", { bg = "#104935", blend = 60 }) 
-vim.api.nvim_set_hl(0, "AvanteDiffAdd", { bg = "#6F2D3D", blend = 60 }) 
+vim.api.nvim_set_hl(0, "AvanteDiffText", { bg = "#6F2D3D", blend = 80 })
+vim.api.nvim_set_hl(0, "AvanteDiffAdd", { bg = "#104935", blend = 80 })
+
+local function find_project_root()
+    local current_dir = vim.fn.getcwd()
+    local parent_dir = current_dir
+
+    while parent_dir ~= "/" do
+        if vim.fn.isdirectory(parent_dir .. "/.git") == 1 then
+            return parent_dir
+        end
+        local new_parent = vim.fn.fnamemodify(parent_dir, ":h")
+        if new_parent == parent_dir then -- Reached root or cannot go up
+            break
+        end
+        parent_dir = new_parent
+    end
+
+    -- If no .git found, return the original cwd
+    return current_dir
+end
+
+local project_root = find_project_root()
+print(project_root)
 
 return {
 	"yetone/avante.nvim",
@@ -12,6 +34,10 @@ return {
 		-- currently designating it as `copilot` provider is dangerous because: https://github.com/yetone/avante.nvim/issues/1048
 		-- Of course, you can reduce the request frequency by increasing `suggestion.debounce`.
 		auto_suggestions_provider = "gemini",
+		gemini = {
+			-- model = "gemini-2.5-pro-exp-03-25",
+      model = "gemini-2.5-flash-preview-04-17"
+		},
 		cursor_applying_provider = nil, -- The provider used in the applying phase of Cursor Planning Mode, defaults to nil, when nil uses Config.provider as the provider for the applying phase
 		-- claude = {
 		-- 	endpoint = "https://api.anthropic.com",
@@ -46,6 +72,15 @@ return {
 			enable_cursor_planning_mode = true, -- Whether to enable Cursor Planning Mode. Default to false.
 			enable_claude_text_editor_tool_mode = false, -- Whether to enable Claude Text Editor Tool Mode.
 		},
+    history = {
+      max_tokens = 4096,
+      carried_entry_count = nil,
+      storage_path = project_root .. "/.avante",
+      paste = {
+        extension = "png",
+        filename = "pasted-%Y-%m-%d-%H-%M-%S",
+      },
+    },
 		mappings = {
 			--- @class AvanteConflictMappings
 			diff = {
