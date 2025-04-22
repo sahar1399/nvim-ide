@@ -181,7 +181,7 @@ return {
 				async_loading = true, -- Load parts of the theme asyncronously for faster startup (turned on by default)
 				custom_colors = nil, -- If you want to everride the default colors, set this to a function
 				custom_highlights = {
-					DiffAdd = { bg = "#103235" },
+					DiffAdd = { bg = "#104935" },
 					DiffChange = { bg = "#272D43" },
 					DiffText = { bg = "#394b70" },
 					DiffDelete = { bg = "#6F2D3D" },
