@@ -1,5 +1,26 @@
 return {
 	{
+		"OXY2DEV/markview.nvim",
+		lazy = false,
+		config = function()
+			require("markview").setup()
+			require("markview.extras.checkboxes").setup()
+			require("markview.extras.editor").setup()
+			require("markview.extras.headings").setup()
+		end,
+	},
+	{
+		"jghauser/follow-md-links.nvim",
+	},
+	-- {
+	-- 	"jakewvincent/mkdnflow.nvim",
+	-- 	config = function()
+	-- 		require("mkdnflow").setup({
+	-- 			-- Config goes here; leave blank for defaults
+	-- 		})
+	-- 	end,
+	-- },
+	{
 		"milisims/nvim-luaref",
 	},
 	{

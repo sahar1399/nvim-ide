@@ -60,8 +60,18 @@ vim.opt.iskeyword:append("-") -- hyphenated words recognized by searches
 vim.opt.formatoptions:remove({ "c", "r", "o" }) -- don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode.
 vim.opt.fillchars:append("eob: ")
 
+function open_this_file_in_develop_workspace_in_split()
+    -- Open a horizontal split
+    vim.api.nvim_command('vsplit')
+    -- Open the file in the split
+    vim.api.nvim_command('edit ' .. string.gsub(vim.fn.expand("%:p"), "[%w]+%-[%d]+", "develop"))
+end
+
 vim.cmd([[ packadd cfilter ]])
-vim.cmd([[ nmap cp :let @+ = "{/ " .. expand("%:p")..":"..line(".") .. "}"<cr> ]])
+-- vim.cmd([[ nmap <leader>d :let @+ = "{/ " .. expand("%:p")..":"..line(".") .. "}"<cr> ]])
+vim.api.nvim_set_keymap('n', '<leader>E', ':lua open_this_file_in_develop_workspace_in_split()<CR>', { noremap = true, silent = true })
+
+vim.cmd([[ nmap cp :let @+ = expand("%:p")<cr> ]])
 vim.cmd([[
 set list
 set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»

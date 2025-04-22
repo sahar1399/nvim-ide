@@ -14,6 +14,13 @@ function Markdown:setup(language_utils)
     --   clientId = "client_Ho2fSR5ooHtVvFGJ3x9szi",
     -- })
   end
+  
+    language_utils.lspconfig.marksman.setup({
+      on_attach = language_utils.on_attach,
+      capabilities = language_utils.capabilities,
+      flags = language_utils.lsp_flags,
+      filetypes = { "markdown" },
+    })
 
   return LanguageResults.new({
     null_ls_sources = {},

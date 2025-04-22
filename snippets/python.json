@@ -2,5 +2,13 @@
   "info": {
     "body": "await self._logger.info($1)",
     "prefix": "info"
+  },
+  "interact": {
+    "body": [
+      "import code",
+      "",
+      "code.interact(local=locals() | globals())"
+    ],
+    "prefix": "interact"
   }
 }

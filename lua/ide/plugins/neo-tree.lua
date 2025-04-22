@@ -385,7 +385,7 @@ return {
 					vim.cmd([[:Neotree source=bookmarks]])
 				end,
 				mode = "n",
-				desc = "Open Buffer Tree",
+				desc = "Open Bookmarks Tree",
 			},
 			{
 				"<leader>j",
