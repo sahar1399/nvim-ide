@@ -2,6 +2,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
+			"nushell/tree-sitter-nu",
 			"windwp/nvim-ts-autotag",
 			"yioneko/nvim-yati",
 			{
