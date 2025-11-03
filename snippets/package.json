@@ -18,6 +18,12 @@
           "python"
         ],
         "path": "./python.json"
+      },
+      {
+        "language": [
+          "http"
+        ],
+        "path": "./http.json"
       }
     ]
   },

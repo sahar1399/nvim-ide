@@ -1,4 +1,12 @@
 {
+  "debug": {
+    "body": [
+      "from tools.gds.multi_tool.ui.commands.debug import debug_embed",
+      "",
+      "debug_embed(locals=locals(), globals=globals())"
+    ],
+    "prefix": "debug"
+  },
   "info": {
     "body": "await self._logger.info($1)",
     "prefix": "info"

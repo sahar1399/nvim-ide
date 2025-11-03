@@ -29,6 +29,7 @@ local options = {
 	tabstop = 2, -- insert 2 spaces for a tab
 	cursorline = false, -- highlight the current line
 	number = true, -- set numbered lines
+	autoread = true, -- for reload after pre-commit
 	relativenumber = true, -- set relative numbered lines
 	numberwidth = 4, -- set number column width to 2 {default 4}
 	foldmethod = "expr",
@@ -48,6 +49,12 @@ local options = {
 	diffopt = "filler,context:5,linematch:500,followwrap,indent-heuristic,algorithm:patience",
 	sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions",
 }
+
+-- for reload after pre-commit
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = "*",
+})
 
 for k, v in pairs(options) do
 	vim.opt[k] = v
@@ -72,6 +79,8 @@ vim.cmd([[ packadd cfilter ]])
 vim.api.nvim_set_keymap('n', '<leader>E', ':lua open_this_file_in_develop_workspace_in_split()<CR>', { noremap = true, silent = true })
 
 vim.cmd([[ nmap cp :let @+ = expand("%:p")<cr> ]])
+vim.cmd([[ nmap cn :let @+ = expand("%:t")<cr> ]])
+vim.cmd([[ nmap cd :let @+ = expand("%:p:h")<cr> ]])
 vim.cmd([[
 set list
 set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
@@ -98,6 +107,8 @@ nnoremap <silent> ,C :call CleanNoNameEmptyBuffers()<CR>
 
 vim.cmd([[
 nnoremap <silent> <leader>rr :bufdo e<CR>
+noremap <tab> <cmd>tabnext<cr>
+noremap <s-tab> <cmd>tabprev<cr>
 "nnoremap <silent> <leader>bc :%bdelete|edit #|normal<CR>
 ]])
 
@@ -129,3 +140,43 @@ end
 
 -- vim.g.root_spec = { "lsp", { ".git", "lua", "pyproject.toml", "Makefile", "src" }, "cwd" }
 vim.g.root_spec = { "cwd" }
+
+function switch_case()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local word = vim.fn.expand('<cword>')
+  local word_start = vim.fn.matchstrpos(vim.fn.getline('.'), '\\k*\\%' .. (col+1) .. 'c\\k*')[2]
+
+  -- Detect CamelCase
+  if word:find('^[A-Z]') then
+    -- Convert CamelCase to camelCase
+    local first_char = string.sub(word, 1, 1)
+    local rest_of_string = string.sub(word, 2)
+
+    first_char = string.lower(first_char)
+
+    local new_word = first_char .. rest_of_string
+    vim.api.nvim_buf_set_text(0, line - 1, word_start, line - 1, word_start + #word, {new_word})
+    return first_char .. rest_of_string
+  -- Detect camelCase
+  elseif word:find('^[a-z]') and not word:find('_')  then
+    -- Convert camelCase to snake_case
+    local snake_case_word = word:gsub('([a-z])([A-Z])', '%1_%2'):lower()
+    vim.api.nvim_buf_set_text(0, line - 1, word_start, line - 1, word_start + #word, {snake_case_word})
+  -- Detect snake_case
+  elseif word:find('_') then
+    -- Convert snake_case to camelCase
+    local camel_case_word = word:gsub('(_)([a-z])', function(_, l) return l:upper() end)
+
+    local first_char = string.sub(camel_case_word, 1, 1)
+    local rest_of_string = string.sub(camel_case_word, 2)
+
+    first_char = string.upper(first_char)
+
+    local new_word = first_char .. rest_of_string
+    vim.api.nvim_buf_set_text(0, line - 1, word_start, line - 1, word_start + #word, {new_word})
+  else
+    print("Not a snake_case or camelCase word")
+  end
+end
+
+vim.api.nvim_set_keymap('n', '<Leader>y', '<cmd>lua switch_case()<CR>', {noremap = true, silent = true})
