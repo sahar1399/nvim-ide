@@ -1,0 +1,15 @@
+{
+  "http_to_pod": {
+    "body": [
+      "POST http://localhost:1234/v1/cancel-reservation",
+      "Content-Type: application/json",
+      "",
+      "{",
+      "    \"branch_id\": 9,",
+      "    \"pnr_reference\": \"DVRCMC\",",
+      "    \"void\": true",
+      "}"
+    ],
+    "prefix": "http_to_pod"
+  }
+}
